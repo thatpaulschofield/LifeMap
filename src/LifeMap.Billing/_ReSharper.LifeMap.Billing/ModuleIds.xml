@@ -1,0 +1,5 @@
+<Modules>
+  <Module PersistentId="2D470517-8979-4F31-96F2-F493942B52AF" ModuleId="LifeMap.Billing" />
+  <Module PersistentId="95309C22-5740-4144-A5F9-9114E6B67D20" ModuleId="LifeMap.Billing.Events" />
+  <Module PersistentId="5D5439D0-C60D-4294-83B6-D02349815EE7" ModuleId="LifeMap.Analysis" />
+</Modules>

@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpenBastard</name>
+    </assembly>
+    <members>
+        <member name="M:OpenBastard.Handlers.UploadedFileHandler.Post(System.Collections.Generic.IEnumerable{OpenRasta.Web.IMultipartHttpEntity})">
+            <summary>
+            Used to test that files sent as multipart/form-data in html forms get processed correctly
+            </summary>
+            <param name="entities"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenBastard.Handlers.UploadedFileHandler.Post(System.String,System.IO.Stream)">
+            <summary>
+            Used to test simple put requests using application/octet-stream
+            </summary>
+            <param name="fileName"></param>
+            <param name="fileStream"></param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenBastard.Handlers.UserListHandler.Post(OpenBastard.Resources.User)">
+            <summary>
+            Operation testing the addition of a user
+            </summary>
+            <param name="userToAdd"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

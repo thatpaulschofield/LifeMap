@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpenRasta.Tests.Unit</name>
+    </assembly>
+    <members>
+        <member name="M:DigestCredentialsReader_Specification.when_a_header_is_present.the_result_is_authorized_for_incoming_uri_containing_invalid_characters">
+            <summary>
+            See #31 on trac.
+            </summary>
+        </member>
+    </members>
+</doc>

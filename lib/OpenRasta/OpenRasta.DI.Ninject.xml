@@ -1,0 +1,278 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OpenRasta.DI.Ninject</name>
+    </assembly>
+    <members>
+        <member name="T:OpenRasta.DI.Ninject.AllResolvablePropertiesInjectionHeuristic">
+            <summary>
+            Determines whether members should be injected during activation by checking
+            if they provide a public setter and have an existing binding.
+            </summary>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.AllResolvablePropertiesInjectionHeuristic.#ctor(Ninject.IKernel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenRasta.DI.Ninject.AllResolvablePropertiesInjectionHeuristic"/> class.
+            </summary>
+            <param name="kernel">The kernel.</param>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.AllResolvablePropertiesInjectionHeuristic.ShouldInject(System.Reflection.MemberInfo)">
+            <summary>
+            Returns a value indicating whether the specified member should be injected.
+            </summary>
+            <param name="member">The member in question.</param>
+            <returns>
+                <see langword="true"/> if the member should be injected; otherwise <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="T:OpenRasta.DI.Ninject.ContextStoreDependencyCleaner">
+            <summary>
+            A class to clean items out of the <see cref="T:OpenRasta.Pipeline.IContextStore"/>.
+            </summary>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.ContextStoreDependencyCleaner.#ctor(Ninject.IKernel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenRasta.DI.Ninject.ContextStoreDependencyCleaner"/> class.
+            </summary>
+            <param name="kernel">The kernel.</param>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.ContextStoreDependencyCleaner.Destruct(System.String,System.Object)">
+            <summary>
+            Destructs the specified key.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="instance">The instance.</param>
+        </member>
+        <member name="T:OpenRasta.DI.Ninject.InjectableConstructorScorer">
+            <summary>
+            Scores constructors by either looking for the existence of an injection marker
+            attribute, or by counting the number of parameters that can be injected.
+            </summary>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.InjectableConstructorScorer.Score(Ninject.Activation.IContext,Ninject.Planning.Directives.ConstructorInjectionDirective)">
+            <summary>
+            Gets the score for the specified constructor. Looks at the number of "resolvable" arguments.
+            </summary>
+            <param name="context">The injection context.</param>
+            <param name="directive">The constructor.</param>
+            <returns>The constructor's score.</returns>
+        </member>
+        <member name="T:OpenRasta.DI.Ninject.NinjectDependencyResolver">
+            <summary>
+            A Ninject-based <see cref="T:OpenRasta.DI.IDependencyResolver"/>.
+            </summary>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.NinjectDependencyResolver.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenRasta.DI.Ninject.NinjectDependencyResolver"/> class.
+            </summary>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.NinjectDependencyResolver.#ctor(Ninject.IKernel)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenRasta.DI.Ninject.NinjectDependencyResolver"/> class.
+            </summary>
+            <param name="kernel">The kernel to use.</param>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.NinjectDependencyResolver.CreateKernel">
+            <summary>
+            Creates an <see cref="T:Ninject.IKernel"/> that is configured in the way OpenRasta expects.
+            </summary>
+            <remarks>
+            OpenRasta is written with some implicit assumptions or requirements about how the
+            IoC container will work. For example, which constructor is selected for injection
+            or the fact that public "settable" properties will be injected if possible
+            and left alone if not possible.
+            </remarks>
+            <returns>A new <see cref="T:Ninject.IKernel"/></returns>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.NinjectDependencyResolver.CreateKernel(Ninject.IKernel)">
+            <summary>
+            Creates an <see cref="T:Ninject.IKernel"/> that is configured in the way OpenRasta expects,
+            using the specified "parent kernel".
+            </summary>
+            <remarks>
+            OpenRasta is written with some implicit assumptions or requirements about how the
+            IoC container will work. For example, which constructor is selected for injection
+            or the fact that public "settable" properties will be injected if possible
+            and left alone if not possible.
+            
+            If a request to the kernel is not resolvable, the kernel will attempt to resolve the type
+            from the <see param="parentKernel"/>.
+            </remarks>
+            <returns>A new <see cref="T:Ninject.IKernel"/></returns>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.NinjectDependencyResolver.AddDependencyCore(System.Type,OpenRasta.DI.DependencyLifetime)">
+            <summary>
+            Adds the dependency.
+            </summary>
+            <param name="concreteType">Type of the concrete class to create.</param>
+            <param name="lifetime">The lifetime of the registration.</param>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.NinjectDependencyResolver.AddDependencyCore(System.Type,System.Type,OpenRasta.DI.DependencyLifetime)">
+            <summary>
+            Adds the dependency.
+            </summary>
+            <param name="serviceType">Type of the service to bind to.</param>
+            <param name="concreteType">Type of the concrete class to create.</param>
+            <param name="lifetime">The lifetime of the registration.</param>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.NinjectDependencyResolver.AddDependencyInstanceCore(System.Type,System.Object,OpenRasta.DI.DependencyLifetime)">
+            <summary>
+            Adds the an instance to the dependencies.
+            </summary>
+            <param name="serviceType">Type of the service to add.</param>
+            <param name="instance">The instance of the service to add.</param>
+            <param name="lifetime">The lifetime for the registration.</param>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.NinjectDependencyResolver.ResolveAllCore``1">
+            <summary>
+            Resolves all the specified types.
+            </summary>
+            <typeparam name="TService">The type of the service.</typeparam>
+            <returns></returns>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.NinjectDependencyResolver.ResolveCore(System.Type)">
+            <summary>
+            Resolves an instance of the <see cref="T:Ninject.IKernel"/>.
+            </summary>
+            <param name="serviceType">Type of the service.</param>
+            <returns></returns>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.NinjectDependencyResolver.HasDependency(System.Type)">
+            <summary>
+            Determines whether the specified service type has dependency.
+            </summary>
+            <param name="serviceType">Type of the service.</param>
+            <returns>
+            	<see langword="true"/> if the specified service type has dependency; otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.NinjectDependencyResolver.HasDependencyImplementation(System.Type,System.Type)">
+            <summary>
+            Determines whether a binding exists between the specified service and concrete types.
+            </summary>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.NinjectDependencyResolver.HandleIncomingRequestProcessed">
+            <summary>
+            Called when an incoming request has been processed.
+            </summary>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.NinjectDependencyResolver.Destruct(System.String,System.Object)">
+            <summary>
+            Destructs the specified key.
+            </summary>
+            <param name="key">The key.</param>
+            <param name="instance">The instance.</param>
+        </member>
+        <member name="T:OpenRasta.DI.Ninject.Extensions">
+            <summary>
+            Extensions to enable more readable code.
+            </summary>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.Extensions.IsBindable(System.Type,Ninject.IKernel)">
+            <summary>
+            Determines whether the specified service type is bindable.
+            </summary>
+            <param name="serviceType">The type of the service.</param>
+            <param name="kernel">The kernel.</param>
+            <returns>
+            	<see langword="true"/> if the specified service type is bindable; otherwise, <see langword="false"/>.
+            </returns>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.Extensions.HasAttribute(System.Reflection.ICustomAttributeProvider,System.Type)">
+            <summary>
+            Determines whether the specified member has a particular attribute.
+            </summary>
+            <param name="member">The member to check.</param>
+            <param name="type">The attribute type to check for.</param>
+            <returns>
+            	<see langword="true"/> if the specified member has attribute; otherwise, <see langword="true"/>.
+            </returns>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.Extensions.GetKey(System.Type)">
+            <summary>
+            Gets a unique key for a given type.
+            </summary>
+            <returns>Returns the AssemblyQualifiedName.</returns>
+        </member>
+        <member name="T:OpenRasta.DI.Ninject.PerRequestProvider">
+            <summary>
+            A Ninject provider that resolves/caches instances on a OpenRasta PerRequest basis
+            using <see cref="T:OpenRasta.Pipeline.IContextStore"/>.
+            </summary>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.PerRequestProvider.#ctor(System.Type,Ninject.Planning.IPlanner,Ninject.Selection.ISelector)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenRasta.DI.Ninject.PerRequestProvider"/> class.
+            </summary>
+            <param name="type">The type (or prototype) of instances the provider creates.</param>
+            <param name="planner">The <see cref="T:Ninject.Planning.IPlanner"/> component.</param>
+            <param name="selector">The <see cref="T:Ninject.Selection.ISelector"/> component</param>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.PerRequestProvider.Create(Ninject.Activation.IContext)">
+            <summary>
+            Creates an instance within the specified context.
+            </summary>
+            <param name="context">The context.</param>
+            <returns>The created instance.</returns>
+        </member>
+        <member name="T:OpenRasta.DI.Ninject.SubContainerKernel">
+            <summary>
+            A simple "sub-container" implementation for Ninject. Resolution requests
+            are passed to a parent as well as the child (this kernel).
+            </summary>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.SubContainerKernel.#ctor(Ninject.IKernel,Ninject.Modules.INinjectModule[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenRasta.DI.Ninject.SubContainerKernel"/> class.
+            </summary>
+            <param name="parent">The parent container.</param>
+            <param name="modules">The modules.</param>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.SubContainerKernel.#ctor(Ninject.IKernel,Ninject.INinjectSettings,Ninject.Modules.INinjectModule[])">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenRasta.DI.Ninject.SubContainerKernel"/> class.
+            </summary>
+            <param name="parent">The parent container.</param>
+            <param name="settings">The settings.</param>
+            <param name="modules">The modules.</param>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.SubContainerKernel.CanResolve(Ninject.Activation.IRequest)">
+            <summary>
+            Determines whether the specified request can be resolved.
+            </summary>
+            <param name="request">The request.</param>
+            <returns>
+            	<c>True</c> if the request can be resolved; otherwise, <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.SubContainerKernel.GetBindings(System.Type)">
+            <summary>
+            Gets the bindings registered for the specified service, 
+            aggregating the bindings from this <see cref="T:Ninject.IKernel"/> and the parent <see cref="T:Ninject.IKernel"/> if one was specified.
+            </summary>
+            <param name="service">The service in question.</param>
+            <returns>
+            A series of bindings that are registered for the service.
+            </returns>
+        </member>
+        <member name="T:OpenRasta.DI.Ninject.WebBinding">
+            <summary>
+            A placeholder class for a PerRequest binding.
+            </summary>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.WebBinding.#ctor(System.Type)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenRasta.DI.Ninject.WebBinding"/> class.
+            </summary>
+            <param name="service">The service.</param>
+        </member>
+        <member name="M:OpenRasta.DI.Ninject.WebBinding.#ctor(System.Type,Ninject.Planning.Bindings.IBindingMetadata)">
+            <summary>
+            Initializes a new instance of the <see cref="T:OpenRasta.DI.Ninject.WebBinding"/> class.
+            </summary>
+            <param name="service">The service that is controlled by the binding.</param>
+            <param name="metadata">The binding's metadata container.</param>
+        </member>
+    </members>
+</doc>
