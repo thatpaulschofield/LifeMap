@@ -1,8 +1,13 @@
 [Oo]bj/
 [Bb]in/
-*.suo
+[Dd]ebug/
+[Rr]elease/*.suo
 *.user
 /TestResults
 *.vspscc
 *.vssscc
-*.ReSharper.user
+# Resharper
+*[Rr]e[Ss]harper.user
+_ReSharper.*/
+#Raven
+/Raven/Tenants
