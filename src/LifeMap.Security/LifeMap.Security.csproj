@@ -68,13 +68,13 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\LifeMap.Security.Commands\LifeMap.Security.Commands.csproj">
-      <Project>{B47CCE9E-AC0B-4911-BBED-57F9CE7E41F1}</Project>
-      <Name>LifeMap.Security.Commands</Name>
-    </ProjectReference>
     <ProjectReference Include="..\LifeMap.Common.Domain\LifeMap.Common.Domain.csproj">
       <Project>{DB9CB82F-4480-48AF-A65C-C550C3F4C75C}</Project>
       <Name>LifeMap.Common.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LifeMap.Security.Commands\LifeMap.Security.Commands.csproj">
+      <Project>{B47CCE9E-AC0B-4911-BBED-57F9CE7E41F1}</Project>
+      <Name>LifeMap.Security.Commands</Name>
     </ProjectReference>
     <ProjectReference Include="..\LifeMap.Security.Events\LifeMap.Security.Events.csproj">
       <Project>{B2A42680-6275-43B9-8968-11BBA76374EE}</Project>

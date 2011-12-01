@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LoginEnteredForRegistration.cs" />
     <Compile Include="MemberCreatedEvent.cs" />
     <Compile Include="MemberSubscribedEvent.cs" />
     <Compile Include="RegistrationStartedEvent.cs" />
