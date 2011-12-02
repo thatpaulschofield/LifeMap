@@ -16,7 +16,7 @@ namespace LifeMap.Membership.Rest
         {
             using (OpenRastaConfiguration.Manual)
             {
-                ResourceSpace.Has.ResourcesOfType<StartRegistration>()
+                ResourceSpace.Has.ResourcesOfType<StartRegistrationCommand>()
                     .AtUri("/registration/start")
                     .HandledBy<StartRegistrationHandler>()
                     .RenderedByAspx("~/Views/StartRegistrationView.aspx")
@@ -33,6 +33,11 @@ namespace LifeMap.Membership.Rest
                     .AtUri("/registration/offers/{registrationId}")
                     .HandledBy<OffersHandler>()
                     .RenderedByAspx("~/Views/OffersView.aspx");
+
+                ResourceSpace.Has.ResourcesOfType<Login>()
+                    .AtUri("/registration/{registrationId}/createLogin")
+                    .HandledBy<LoginHandler>()
+                    .RenderedByAspx("~/Views/LoginView.aspx");
             }
         }
     }

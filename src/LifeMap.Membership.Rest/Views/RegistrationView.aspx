@@ -12,6 +12,8 @@
     <%= Resource.FirstName %> <%= Resource.LastName %>
     <br />Email Address<%= Resource.EmailAddress %>
     <br />Offer Id: <%= Resource.OfferId %>
+    <br />User Name: <%= Resource.UserName %>
+    <br />Password: <%= Resource.Password %>
     </div>
     </form>
 </body>

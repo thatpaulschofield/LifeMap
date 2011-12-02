@@ -6,6 +6,7 @@ using LifeMap.Common.Domain;
 
 namespace LifeMap.Sales.Commands
 {
+    [Serializable]
     public class CreateOfferCommand : MessageBase
     {
         public Guid Id { get; set; }

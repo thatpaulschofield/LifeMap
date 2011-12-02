@@ -43,9 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EnterCreditCardInformationForRegistrationCommand.cs" />
+    <Compile Include="EnterLoginForRegistrationCommand.cs" />
     <Compile Include="SelectOfferCommand.cs" />
-    <Compile Include="StartRegistration.cs" />
+    <Compile Include="StartRegistrationCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SubmitRegistrationCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\LifeMap.Common.Domain\LifeMap.Common.Domain.csproj">

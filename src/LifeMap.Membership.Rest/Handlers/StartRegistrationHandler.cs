@@ -11,7 +11,7 @@ namespace LifeMap.Membership.Rest.Handlers
     {
         public object Get()
         {
-            return new StartRegistration();
+            return new StartRegistrationCommand();
         }
 
         public object Post(string firstName, string lastName, string emailAddress)
@@ -19,7 +19,7 @@ namespace LifeMap.Membership.Rest.Handlers
             Guid id = Guid.NewGuid();
             try
             {
-                var resource = new StartRegistration(id, firstName, lastName, emailAddress);
+                var resource = new StartRegistrationCommand(id, firstName, lastName, emailAddress);
                 Global.Bus.Publish(resource);
                 return new OperationResult.SeeOther{ RedirectLocation = new RegistrationViewModel{Id = id}.CreateUri() };
             }

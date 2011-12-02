@@ -6,6 +6,7 @@ using LifeMap.Common.Domain;
 
 namespace LifeMap.Security.Commands
 {
+    [Serializable]
     public class VerifyEmailAddressCommand : MessageBase
     {
     }

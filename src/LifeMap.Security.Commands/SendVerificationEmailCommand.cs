@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using LifeMap.Common.Domain;
 
 namespace LifeMap.Security.Commands
 {
-    public class SendVerificationEmailCommand
+    [Serializable]
+    public class SendVerificationEmailCommand : MessageBase
     {
     }
 }

@@ -96,6 +96,7 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Views\LoginView.aspx" />
     <Content Include="Views\OffersView.aspx" />
     <Content Include="Views\RegistrationView.aspx" />
     <Content Include="Views\StartRegistrationView.aspx" />
@@ -115,6 +116,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Handlers\LoginHandler.cs" />
     <Compile Include="Handlers\OffersHandler.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="Global.asax.cs">
@@ -122,7 +124,15 @@
     </Compile>
     <Compile Include="Handlers\RegistrationHandler.cs" />
     <Compile Include="Handlers\StartRegistrationHandler.cs" />
+    <Compile Include="Resources\Login.cs" />
     <Compile Include="Resources\Offers.cs" />
+    <Compile Include="Views\LoginView.aspx.cs">
+      <DependentUpon>LoginView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\LoginView.aspx.designer.cs">
+      <DependentUpon>LoginView.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\OffersView.aspx.cs">
       <DependentUpon>OffersView.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

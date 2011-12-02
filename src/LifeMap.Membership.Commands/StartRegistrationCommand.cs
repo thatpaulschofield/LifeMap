@@ -8,13 +8,13 @@ using LifeMap.Common.Domain;
 namespace LifeMap.Membership.Commands
 {
     [Serializable]
-    public class StartRegistration : MessageBase, ICommand
+    public class StartRegistrationCommand : MessageBase, ICommand
     {
-        public StartRegistration()
+        public StartRegistrationCommand()
         {
         }
 
-        public StartRegistration(Guid id, string firstName, string lastName, string emailAddress)
+        public StartRegistrationCommand(Guid id, string firstName, string lastName, string emailAddress)
         {
             base.Id = id;
             FirstName = firstName;

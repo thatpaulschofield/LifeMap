@@ -13,8 +13,17 @@ namespace LifeMap.Membership.ViewModels
     {
         public void Init()
         {
+            new AutomapperConfig().Initialize();
+
             var builder = new ContainerBuilder();
-            builder.RegisterInstance(BuildDocumentStore(DatabaseNames.MembershipViewModels));
+            var documentStore = BuildDocumentStore(DatabaseNames.MembershipViewModels);
+            builder.RegisterInstance(documentStore);
+            builder.Register<IDocumentSession>(
+                c =>
+                    {
+                        var docStore = c.Resolve<IDocumentStore>();
+                        return docStore.OpenSession();
+                    });
 
             var container = builder.Build();
 

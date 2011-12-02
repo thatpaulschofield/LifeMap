@@ -6,6 +6,7 @@ using LifeMap.Common.Domain;
 
 namespace LifeMap.Membership.Commands
 {
+    [Serializable]
     public class SelectOfferCommand : MessageBase
     {
         public SelectOfferCommand(Guid id, Guid registrationId, Guid offerId)

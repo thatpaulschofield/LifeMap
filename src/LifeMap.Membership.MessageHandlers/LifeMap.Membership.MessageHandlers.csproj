@@ -17,10 +17,13 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>..\..\bin\MembershipHostService\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <StartAction>Program</StartAction>
+    <StartProgram>$(OutputPath)NServiceBus.Host.exe</StartProgram>
+    <StartArguments>NServiceBus.Integration</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -149,6 +152,10 @@
     <ProjectReference Include="..\LifeMap.Membership.Commands\LifeMap.Membership.Commands.csproj">
       <Project>{A6E51269-3931-4619-9587-38F9DA148210}</Project>
       <Name>LifeMap.Membership.Commands</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LifeMap.Membership.Events\LifeMap.Membership.Events.csproj">
+      <Project>{F44FC289-5CF8-493D-8557-CEDAEA433FCA}</Project>
+      <Name>LifeMap.Membership.Events</Name>
     </ProjectReference>
     <ProjectReference Include="..\LifeMap.Membership\LifeMap.Membership.csproj">
       <Project>{2CAF8E00-6F4D-48A6-AFE6-6D440FCE20F0}</Project>

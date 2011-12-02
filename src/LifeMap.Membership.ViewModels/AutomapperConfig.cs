@@ -12,6 +12,15 @@ namespace LifeMap.Membership.ViewModels
         public void Initialize()
         {
             Mapper.CreateMap<RegistrationStartedEvent, RegistrationViewModel>()
+                .ForMember(x => x.OfferId, opts => opts.Ignore())
+                .ForMember(x => x.UserName, opts => opts.Ignore())
+                .ForMember(x => x.Password, opts => opts.Ignore())
+                ;
+
+            Mapper.CreateMap<LoginEnteredForRegistration, RegistrationViewModel>()
+                .ForMember(x => x.FirstName, opts => opts.Ignore())
+                .ForMember(x => x.LastName, opts => opts.Ignore())
+                .ForMember(x => x.EmailAddress, opts => opts.Ignore())
                 .ForMember(x => x.OfferId, opts => opts.Ignore());
         }
     }

@@ -7,17 +7,19 @@ using LifeMap.Common.Domain;
 namespace LifeMap.Membership.Events
 {
     [Serializable]
-    public class CreditCardInformationEnteredForRegistration : MessageBase
-    {
-        public string NameOnCard { get; set; }
-        public string CardNumber { get; set; }
-        public string CvvNumber { get; set; }
-        public DateTime ExpirationDate { get; set; }
-    }
-
-    [Serializable]
     public class LoginEnteredForRegistration : MessageBase
     {
+        public LoginEnteredForRegistration()
+        {
+        }
+
+        public LoginEnteredForRegistration(Guid id, string userName, string password)
+        {
+            Id = id;
+            UserName = userName;
+            Password = password;
+        }
+
         public string UserName { get; set; }
         public string Password { get; set; }
     }

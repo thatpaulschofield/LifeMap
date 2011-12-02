@@ -59,8 +59,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Member.cs" />
-    <Compile Include="Registration.cs" />
+    <Compile Include="RegistrationProcess\Registration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RegistrationProcess\RegistrationCreditCard.cs" />
+    <Compile Include="RegistrationProcess\RegistrationLogin.cs" />
+    <Compile Include="RegistrationProcess\RegistrationUser.cs" />
     <Compile Include="Subscription.cs" />
   </ItemGroup>
   <ItemGroup>
