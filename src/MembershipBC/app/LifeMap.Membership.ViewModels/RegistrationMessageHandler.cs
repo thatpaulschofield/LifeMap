@@ -11,12 +11,10 @@ namespace LifeMap.Membership.ViewModels
 {
     public class RegistrationMessageHandler : IHandleMessages<RegistrationStartedEvent>, IHandleMessages<LoginEnteredForRegistration>
     {
-        private readonly IDocumentStore _documentStore;
         private readonly IDocumentSession _session;
 
-        public RegistrationMessageHandler(IDocumentStore documentStore, IDocumentSession session)
+        public RegistrationMessageHandler(IDocumentSession session)
         {
-            _documentStore = documentStore;
             _session = session;
         }
 
@@ -26,9 +24,8 @@ namespace LifeMap.Membership.ViewModels
             Mapper.Map(message, vm);
             try
             {
-                var session = _documentStore.OpenSession();
-                session.Store(vm, vm.Id);
-                session.SaveChanges();
+                _session.Store(vm, vm.Id);
+                _session.SaveChanges();
             }
             catch (Exception)
             {

@@ -18,6 +18,7 @@ namespace LifeMap.Membership.ViewModels
                 ;
 
             Mapper.CreateMap<LoginEnteredForRegistration, RegistrationViewModel>()
+                .ForMember(x => x.Id, opts => opts.Ignore())
                 .ForMember(x => x.FirstName, opts => opts.Ignore())
                 .ForMember(x => x.LastName, opts => opts.Ignore())
                 .ForMember(x => x.EmailAddress, opts => opts.Ignore())

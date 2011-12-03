@@ -152,11 +152,11 @@
     <Compile Include="RastaConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\LifeMap.Common.Domain\LifeMap.Common.Domain.csproj">
+    <ProjectReference Include="..\..\..\Common\LifeMap.Common.Domain\LifeMap.Common.Domain.csproj">
       <Project>{DB9CB82F-4480-48AF-A65C-C550C3F4C75C}</Project>
       <Name>LifeMap.Common.Domain</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\Common\LifeMap.Common.Infrastructure\LifeMap.Common.Infrastructure.csproj">
+    <ProjectReference Include="..\..\..\Common\LifeMap.Common.Infrastructure\LifeMap.Common.Infrastructure.csproj">
       <Project>{B218231F-15CD-46CB-871A-F1E4C3917DC9}</Project>
       <Name>LifeMap.Common.Infrastructure</Name>
     </ProjectReference>

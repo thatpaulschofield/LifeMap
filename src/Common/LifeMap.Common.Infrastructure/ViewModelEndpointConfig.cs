@@ -22,7 +22,7 @@ namespace LifeMap.Common.Infrastructure
             var container = builder.Build();
 
             NServiceBus
-                .SetLoggingLibrary.Log4Net();
+                .SetLoggingLibrary.Log4Net(log4net.Config.XmlConfigurator.Configure);
             NServiceBus
                 .Configure.With().Autofac2Builder(container)
                 .MsmqSubscriptionStorage()

@@ -59,7 +59,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\LifeMap.Membership.ViewModels\LifeMap.Membership.ViewModels.csproj">
+    <ProjectReference Include="..\..\app\LifeMap.Membership.ViewModels\LifeMap.Membership.ViewModels.csproj">
       <Project>{AE552855-D51C-45B3-8606-12C47FF7A470}</Project>
       <Name>LifeMap.Membership.ViewModels</Name>
     </ProjectReference>

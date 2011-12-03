@@ -51,7 +51,7 @@
     <Compile Include="SubmitRegistrationCommand.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Common\LifeMap.Common.Domain\LifeMap.Common.Domain.csproj">
+    <ProjectReference Include="..\..\..\Common\LifeMap.Common.Domain\LifeMap.Common.Domain.csproj">
       <Project>{DB9CB82F-4480-48AF-A65C-C550C3F4C75C}</Project>
       <Name>LifeMap.Common.Domain</Name>
     </ProjectReference>

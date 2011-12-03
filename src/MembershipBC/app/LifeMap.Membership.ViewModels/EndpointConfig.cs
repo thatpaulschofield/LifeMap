@@ -5,7 +5,6 @@ using EventStore;
 using NServiceBus;
 using Raven.Client;
 using Raven.Client.Document;
-using Raven.Client.Embedded;
 
 namespace LifeMap.Membership.ViewModels
 {
@@ -23,12 +22,12 @@ namespace LifeMap.Membership.ViewModels
                     {
                         var docStore = c.Resolve<IDocumentStore>();
                         return docStore.OpenSession();
-                    });
+                    }).InstancePerLifetimeScope();
 
             var container = builder.Build();
 
             NServiceBus
-                .SetLoggingLibrary.Log4Net();
+                .SetLoggingLibrary.Log4Net(log4net.Config.XmlConfigurator.Configure);
             NServiceBus
                 .Configure.With().Autofac2Builder(container)
                 .MsmqSubscriptionStorage()

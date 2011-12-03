@@ -1,1 +1,1 @@
-start "Membership Host Service" "bin\MembershipHostService\NServiceBus.Host.exe"  NServiceBus.Integration
+start "Membership Host Service" "src\MembershipBC\bin\MembershipHostService\NServiceBus.Host.exe"  NServiceBus.Integration

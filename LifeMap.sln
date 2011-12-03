@@ -5,67 +5,67 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BillingBC", "BillingBC", "{
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AnalysisBC", "AnalysisBC", "{EF3624C1-4624-4C91-82B3-1A38BB9C5BC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Billing", "src\app\BillingBC\LifeMap.Billing\LifeMap.Billing.csproj", "{2D470517-8979-4F31-96F2-F493942B52AF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Billing", "src\BillingBC\app\LifeMap.Billing\LifeMap.Billing.csproj", "{2D470517-8979-4F31-96F2-F493942B52AF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Billing.Events", "src\app\BillingBC\LifeMap.Billing.Events\LifeMap.Billing.Events.csproj", "{95309C22-5740-4144-A5F9-9114E6B67D20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Billing.Events", "src\BillingBC\app\LifeMap.Billing.Events\LifeMap.Billing.Events.csproj", "{95309C22-5740-4144-A5F9-9114E6B67D20}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MembershipBC", "MembershipBC", "{7A922ECC-1B83-4333-AFAD-3350203F4289}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Membership", "src\app\MembershipBC\LifeMap.Membership\LifeMap.Membership.csproj", "{2CAF8E00-6F4D-48A6-AFE6-6D440FCE20F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Membership", "src\MembershipBC\app\LifeMap.Membership\LifeMap.Membership.csproj", "{2CAF8E00-6F4D-48A6-AFE6-6D440FCE20F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Membership.Events", "src\app\MembershipBC\LifeMap.Membership.Events\LifeMap.Membership.Events.csproj", "{F44FC289-5CF8-493D-8557-CEDAEA433FCA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Membership.Events", "src\MembershipBC\app\LifeMap.Membership.Events\LifeMap.Membership.Events.csproj", "{F44FC289-5CF8-493D-8557-CEDAEA433FCA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Membership.Commands", "src\app\MembershipBC\LifeMap.Membership.Commands\LifeMap.Membership.Commands.csproj", "{A6E51269-3931-4619-9587-38F9DA148210}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Membership.Commands", "src\MembershipBC\app\LifeMap.Membership.Commands\LifeMap.Membership.Commands.csproj", "{A6E51269-3931-4619-9587-38F9DA148210}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Common.Domain", "src\app\Common\LifeMap.Common.Domain\LifeMap.Common.Domain.csproj", "{DB9CB82F-4480-48AF-A65C-C550C3F4C75C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Common.Domain", "src\Common\LifeMap.Common.Domain\LifeMap.Common.Domain.csproj", "{DB9CB82F-4480-48AF-A65C-C550C3F4C75C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Membership.ViewModels", "src\app\MembershipBC\LifeMap.Membership.ViewModels\LifeMap.Membership.ViewModels.csproj", "{AE552855-D51C-45B3-8606-12C47FF7A470}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Membership.ViewModels", "src\MembershipBC\app\LifeMap.Membership.ViewModels\LifeMap.Membership.ViewModels.csproj", "{AE552855-D51C-45B3-8606-12C47FF7A470}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Membership.MessageHandlers", "src\app\MembershipBC\LifeMap.Membership.MessageHandlers\LifeMap.Membership.MessageHandlers.csproj", "{40CED43A-98FF-42EF-9536-6C353F747692}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Membership.MessageHandlers", "src\MembershipBC\app\LifeMap.Membership.MessageHandlers\LifeMap.Membership.MessageHandlers.csproj", "{40CED43A-98FF-42EF-9536-6C353F747692}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SalesBC", "SalesBC", "{9F49A751-B315-4C83-9140-1208335AFB72}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SecurityBC", "SecurityBC", "{DAAADF6C-11BC-41B1-AE45-9E9766E608DE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Security", "src\app\SecurityBC\LifeMap.Security\LifeMap.Security.csproj", "{4605B5B1-EB2E-4A68-B3E0-35A8867483FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Security", "src\SecurityBC\app\LifeMap.Security\LifeMap.Security.csproj", "{4605B5B1-EB2E-4A68-B3E0-35A8867483FE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Security.Events", "src\app\SecurityBC\LifeMap.Security.Events\LifeMap.Security.Events.csproj", "{B2A42680-6275-43B9-8968-11BBA76374EE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Security.Events", "src\SecurityBC\app\LifeMap.Security.Events\LifeMap.Security.Events.csproj", "{B2A42680-6275-43B9-8968-11BBA76374EE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Security.Rest", "src\app\SecurityBC\LifeMap.Security.Rest\LifeMap.Security.Rest.csproj", "{AE2F07D2-DE6F-4F8A-B50A-38FDCEDC91AE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Security.Rest", "src\SecurityBC\app\LifeMap.Security.Rest\LifeMap.Security.Rest.csproj", "{AE2F07D2-DE6F-4F8A-B50A-38FDCEDC91AE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Security.MessageHandlers", "src\app\SecurityBC\LifeMap.Security.MessageHandlers\LifeMap.Security.MessageHandlers.csproj", "{99E96BAF-4D83-47EF-99E7-8A57D2F57D59}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Security.MessageHandlers", "src\SecurityBC\app\LifeMap.Security.MessageHandlers\LifeMap.Security.MessageHandlers.csproj", "{99E96BAF-4D83-47EF-99E7-8A57D2F57D59}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Common.Infrastructure", "src\app\Common\LifeMap.Common.Infrastructure\LifeMap.Common.Infrastructure.csproj", "{B218231F-15CD-46CB-871A-F1E4C3917DC9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Common.Infrastructure", "src\Common\LifeMap.Common.Infrastructure\LifeMap.Common.Infrastructure.csproj", "{B218231F-15CD-46CB-871A-F1E4C3917DC9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Membership.Rest", "src\app\MembershipBC\LifeMap.Membership.Rest\LifeMap.Membership.Rest.csproj", "{6D726A3C-14F8-4EA0-AFAB-BCAF404D093A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Membership.Rest", "src\MembershipBC\app\LifeMap.Membership.Rest\LifeMap.Membership.Rest.csproj", "{6D726A3C-14F8-4EA0-AFAB-BCAF404D093A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Security.Commands", "src\app\SecurityBC\LifeMap.Security.Commands\LifeMap.Security.Commands.csproj", "{B47CCE9E-AC0B-4911-BBED-57F9CE7E41F1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Security.Commands", "src\SecurityBC\app\LifeMap.Security.Commands\LifeMap.Security.Commands.csproj", "{B47CCE9E-AC0B-4911-BBED-57F9CE7E41F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Membership.ViewModels.Specs", "src\app\MembershipBC\LifeMap.Membership.ViewModels.Specs\LifeMap.Membership.ViewModels.Specs.csproj", "{F051ECE3-E80F-4E84-80A5-E05B6732CE28}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Membership.ViewModels.Specs", "src\MembershipBC\tests\LifeMap.Membership.ViewModels.Specs\LifeMap.Membership.ViewModels.Specs.csproj", "{F051ECE3-E80F-4E84-80A5-E05B6732CE28}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Analysis", "src\app\AnalysisBC\LifeMap.Analysis\LifeMap.Analysis.csproj", "{5D5439D0-C60D-4294-83B6-D02349815EE7}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Sales", "src\SalesBC\app\LifeMap.Sales\LifeMap.Sales.csproj", "{B9F0BE25-BA0E-4AE7-8A69-554AEC6E3C77}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Analysis.Commands", "src\app\AnalysisBC\LifeMap.Analysis.Commands\LifeMap.Analysis.Commands.csproj", "{170C4CE4-1A4D-4DC5-9C74-48183957700D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Sales.Commands", "src\SalesBC\app\LifeMap.Sales.Commands\LifeMap.Sales.Commands.csproj", "{5BC8832A-8219-4C80-AA0B-B1C69B99826E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Analysis.Events", "src\app\AnalysisBC\LifeMap.Analysis.Events\LifeMap.Analysis.Events.csproj", "{FA268576-61AC-4B4B-9178-E13BC46B699A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Sales.Events", "src\SalesBC\app\LifeMap.Sales.Events\LifeMap.Sales.Events.csproj", "{718D0801-EABE-4124-9888-96B4073FC434}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Analysis.MessageHandlers", "src\app\AnalysisBC\LifeMap.Analysis.MessageHandlers\LifeMap.Analysis.MessageHandlers.csproj", "{90C7624B-5CF2-460C-BC4A-59EBE311FBF8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Sales.MessageHandlers", "src\SalesBC\app\LifeMap.Sales.MessageHandlers\LifeMap.Sales.MessageHandlers.csproj", "{346F9727-5723-4C12-9D3A-1D0ABE53DBEF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Analysis.Rest", "src\app\AnalysisBC\LifeMap.Analysis.Rest\LifeMap.Analysis.Rest.csproj", "{A0DBF1A8-6ABC-4BE9-A17A-B9F4CD866D01}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Sales.Rest", "src\SalesBC\app\LifeMap.Sales.Rest\LifeMap.Sales.Rest.csproj", "{570D5A3C-D1A3-4BA8-BB01-8949B0D955A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Analysis.ViewModels", "src\app\AnalysisBC\LifeMap.Analysis.ViewModels\LifeMap.Analysis.ViewModels.csproj", "{0B08888D-6C1E-41F6-9764-6E54D81C0EF4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Sales.ViewModels", "src\SalesBC\app\LifeMap.Sales.ViewModels\LifeMap.Sales.ViewModels.csproj", "{B6B7F403-B2FE-4682-834D-D979B9E16403}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Sales", "src\app\SalesBC\LifeMap.Sales\LifeMap.Sales.csproj", "{B9F0BE25-BA0E-4AE7-8A69-554AEC6E3C77}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Analysis", "src\AnalysisBC\app\LifeMap.Analysis\LifeMap.Analysis.csproj", "{5D5439D0-C60D-4294-83B6-D02349815EE7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Sales.Commands", "src\app\SalesBC\LifeMap.Sales.Commands\LifeMap.Sales.Commands.csproj", "{5BC8832A-8219-4C80-AA0B-B1C69B99826E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Analysis.Commands", "src\AnalysisBC\app\LifeMap.Analysis.Commands\LifeMap.Analysis.Commands.csproj", "{170C4CE4-1A4D-4DC5-9C74-48183957700D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Sales.Events", "src\app\SalesBC\LifeMap.Sales.Events\LifeMap.Sales.Events.csproj", "{718D0801-EABE-4124-9888-96B4073FC434}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Analysis.Events", "src\AnalysisBC\app\LifeMap.Analysis.Events\LifeMap.Analysis.Events.csproj", "{FA268576-61AC-4B4B-9178-E13BC46B699A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Sales.MessageHandlers", "src\app\SalesBC\LifeMap.Sales.MessageHandlers\LifeMap.Sales.MessageHandlers.csproj", "{346F9727-5723-4C12-9D3A-1D0ABE53DBEF}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Analysis.MessageHandlers", "src\AnalysisBC\app\LifeMap.Analysis.MessageHandlers\LifeMap.Analysis.MessageHandlers.csproj", "{90C7624B-5CF2-460C-BC4A-59EBE311FBF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Sales.Rest", "src\app\SalesBC\LifeMap.Sales.Rest\LifeMap.Sales.Rest.csproj", "{570D5A3C-D1A3-4BA8-BB01-8949B0D955A6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Analysis.Rest", "src\AnalysisBC\app\LifeMap.Analysis.Rest\LifeMap.Analysis.Rest.csproj", "{A0DBF1A8-6ABC-4BE9-A17A-B9F4CD866D01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Sales.ViewModels", "src\app\SalesBC\LifeMap.Sales.ViewModels\LifeMap.Sales.ViewModels.csproj", "{B6B7F403-B2FE-4682-834D-D979B9E16403}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LifeMap.Analysis.ViewModels", "src\AnalysisBC\app\LifeMap.Analysis.ViewModels\LifeMap.Analysis.ViewModels.csproj", "{0B08888D-6C1E-41F6-9764-6E54D81C0EF4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -137,30 +137,6 @@ Global
 		{F051ECE3-E80F-4E84-80A5-E05B6732CE28}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F051ECE3-E80F-4E84-80A5-E05B6732CE28}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F051ECE3-E80F-4E84-80A5-E05B6732CE28}.Release|Any CPU.Build.0 = Release|Any CPU
-		{5D5439D0-C60D-4294-83B6-D02349815EE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5D5439D0-C60D-4294-83B6-D02349815EE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{5D5439D0-C60D-4294-83B6-D02349815EE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5D5439D0-C60D-4294-83B6-D02349815EE7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{170C4CE4-1A4D-4DC5-9C74-48183957700D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{170C4CE4-1A4D-4DC5-9C74-48183957700D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{170C4CE4-1A4D-4DC5-9C74-48183957700D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{170C4CE4-1A4D-4DC5-9C74-48183957700D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{FA268576-61AC-4B4B-9178-E13BC46B699A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{FA268576-61AC-4B4B-9178-E13BC46B699A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{FA268576-61AC-4B4B-9178-E13BC46B699A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{FA268576-61AC-4B4B-9178-E13BC46B699A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{90C7624B-5CF2-460C-BC4A-59EBE311FBF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{90C7624B-5CF2-460C-BC4A-59EBE311FBF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{90C7624B-5CF2-460C-BC4A-59EBE311FBF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{90C7624B-5CF2-460C-BC4A-59EBE311FBF8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A0DBF1A8-6ABC-4BE9-A17A-B9F4CD866D01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A0DBF1A8-6ABC-4BE9-A17A-B9F4CD866D01}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A0DBF1A8-6ABC-4BE9-A17A-B9F4CD866D01}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A0DBF1A8-6ABC-4BE9-A17A-B9F4CD866D01}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0B08888D-6C1E-41F6-9764-6E54D81C0EF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0B08888D-6C1E-41F6-9764-6E54D81C0EF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0B08888D-6C1E-41F6-9764-6E54D81C0EF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0B08888D-6C1E-41F6-9764-6E54D81C0EF4}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B9F0BE25-BA0E-4AE7-8A69-554AEC6E3C77}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B9F0BE25-BA0E-4AE7-8A69-554AEC6E3C77}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B9F0BE25-BA0E-4AE7-8A69-554AEC6E3C77}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -185,6 +161,30 @@ Global
 		{B6B7F403-B2FE-4682-834D-D979B9E16403}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6B7F403-B2FE-4682-834D-D979B9E16403}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6B7F403-B2FE-4682-834D-D979B9E16403}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D5439D0-C60D-4294-83B6-D02349815EE7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D5439D0-C60D-4294-83B6-D02349815EE7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D5439D0-C60D-4294-83B6-D02349815EE7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D5439D0-C60D-4294-83B6-D02349815EE7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{170C4CE4-1A4D-4DC5-9C74-48183957700D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{170C4CE4-1A4D-4DC5-9C74-48183957700D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{170C4CE4-1A4D-4DC5-9C74-48183957700D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{170C4CE4-1A4D-4DC5-9C74-48183957700D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA268576-61AC-4B4B-9178-E13BC46B699A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA268576-61AC-4B4B-9178-E13BC46B699A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA268576-61AC-4B4B-9178-E13BC46B699A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA268576-61AC-4B4B-9178-E13BC46B699A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90C7624B-5CF2-460C-BC4A-59EBE311FBF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90C7624B-5CF2-460C-BC4A-59EBE311FBF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90C7624B-5CF2-460C-BC4A-59EBE311FBF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90C7624B-5CF2-460C-BC4A-59EBE311FBF8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0DBF1A8-6ABC-4BE9-A17A-B9F4CD866D01}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0DBF1A8-6ABC-4BE9-A17A-B9F4CD866D01}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0DBF1A8-6ABC-4BE9-A17A-B9F4CD866D01}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0DBF1A8-6ABC-4BE9-A17A-B9F4CD866D01}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B08888D-6C1E-41F6-9764-6E54D81C0EF4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B08888D-6C1E-41F6-9764-6E54D81C0EF4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B08888D-6C1E-41F6-9764-6E54D81C0EF4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B08888D-6C1E-41F6-9764-6E54D81C0EF4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

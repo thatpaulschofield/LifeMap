@@ -13,7 +13,6 @@ using LifeMap.Common.Infrastructure;
 using NServiceBus;
 using Raven.Client;
 using Raven.Client.Document;
-using Raven.Client.Embedded;
 
 namespace LifeMap.Membership.MessageHandlers
 {
@@ -38,7 +37,7 @@ namespace LifeMap.Membership.MessageHandlers
             Container = builder.Build();
 
             NServiceBus
-                .SetLoggingLibrary.Log4Net();
+                .SetLoggingLibrary.Log4Net(log4net.Config.XmlConfigurator.Configure);
             NServiceBus
                 .Configure.With().Autofac2Builder(Container)
                 .MsmqSubscriptionStorage()

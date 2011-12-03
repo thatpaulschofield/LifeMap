@@ -25,5 +25,11 @@ namespace LifeMap.Membership.Events
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
+
+        public override string ToString()
+        {
+            return String.Format("A registration has started. Id {0}, for [{1} {2}] at [{3}]", Id, FirstName, LastName,
+                                 EmailAddress);
+        }
     }
 }

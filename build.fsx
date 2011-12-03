@@ -5,7 +5,7 @@ open Fake
 
 // Properties
 let buildDir = @".\build\"
-let appReferences = Scan (!+ @"src\**\*.csproj")
+let appReferences = !+ @"src\app\**\*.csproj" |> Scan
 
 // Targets
 Target? Clean <-

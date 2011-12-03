@@ -1,6 +1,7 @@
 ﻿using System;
 using LifeMap.Membership.ViewModels;
 using System.Linq;
+using OpenRasta.Web;
 
 namespace LifeMap.Membership.Rest.Handlers
 {
@@ -11,7 +12,9 @@ namespace LifeMap.Membership.Rest.Handlers
             var vm =
                 Repository.Instance.OpenSession().Query<RegistrationViewModel>().Where(x => x.Id == new Guid(id)).
                     SingleOrDefault();
-                //.Load<RegistrationViewModel>(id);
+            if (vm == null)
+                return new OperationResult.NotFound();
+
             return vm;
         }
     }
