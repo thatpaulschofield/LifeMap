@@ -36,6 +36,9 @@
     <Reference Include="AsyncCtpLibrary, Version=1.0.4107.18181, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\RavenDB.1.0.531\lib\net40\AsyncCtpLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="AutoMapper, Version=2.0.0.232, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\AutoMapper.2.0.0\lib\net40-client\AutoMapper.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
@@ -96,8 +99,10 @@
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
+    <Content Include="Views\AddCreditCardInfoView.aspx" />
     <Content Include="Views\LoginView.aspx" />
     <Content Include="Views\OffersView.aspx" />
+    <Content Include="Views\RegistrationsView.aspx" />
     <Content Include="Views\RegistrationView.aspx" />
     <Content Include="Views\StartRegistrationView.aspx" />
     <Content Include="Web.config" />
@@ -109,6 +114,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AutomapperConfiguration.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -116,16 +122,30 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Handlers\AddCreditCardInfoHandler.cs" />
     <Compile Include="Handlers\LoginHandler.cs" />
     <Compile Include="Handlers\OffersHandler.cs" />
+    <Compile Include="Handlers\RegistrationsHandler.cs" />
     <Compile Include="Repository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Handlers\RegistrationHandler.cs" />
     <Compile Include="Handlers\StartRegistrationHandler.cs" />
+    <Compile Include="Resources\AddCreditCardInfo.cs" />
     <Compile Include="Resources\Login.cs" />
     <Compile Include="Resources\Offers.cs" />
+    <Compile Include="Resources\Registration.cs" />
+    <Compile Include="Handlers\SubmitRegistrationHandler.cs" />
+    <Compile Include="Resources\StartRegistration.cs" />
+    <Compile Include="Resources\SubmitRegistration.cs" />
+    <Compile Include="Views\AddCreditCardInfoView.aspx.cs">
+      <DependentUpon>AddCreditCardInfoView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\AddCreditCardInfoView.aspx.designer.cs">
+      <DependentUpon>AddCreditCardInfoView.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoginView.aspx.cs">
       <DependentUpon>LoginView.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -139,6 +159,13 @@
     </Compile>
     <Compile Include="Views\OffersView.aspx.designer.cs">
       <DependentUpon>OffersView.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RegistrationsView.aspx.cs">
+      <DependentUpon>RegistrationsView.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Views\RegistrationsView.aspx.designer.cs">
+      <DependentUpon>RegistrationsView.aspx</DependentUpon>
     </Compile>
     <Compile Include="Views\RegistrationView.aspx.cs">
       <DependentUpon>RegistrationView.aspx</DependentUpon>

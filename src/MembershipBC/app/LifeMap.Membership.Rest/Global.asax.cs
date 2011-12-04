@@ -17,6 +17,8 @@ namespace LifeMap.Membership.Rest
                                        .MsmqSubscriptionStorage()
                                        .CreateBus()
                                        .Start();
+
+            AutomapperConfiguration.Initialize();
         }
 
         public static IBus Bus { get; set; }

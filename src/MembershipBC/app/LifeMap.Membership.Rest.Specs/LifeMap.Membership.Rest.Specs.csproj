@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F44FC289-5CF8-493D-8557-CEDAEA433FCA}</ProjectGuid>
+    <ProjectGuid>{509CF5BC-79BC-486A-87F8-48A1E9965C71}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>LifeMap.Membership.Events</RootNamespace>
-    <AssemblyName>LifeMap.Membership.Events</AssemblyName>
+    <RootNamespace>LifeMap.Membership.Rest.Specs</RootNamespace>
+    <AssemblyName>LifeMap.Membership.Rest.Specs</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,8 +31,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NServiceBus">
-      <HintPath>..\..\..\..\packages\NServiceBus.2.6.0.1505\lib\net40\NServiceBus.dll</HintPath>
+    <Reference Include="AutoMapper">
+      <HintPath>..\..\..\..\packages\AutoMapper.2.0.0\lib\net40-client\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.framework">
+      <HintPath>..\..\..\..\packages\NUnit.2.5.10.11092\lib\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="nunit.mocks">
+      <HintPath>..\..\..\..\packages\NUnit.2.5.10.11092\lib\nunit.mocks.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenRasta, Version=2.0.3.0, Culture=neutral, PublicKeyToken=e04bf464d7caae73, processorArchitecture=MSIL" />
+    <Reference Include="pnunit.framework">
+      <HintPath>..\..\..\..\packages\NUnit.2.5.10.11092\lib\pnunit.framework.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -43,21 +53,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreditCardInformationEnteredForRegistration.cs" />
-    <Compile Include="LoginEnteredForRegistration.cs" />
-    <Compile Include="MemberCreatedEvent.cs" />
-    <Compile Include="MemberSubscribedEvent.cs" />
-    <Compile Include="OfferSelectedForRegistration.cs" />
-    <Compile Include="RegistrationCompleteEvent.cs" />
-    <Compile Include="RegistrationReadyForSubmissionEvent.cs" />
-    <Compile Include="RegistrationStartedEvent.cs" />
+    <Compile Include="ResourceMappingTests.cs" />
+    <Compile Include="Should_be_able_to_map_events_to_viewmodels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegistrationSubmittedEvent.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\Common\LifeMap.Common.Domain\LifeMap.Common.Domain.csproj">
-      <Project>{DB9CB82F-4480-48AF-A65C-C550C3F4C75C}</Project>
-      <Name>LifeMap.Common.Domain</Name>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LifeMap.Membership.Rest\LifeMap.Membership.Rest.csproj">
+      <Project>{6D726A3C-14F8-4EA0-AFAB-BCAF404D093A}</Project>
+      <Name>LifeMap.Membership.Rest</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

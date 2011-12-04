@@ -131,6 +131,7 @@
     <Compile Include="OpenRasta\AtomFeedCodec.cs" />
     <Compile Include="OpenRasta\AtomItemCodec.cs" />
     <Compile Include="OpenRasta\JsonpDataContractCodec.cs" />
+    <Compile Include="OpenRasta\Log4NetLogger.cs" />
     <Compile Include="OpenRasta\RssFeedCodec.cs" />
     <Compile Include="OpenRasta\RssItemCodec.cs" />
     <Compile Include="OpenRasta\SyndicationCodecBase.cs" />

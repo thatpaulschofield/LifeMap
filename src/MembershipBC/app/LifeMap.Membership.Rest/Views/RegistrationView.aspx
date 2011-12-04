@@ -14,6 +14,11 @@
     <br />Offer Id: <%= Resource.OfferId %>
     <br />User Name: <%= Resource.UserName %>
     <br />Password: <%= Resource.Password %>
+    <br />
+    <% foreach (var link in Resource.Links)
+       {%>
+       <a href="<%= link.Uri %>"><%= link.Description %></a> 
+    <% } %>
     </div>
     </form>
 </body>

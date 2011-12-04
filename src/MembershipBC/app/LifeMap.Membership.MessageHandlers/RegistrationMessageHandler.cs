@@ -9,7 +9,8 @@ using NServiceBus;
 
 namespace LifeMap.Membership.MessageHandlers
 {
-    public class RegistrationMessageHandler : IHandleMessages<StartRegistrationCommand>, IHandleMessages<EnterLoginForRegistrationCommand>
+    public class RegistrationMessageHandler : IHandleMessages<StartRegistrationCommand>, IHandleMessages<EnterLoginForRegistrationCommand>,
+        IHandleMessages<EnterCreditCardInformationForRegistrationCommand>
     {
         private readonly ISagaRepository _repository;
 
@@ -36,6 +37,20 @@ namespace LifeMap.Membership.MessageHandlers
         {
             Registration registration = _repository.GetById<Registration>(command.Id);
             registration.LoginEntered(command);
+            try
+            {
+                _repository.Save(registration, Guid.NewGuid(), h => { });
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void Handle(EnterCreditCardInformationForRegistrationCommand command)
+        {
+            Registration registration = _repository.GetById<Registration>(command.Id);
+            registration.EnterCreditCardInformation(command);
             try
             {
                 _repository.Save(registration, Guid.NewGuid(), h => { });

@@ -47,10 +47,10 @@ namespace LifeMap.Membership.RegistrationProcess
         {
             base.Transition(new LoginEnteredForRegistration(base.Id, command.UserName, command.Password));
         }
-        
-        public void CreditCardInformationEntered(CreditCardInformationEnteredForRegistration @event)
+
+        public void EnterCreditCardInformation(EnterCreditCardInformationForRegistrationCommand command)
         {
-            base.Transition(@event);
+            base.Transition(new CreditCardInformationEnteredForRegistration{ Id = command.Id, CardNumber = command.CardNumber, CvvNumber = command.CardNumber, ExpirationDate = command.ExpirationDate, NameOnCard = command.NameOnCard});
         }
 
         public void SelectOffer(SelectOfferCommand command)

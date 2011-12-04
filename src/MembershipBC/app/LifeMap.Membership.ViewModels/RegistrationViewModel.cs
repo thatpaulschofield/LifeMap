@@ -8,14 +8,6 @@ namespace LifeMap.Membership.ViewModels
 {
     public class RegistrationViewModel
     {
-        public void Handle(RegistrationStartedEvent message)
-        {
-            Id = message.Id;
-            FirstName = message.FirstName;
-            LastName = message.LastName;
-            EmailAddress = message.EmailAddress;
-        }
-
         public Guid Id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
@@ -23,5 +15,14 @@ namespace LifeMap.Membership.ViewModels
         public string UserName { get; set; }
         public string Password { get; set; }
         public Guid OfferId { get; set; }
+
+        public string NameOnCard { get; set; }
+        public string CardNumber { get; set; }
+        public string CvvNumber { get; set; }
+        public DateTime ExpirationDate { get; set; }
+        
+        public bool CanAddCreditCardInfo { get; set; }
+        public bool CanAddLogin { get; set; }
+        public bool CanSubmit { get; set; }
     }
 }

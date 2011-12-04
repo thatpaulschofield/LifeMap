@@ -15,6 +15,9 @@ namespace LifeMap.Membership.ViewModels
                 .ForMember(x => x.OfferId, opts => opts.Ignore())
                 .ForMember(x => x.UserName, opts => opts.Ignore())
                 .ForMember(x => x.Password, opts => opts.Ignore())
+                .ForMember(x => x.CanAddCreditCardInfo, opts => opts.Ignore())
+                .ForMember(x => x.CanAddLogin, opts => opts.Ignore())
+                .ForMember(x => x.CanSubmit, opts => opts.Ignore())
                 ;
 
             Mapper.CreateMap<LoginEnteredForRegistration, RegistrationViewModel>()
@@ -22,7 +25,23 @@ namespace LifeMap.Membership.ViewModels
                 .ForMember(x => x.FirstName, opts => opts.Ignore())
                 .ForMember(x => x.LastName, opts => opts.Ignore())
                 .ForMember(x => x.EmailAddress, opts => opts.Ignore())
-                .ForMember(x => x.OfferId, opts => opts.Ignore());
+                .ForMember(x => x.OfferId, opts => opts.Ignore())
+                .ForMember(x => x.CanAddCreditCardInfo, opts => opts.Ignore())
+                .ForMember(x => x.CanAddLogin, opts => opts.Ignore())
+                .ForMember(x => x.CanSubmit, opts => opts.Ignore());
+
+            Mapper.CreateMap<CreditCardInformationEnteredForRegistration, RegistrationViewModel>()
+                .ForMember(x => x.Id, opts => opts.Ignore())
+                .ForMember(x => x.FirstName, opts => opts.Ignore())
+                .ForMember(x => x.LastName, opts => opts.Ignore())
+                .ForMember(x => x.EmailAddress, opts => opts.Ignore())
+                .ForMember(x => x.UserName, opts => opts.Ignore())
+                .ForMember(x => x.Password, opts => opts.Ignore())
+                .ForMember(x => x.OfferId, opts => opts.Ignore())
+                .ForMember(x => x.CanAddCreditCardInfo, opts => opts.Ignore())
+                .ForMember(x => x.CanAddLogin, opts => opts.Ignore())
+                .ForMember(x => x.CanSubmit, opts => opts.Ignore())
+                ;
         }
     }
 }

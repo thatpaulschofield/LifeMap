@@ -7,9 +7,9 @@ namespace LifeMap.Membership.Rest.Resources
 {
     public class Login
     {
-        public Login(Guid registrationId)
+        public Login(Guid id)
         {
-            RegistrationId = registrationId;
+            RegistrationId = id;
         }
 
         public Guid RegistrationId { get; set; }
