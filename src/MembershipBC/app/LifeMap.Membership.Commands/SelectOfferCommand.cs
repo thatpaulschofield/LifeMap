@@ -3,15 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using LifeMap.Common.Domain;
+using NServiceBus;
 
 namespace LifeMap.Membership.Commands
 {
     [Serializable]
     public class SelectOfferCommand : MessageBase
     {
-        public SelectOfferCommand(Guid id, Guid registrationId, Guid offerId)
+        public SelectOfferCommand(Guid registrationId, Guid offerId)
         {
-            base.Id = id;
             RegistrationId = registrationId;
             OfferId = offerId;
         }

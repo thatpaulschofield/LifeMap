@@ -21,7 +21,7 @@ namespace LifeMap.Sales.MessageHandlers
         {
             var offer = _repository.GetById<Offer>(message.OfferId);
             _sagaRepository.GetById<ShoppingCart>(message.OrderId)
-                .AddOffer(message.Id, offer);
+                .AddOffer(offer);
         }
     }
 }

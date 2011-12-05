@@ -13,7 +13,7 @@
     <br />Name on card: <input name="NameOnCard" value="<%= Resource.NameOnCard %>" />
     <br />Card number: <input name="CardNumber" value="<%= Resource.CardNumber %>" />
     <br />CVV number: <input name="CvvNumber" value="<%= Resource.CvvNumber %>" />
-    <br />Expiration date: <input name="Expiration" value="<%= Resource.ExpirationDate %>" />
+    <br />Expiration date: <input name="ExpirationDate" value="<%= Resource.ExpirationDate %>" />
     <br /><input type="submit" />
     </div>
     </form>

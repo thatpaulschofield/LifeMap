@@ -21,7 +21,7 @@ namespace LifeMap.Membership.MessageHandlers
 
         public void Handle(StartRegistrationCommand command)
         {
-            Registration registration = _repository.GetById<Registration>(command.Id);
+            Registration registration = _repository.GetById<Registration>(command.RegistrationId);
             registration.StartRegistration(command);
             try
             {
@@ -35,7 +35,7 @@ namespace LifeMap.Membership.MessageHandlers
 
         public void Handle(EnterLoginForRegistrationCommand command)
         {
-            Registration registration = _repository.GetById<Registration>(command.Id);
+            Registration registration = _repository.GetById<Registration>(command.RegistrationId);
             registration.LoginEntered(command);
             try
             {
@@ -49,7 +49,7 @@ namespace LifeMap.Membership.MessageHandlers
 
         public void Handle(EnterCreditCardInformationForRegistrationCommand command)
         {
-            Registration registration = _repository.GetById<Registration>(command.Id);
+            Registration registration = _repository.GetById<Registration>(command.RegistrationId);
             registration.EnterCreditCardInformation(command);
             try
             {

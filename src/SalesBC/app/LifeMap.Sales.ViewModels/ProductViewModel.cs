@@ -14,7 +14,7 @@ namespace LifeMap.Sales.ViewModels
         public void Handle(ProductCreatedEvent @event)
         {
             if (@event == null) throw new ArgumentNullException("event");
-            this.Id = @event.Id;
+            this.Id = @event.ProductId;
             this.Name = @event.Name;
         }
     }

@@ -14,14 +14,14 @@ namespace LifeMap.Security
             base.Register<LoginCreatedEvent>(Apply);
         }
 
-        public Login(Guid correlationId, Guid loginId, string userName, string password) : this()
+        public Login(Guid loginId, string userName, string password) : this()
         {
-            base.RaiseEvent(new LoginCreatedEvent(correlationId, loginId, userName, password));
+            base.RaiseEvent(new LoginCreatedEvent(loginId, userName, password));
         }
 
         public void Apply(LoginCreatedEvent @event)
         {
-            base.Id = @event.Id;
+            base.Id = @event.LoginId;
             _userName = @event.UserName;
             _password = @event.Password;
         }

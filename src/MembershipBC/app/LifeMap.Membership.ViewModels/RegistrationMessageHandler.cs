@@ -38,14 +38,18 @@ namespace LifeMap.Membership.ViewModels
 
         public void Handle(LoginEnteredForRegistration message)
         {
-            var vm = _session.Load<RegistrationViewModel>(message.Id.ToString());
+            var vm = _session.Load<RegistrationViewModel>("registrationviewmodels/" + message.RegistrationId);
+            if (vm == null)
+                throw new ArgumentException("RegistrationViewModel with id " + message.RegistrationId + " not found.");
             Mapper.Map(message, vm);
             _session.SaveChanges();
         }
 
         public void Handle(CreditCardInformationEnteredForRegistration message)
         {
-            var vm = _session.Load<RegistrationViewModel>(message.Id.ToString());
+            var vm = _session.Load<RegistrationViewModel>("registrationviewmodels/" + message.RegistrationId);
+            if (vm == null)
+                throw new ArgumentException("RegistrationViewModel with id " + message.RegistrationId + " not found.");
             Mapper.Map(message, vm);
             _session.SaveChanges();
         }

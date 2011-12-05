@@ -1,5 +1,6 @@
 ﻿using System;
 using LifeMap.Common.Domain;
+using NServiceBus;
 
 namespace LifeMap.Membership.Commands
 {
@@ -12,11 +13,12 @@ namespace LifeMap.Membership.Commands
 
         public EnterLoginForRegistrationCommand(Guid registrationId, string userName, string password)
         {
-            Id = registrationId;
+            RegistrationId = registrationId;
             UserName = userName;
             Password = password;
         }
 
+        public Guid RegistrationId { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
     }

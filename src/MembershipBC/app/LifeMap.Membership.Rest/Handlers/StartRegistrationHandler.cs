@@ -21,7 +21,7 @@ namespace LifeMap.Membership.Rest.Handlers
             try
             {
                 var resource = new StartRegistrationCommand(id, firstName, lastName, emailAddress);
-                Global.Bus.Publish(resource);
+                Global.Bus.Send(resource);
                 return new OperationResult.SeeOther{ RedirectLocation = Registration.Create(id).CreateUri() };
             }
             catch (Exception)

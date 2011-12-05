@@ -24,14 +24,22 @@ namespace LifeMap.Common.Infrastructure
         {
             for (var i = 0; i < commit.Events.Count; i++)
             {
-                var eventMessage = commit.Events[i];
-                var busMessage = eventMessage.Body as IMessage;
-                AppendHeaders(busMessage, commit.Headers);
-                AppendHeaders(busMessage, eventMessage.Headers);
-                AppendVersion(commit, i);
-                BusLocator.Bus.Publish(busMessage);
+                try
+                {
+                    var eventMessage = commit.Events[i];
+                    var busMessage = eventMessage.Body as IMessage;
+                    AppendHeaders(busMessage, commit.Headers);
+                    AppendHeaders(busMessage, eventMessage.Headers);
+                    AppendVersion(commit, i);
+                    BusLocator.Bus.Publish(busMessage);
+                }
+                catch (Exception)
+                {
+                    throw;
+                }
             }
         }
+
         private static void AppendHeaders(IMessage message, IEnumerable<KeyValuePair<string, object>> headers)
         {
             headers = headers.Where(x => x.Key.StartsWith(BusPrefixKey));

@@ -1,20 +1,23 @@
 ﻿using System;
 using LifeMap.Common.Domain;
+using NServiceBus;
 
 namespace LifeMap.Membership.Events
 {
     [Serializable]
     public class OfferSelectedForRegistration : MessageBase
     {
-        private OfferSelectedForRegistration()
+        public OfferSelectedForRegistration()
         {
         }
 
         public OfferSelectedForRegistration(Guid registrationId, Guid offerId)
         {
-            base.Id = registrationId;
+            RegistrationId = registrationId;
             OfferId = offerId;
         }
+
+        public Guid RegistrationId { get; set; }
 
         public Guid OfferId { get; set; }
     }

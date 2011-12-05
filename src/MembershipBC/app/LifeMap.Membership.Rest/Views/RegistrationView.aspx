@@ -14,7 +14,11 @@
     <br />Offer Id: <%= Resource.OfferId %>
     <br />User Name: <%= Resource.UserName %>
     <br />Password: <%= Resource.Password %>
-    <br />
+    <br />Name on card: <%= Resource.NameOnCard %>
+    <br />Card number: <%= Resource.CardNumber %>
+    <br />Cvv: <%= Resource.CvvNumber %>
+
+    <br />Expiration Date: <%= Resource.ExpirationDate %>
     <% foreach (var link in Resource.Links)
        {%>
        <a href="<%= link.Uri %>"><%= link.Description %></a> 

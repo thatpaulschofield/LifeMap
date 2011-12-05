@@ -17,14 +17,14 @@ namespace LifeMap.Membership.MessageHandlers
 
         public void Handle(LoginCreatedEvent @event)
         {
-            var member = new Member(@event.Id, @event.LoginId);
+            var member = new Member(@event.LoginId);
             _repository.Save(member, Guid.NewGuid());
         }
 
         public void Handle(SubscriptionPurchasedEvent @event)
         {
             var member = _repository.GetById<Member>(@event.LoginId);
-            member.SubscriptionWasPurchased(@event.Id, @event.ProductId, @event.TermInDays);
+            member.SubscriptionWasPurchased(@event.MemberId, @event.ProductId, @event.TermInDays);
         }
     }
 }

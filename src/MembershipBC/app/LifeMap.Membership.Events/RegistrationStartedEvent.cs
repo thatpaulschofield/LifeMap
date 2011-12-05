@@ -14,21 +14,22 @@ namespace LifeMap.Membership.Events
         {
         }
 
-        public RegistrationStartedEvent(Guid id, string firstName, string lastName, string emailAddress)
+        public RegistrationStartedEvent(Guid registrationId, string firstName, string lastName, string emailAddress)
         {
-            Id = id;
+            RegistrationId = registrationId;
             FirstName = firstName;
             LastName = lastName;
             EmailAddress = emailAddress;
         }
 
+        public Guid RegistrationId { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
 
         public override string ToString()
         {
-            return String.Format("A registration has started. Id {0}, for [{1} {2}] at [{3}]", Id, FirstName, LastName,
+            return String.Format("A registration has started. Id {0}, for [{1} {2}] at [{3}]", RegistrationId, FirstName, LastName,
                                  EmailAddress);
         }
     }

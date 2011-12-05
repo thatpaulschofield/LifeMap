@@ -11,7 +11,7 @@ namespace LifeMap.Membership.Rest.Handlers
         public object Get()
         {
             var vms = Repository.Instance.OpenSession().Query<RegistrationViewModel>();
-            List<Registration> registrations = new List<Registration>();
+            var registrations = new RegistrationList();
             foreach (var vm in vms)
             {
                 Registration registration;

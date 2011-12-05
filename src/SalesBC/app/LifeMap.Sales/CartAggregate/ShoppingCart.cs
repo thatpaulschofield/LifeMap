@@ -15,9 +15,9 @@ namespace LifeMap.Sales.CartAggregate
             base.Register<OfferAddedToShoppingCartEvent>(Transition);
         }
 
-        public void AddOffer(Guid correlationId, Offer offer)
+        public void AddOffer(Offer offer)
         {
-            base.Transition(new OfferAddedToShoppingCartEvent{Id = correlationId, OfferId = offer.Id, Total = offer.GetPrice()});
+            base.Transition(new OfferAddedToShoppingCartEvent{OfferId = offer.Id, Total = offer.GetPrice()});
         }
 
         protected void Transition(OfferAddedToShoppingCartEvent @event)

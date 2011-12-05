@@ -137,6 +137,7 @@
     <Compile Include="Resources\Offers.cs" />
     <Compile Include="Resources\Registration.cs" />
     <Compile Include="Handlers\SubmitRegistrationHandler.cs" />
+    <Compile Include="Resources\RegistrationList.cs" />
     <Compile Include="Resources\StartRegistration.cs" />
     <Compile Include="Resources\SubmitRegistration.cs" />
     <Compile Include="Views\AddCreditCardInfoView.aspx.cs">

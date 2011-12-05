@@ -34,6 +34,7 @@ namespace LifeMap.Membership.MessageHandlers
             var eventStore = InitializeEventSourcing();
             builder.RegisterInstance(documentStore);
             builder.RegisterInstance(eventStore);
+            builder.RegisterType<RegistrationMessageHandler>().AsImplementedInterfaces();
             Container = builder.Build();
 
             NServiceBus

@@ -18,16 +18,16 @@ namespace LifeMap.Membership
             base.Register<MemberSubscribedEvent>(Apply);
         }
 
-        public Member(Guid correlationId, Guid memberId) : this()
+        public Member(Guid memberId) : this()
         {
-            base.RaiseEvent(new MemberCreatedEvent { Id = correlationId, MemberId = memberId });
+            base.RaiseEvent(new MemberCreatedEvent { MemberId = memberId });
         }
 
-        public void SubscriptionWasPurchased(Guid correlationId, Guid productId, int termInDays)
+        public void SubscriptionWasPurchased(Guid memberId, Guid productId, int termInDays)
         {
             var beginDate = DateTime.Today;
             var endDate = beginDate.AddDays(termInDays);
-            base.RaiseEvent(new MemberSubscribedEvent{ BeginDate = beginDate, EndDate = endDate, Id = correlationId, MemberId = this.Id, ProductId = productId});
+            base.RaiseEvent(new MemberSubscribedEvent{ BeginDate = beginDate, EndDate = endDate, MemberId = this.Id, ProductId = productId});
         }
 
         protected void Apply(MemberCreatedEvent @event)

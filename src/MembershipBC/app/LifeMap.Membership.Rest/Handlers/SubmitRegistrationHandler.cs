@@ -15,7 +15,7 @@ namespace LifeMap.Membership.Rest.Handlers
         public void Post(SubmitRegistration resource)
         {
             var command = Mapper.Map<SubmitRegistration, SubmitRegistrationCommand>(resource);
-            Global.Bus.Publish(command);
+            Global.Bus.Send(command);
         }
     }
 }

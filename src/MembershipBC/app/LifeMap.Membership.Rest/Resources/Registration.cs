@@ -28,6 +28,12 @@ namespace LifeMap.Membership.Rest.Resources
         public string UserName { get; set; }
         public string Password { get; set; }
         public Guid OfferId { get; set; }
+
+        public string NameOnCard { get; set; }
+        public string CardNumber { get; set; }
+        public string CvvNumber { get; set; }
+        public DateTime ExpirationDate { get; set; }
+        
         public bool CanAddCreditCardInfo { get; set; }
         public bool CanAddLogin { get; set; }
         public bool CanSubmit { get; set; }
@@ -41,8 +47,9 @@ namespace LifeMap.Membership.Rest.Resources
                     links.Add(new Link("Add credit card info", new AddCreditCardInfo(Id).CreateUri(), "ccInfo"));
                 if (CanAddLogin)
                     links.Add(new Link("Add login", new Login(Id).CreateUri(), "loginInfo"));
-                //if (CanSubmit)
-                    //links.Add(new Link("Submit registration", new SubmitRegistration{Id = this.Id}.CreateUri(), "submit"));
+                if (CanSubmit)
+                    links.Add(new Link("Submit registration", new SubmitRegistration { Id = this.Id }.CreateUri(), "submit"));
+                links.Add(new Link("Registrations", new RegistrationList().CreateUri(), "registrations"));
                 return links.AsReadOnly();
             }
         }

@@ -27,7 +27,7 @@ namespace LifeMap.Membership.Rest
                     .HandledBy<RegistrationHandler>()
                     .RenderedByAspx("~/Views/RegistrationView.aspx");
 
-                ResourceSpace.Has.ResourcesOfType<IList<Registration>>()
+                ResourceSpace.Has.ResourcesOfType<RegistrationList>()
                     .AtUri("/registrations")
                     .HandledBy<RegistrationsHandler>()
                     .RenderedByAspx("~/Views/RegistrationsView.aspx");

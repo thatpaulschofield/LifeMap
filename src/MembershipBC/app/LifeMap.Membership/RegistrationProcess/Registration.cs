@@ -40,22 +40,22 @@ namespace LifeMap.Membership.RegistrationProcess
 
         public void StartRegistration(StartRegistrationCommand command) 
         {
-            base.Transition(new RegistrationStartedEvent(command.Id, command.FirstName, command.LastName, command.EmailAddress));
+            base.Transition(new RegistrationStartedEvent(command.RegistrationId, command.FirstName, command.LastName, command.EmailAddress));
         }
 
         public void LoginEntered(EnterLoginForRegistrationCommand command)
         {
-            base.Transition(new LoginEnteredForRegistration(base.Id, command.UserName, command.Password));
+            base.Transition(new LoginEnteredForRegistration(command.RegistrationId, command.UserName, command.Password));
         }
 
         public void EnterCreditCardInformation(EnterCreditCardInformationForRegistrationCommand command)
         {
-            base.Transition(new CreditCardInformationEnteredForRegistration{ Id = command.Id, CardNumber = command.CardNumber, CvvNumber = command.CardNumber, ExpirationDate = command.ExpirationDate, NameOnCard = command.NameOnCard});
+            base.Transition(new CreditCardInformationEnteredForRegistration{ RegistrationId = command.RegistrationId, CardNumber = command.CardNumber, CvvNumber = command.CardNumber, ExpirationDate = command.ExpirationDate, NameOnCard = command.NameOnCard});
         }
 
         public void SelectOffer(SelectOfferCommand command)
         {
-            base.Transition(new OfferSelectedForRegistration(base.Id, command.OfferId));
+            base.Transition(new OfferSelectedForRegistration(command.RegistrationId, command.OfferId));
         }
 
         public void Submit(SubmitRegistrationCommand command)
@@ -67,34 +67,37 @@ namespace LifeMap.Membership.RegistrationProcess
         {
             _ccInfo = new RegistrationCreditCard(@event.NameOnCard, @event.CardNumber, @event.CvvNumber,
                                                  @event.ExpirationDate);
-            _stateMachine.Fire(RegistrationTriggers.CreditCardInfoEntered);
+            //_stateMachine.Fire(RegistrationTriggers.CreditCardInfoEntered);
+            Dispatch(@event);
         }
 
         private void Apply(RegistrationStartedEvent @event)
         {
-            base.Id = @event.Id;
+            base.Id = @event.RegistrationId;
             _user = new RegistrationUser(@event.FirstName, @event.LastName, @event.EmailAddress);
-            _stateMachine.Fire(RegistrationTriggers.RegistrationStarted);
+            //_stateMachine.Fire(RegistrationTriggers.RegistrationStarted);
             Dispatch(@event);
         }
 
         private void Apply(LoginEnteredForRegistration @event)
         {
             _login = new RegistrationLogin(@event.UserName, @event.Password);
-            _stateMachine.Fire(RegistrationTriggers.LoginInfoEntered);
+            //_stateMachine.Fire(RegistrationTriggers.LoginInfoEntered);
             Dispatch(@event);
         }
 
         private void Apply(OfferSelectedForRegistration @event)
         {
             _offerId = @event.OfferId;
-            _stateMachine.Fire(RegistrationTriggers.OfferSelected);
+            //_stateMachine.Fire(RegistrationTriggers.OfferSelected);
+            Dispatch(@event);
         }
 
 
         private RegistrationStates CalculateStateAfterInfoGathered()
         {
-            return CanSubmit ? RegistrationStates.ReadyForSubmission : _stateMachine.State;
+            return _stateMachine.State;
+            //CanSubmit ? RegistrationStates.ReadyForSubmission : _stateMachine.State;
         }
         private bool CanSubmit
         {

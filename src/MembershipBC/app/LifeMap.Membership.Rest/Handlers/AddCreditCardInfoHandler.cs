@@ -6,6 +6,7 @@ using AutoMapper;
 using LifeMap.Membership.Commands;
 using LifeMap.Membership.Rest.Resources;
 using LifeMap.Membership.ViewModels;
+using OpenRasta.Web;
 
 namespace LifeMap.Membership.Rest.Handlers
 {
@@ -18,17 +19,18 @@ namespace LifeMap.Membership.Rest.Handlers
             return Mapper.Map<RegistrationViewModel, AddCreditCardInfo>(registration);
         }
 
-        public void Post(Guid id, string nameOnCard, string cardNumber, string cvvNumber, DateTime expirationDate)
+        public object Post(Guid id, string nameOnCard, string cardNumber, string cvvNumber, DateTime expirationDate)
         {
             var command = new EnterCreditCardInformationForRegistrationCommand
                               {
-                                  Id = id,
+                                  RegistrationId = id,
                                   CardNumber = cardNumber,
                                   CvvNumber = cvvNumber,
                                   ExpirationDate = expirationDate,
                                   NameOnCard = nameOnCard
                               };
-            Global.Bus.Publish(command);
+            Global.Bus.Send(command);
+            return new OperationResult.SeeOther { RedirectLocation = Registration.Create(id).CreateUri() };
         }
     }
 }

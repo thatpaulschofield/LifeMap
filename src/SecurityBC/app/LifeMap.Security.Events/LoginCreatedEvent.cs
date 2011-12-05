@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using LifeMap.Common.Domain;
+using NServiceBus;
 
 namespace LifeMap.Security.Events
 {
@@ -13,9 +14,8 @@ namespace LifeMap.Security.Events
         {
         }
 
-        public LoginCreatedEvent(Guid correlationId, Guid loginId, string userName, string password)
+        public LoginCreatedEvent(Guid loginId, string userName, string password)
         {
-            base.Id = correlationId;
             LoginId = loginId;
             UserName = userName;
             Password = password;

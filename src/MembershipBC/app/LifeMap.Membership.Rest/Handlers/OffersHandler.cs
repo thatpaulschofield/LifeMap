@@ -18,7 +18,7 @@ namespace LifeMap.Membership.Rest.Handlers
 
         public object Post(Guid offerId, Guid registrationId)
         {
-            var command = new SelectOfferCommand(Guid.NewGuid(), registrationId, offerId);
+            var command = new SelectOfferCommand(registrationId, offerId);
             Global.Bus.Publish(command);
             return new OperationResult.SeeOther { RedirectLocation = new RegistrationViewModel { Id = registrationId }.CreateUri() };
 

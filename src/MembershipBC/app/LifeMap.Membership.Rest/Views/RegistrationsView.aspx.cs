@@ -9,7 +9,7 @@ using OpenRasta.Codecs.WebForms;
 
 namespace LifeMap.Membership.Rest.Views
 {
-    public partial class RegistrationsView : ResourceView<IList<Registration>>
+    public partial class RegistrationsView : ResourceView<RegistrationList>
     {
         protected void Page_Load(object sender, EventArgs e)
         {
