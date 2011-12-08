@@ -1,5 +1,6 @@
 ﻿using System;
 using CommonDomain.Core;
+using LifeMap.Common.Domain;
 using LifeMap.Membership.Commands;
 using LifeMap.Membership.Events;
 using NServiceBus;
@@ -19,8 +20,8 @@ namespace LifeMap.Membership.RegistrationProcess
         public Registration()
         {
             base.Register<RegistrationStartedEvent>(Apply);
-            base.Register<LoginEnteredForRegistration>(Apply);
-            base.Register<CreditCardInformationEnteredForRegistration>(Apply);
+            base.Register<LoginEnteredForRegistrationEvent>(Apply);
+            base.Register<CreditCardInformationEnteredForRegistrationEvent>(Apply);
 
             _stateMachine = new StateMachine<RegistrationStates, RegistrationTriggers>(() => _state, state => _state = state);
             
@@ -45,17 +46,17 @@ namespace LifeMap.Membership.RegistrationProcess
 
         public void LoginEntered(EnterLoginForRegistrationCommand command)
         {
-            base.Transition(new LoginEnteredForRegistration(command.RegistrationId, command.UserName, command.Password));
+            base.Transition(new LoginEnteredForRegistrationEvent(command.RegistrationId, command.UserName, command.Password));
         }
 
         public void EnterCreditCardInformation(EnterCreditCardInformationForRegistrationCommand command)
         {
-            base.Transition(new CreditCardInformationEnteredForRegistration{ RegistrationId = command.RegistrationId, CardNumber = command.CardNumber, CvvNumber = command.CardNumber, ExpirationDate = command.ExpirationDate, NameOnCard = command.NameOnCard});
+            base.Transition(new CreditCardInformationEnteredForRegistrationEvent{ Id =command.RegistrationId, RegistrationId = command.RegistrationId, CardNumber = command.CardNumber, CvvNumber = command.CvvNumber, ExpirationDate = command.ExpirationDate, NameOnCard = command.NameOnCard});
         }
 
         public void SelectOffer(SelectOfferCommand command)
         {
-            base.Transition(new OfferSelectedForRegistration(command.RegistrationId, command.OfferId));
+            base.Transition(new OfferSelectedForRegistrationEvent(command.RegistrationId, command.OfferId));
         }
 
         public void Submit(SubmitRegistrationCommand command)
@@ -63,12 +64,12 @@ namespace LifeMap.Membership.RegistrationProcess
             _stateMachine.Fire(RegistrationTriggers.SubmissionRequested);
         }
 
-        private void Apply(CreditCardInformationEnteredForRegistration @event)
+        private void Apply(CreditCardInformationEnteredForRegistrationEvent @event)
         {
             _ccInfo = new RegistrationCreditCard(@event.NameOnCard, @event.CardNumber, @event.CvvNumber,
                                                  @event.ExpirationDate);
             //_stateMachine.Fire(RegistrationTriggers.CreditCardInfoEntered);
-            Dispatch(@event);
+            //Dispatch(@event);
         }
 
         private void Apply(RegistrationStartedEvent @event)
@@ -76,21 +77,21 @@ namespace LifeMap.Membership.RegistrationProcess
             base.Id = @event.RegistrationId;
             _user = new RegistrationUser(@event.FirstName, @event.LastName, @event.EmailAddress);
             //_stateMachine.Fire(RegistrationTriggers.RegistrationStarted);
-            Dispatch(@event);
+            //Dispatch(@event);
         }
 
-        private void Apply(LoginEnteredForRegistration @event)
+        private void Apply(LoginEnteredForRegistrationEvent @event)
         {
             _login = new RegistrationLogin(@event.UserName, @event.Password);
             //_stateMachine.Fire(RegistrationTriggers.LoginInfoEntered);
-            Dispatch(@event);
+            //Dispatch(@event);
         }
 
-        private void Apply(OfferSelectedForRegistration @event)
+        private void Apply(OfferSelectedForRegistrationEvent @event)
         {
             _offerId = @event.OfferId;
             //_stateMachine.Fire(RegistrationTriggers.OfferSelected);
-            Dispatch(@event);
+            //Dispatch(@event);
         }
 
 

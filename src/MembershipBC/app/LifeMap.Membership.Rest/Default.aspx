@@ -1,2 +1,2 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.master" AutoEventWireup="true"
+﻿<%@ Page Title="Home Page" Language="C#" AutoEventWireup="true"
     CodeBehind="Default.aspx.cs" Inherits="LifeMap.Membership.RestHost._Default" %>

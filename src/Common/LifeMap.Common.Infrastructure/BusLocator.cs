@@ -11,13 +11,13 @@ namespace LifeMap.Common.Infrastructure
         {
             get
             {
-                _waitHandle.WaitOne();
+                //_waitHandle.WaitOne();
                 return _bus;
             }
             set
             {
                 _bus = value;
-                _waitHandle.Set();
+                //_waitHandle.Set();
             }
         }
     }

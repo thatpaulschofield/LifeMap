@@ -13,10 +13,12 @@ namespace LifeMap.Membership.MessageHandlers
         IHandleMessages<EnterCreditCardInformationForRegistrationCommand>
     {
         private readonly ISagaRepository _repository;
+        private readonly IBus _bus;
 
-        public RegistrationMessageHandler(ISagaRepository repository)
+        public RegistrationMessageHandler(ISagaRepository repository, IBus bus)
         {
             _repository = repository;
+            _bus = bus;
         }
 
         public void Handle(StartRegistrationCommand command)

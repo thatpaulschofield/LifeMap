@@ -31,9 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="NServiceBus">
-      <HintPath>..\..\..\..\packages\NServiceBus.2.6.0.1505\lib\net40\NServiceBus.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -43,12 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EnterCreditCardInformationForRegistrationCommand.cs" />
-    <Compile Include="EnterLoginForRegistrationCommand.cs" />
-    <Compile Include="SelectOfferCommand.cs" />
-    <Compile Include="StartRegistrationCommand.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SubmitRegistrationCommand.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\LifeMap.Common.Domain\LifeMap.Common.Domain.csproj">

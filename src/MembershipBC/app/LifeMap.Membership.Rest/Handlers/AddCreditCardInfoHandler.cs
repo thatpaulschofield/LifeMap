@@ -23,6 +23,7 @@ namespace LifeMap.Membership.Rest.Handlers
         {
             var command = new EnterCreditCardInformationForRegistrationCommand
                               {
+                                  Id = Guid.NewGuid(),
                                   RegistrationId = id,
                                   CardNumber = cardNumber,
                                   CvvNumber = cvvNumber,

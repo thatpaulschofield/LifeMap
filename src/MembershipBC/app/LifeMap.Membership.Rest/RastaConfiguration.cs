@@ -1,10 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using LifeMap.Common.Infrastructure.OpenRasta;
 using LifeMap.Membership.Commands;
 using LifeMap.Membership.Rest.Handlers;
 using LifeMap.Membership.Rest.Resources;
 using OpenRasta.Configuration;
+using OpenRasta.DI;
+using OpenRasta.Diagnostics;
+using log4net;
 
 namespace LifeMap.Membership.Rest
 {
@@ -14,6 +18,8 @@ namespace LifeMap.Membership.Rest
         {
             using (OpenRastaConfiguration.Manual)
             {
+                ResourceSpace.Uses.CustomDependency<ILogger,Log4NetLogger>(DependencyLifetime.Singleton);
+                ResourceSpace.Uses.Resolver.AddDependencyInstance<ILog>(LogManager.GetLogger("LifeMap"));
                 ResourceSpace.Has.ResourcesOfType<StartRegistration>()
                     .AtUri("/registrations/start")
                     .HandledBy<StartRegistrationHandler>()

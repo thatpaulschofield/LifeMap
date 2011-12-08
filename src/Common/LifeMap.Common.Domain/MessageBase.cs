@@ -3,6 +3,7 @@ using NServiceBus;
 
 namespace LifeMap.Common.Domain
 {
+    [Serializable]
     public abstract class MessageBase : IMessage
     {
         protected MessageBase()

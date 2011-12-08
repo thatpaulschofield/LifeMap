@@ -9,16 +9,20 @@ namespace LifeMap.Membership.Rest
         void Application_Start(object sender, EventArgs e)
         {
             Bus = NServiceBus.Configure.WithWeb()
-                                       .Log4Net()
-                                       .DefaultBuilder()
-                                       .XmlSerializer()
-                                       .MsmqTransport()
-                                       .UnicastBus()
-                                       .MsmqSubscriptionStorage()
-                                       .CreateBus()
-                                       .Start();
+                .Log4Net()
+                .DefaultBuilder()
+                .MsmqTransport()
+                .UnicastBus()
+                //.DefiningCommandsAs(x => x.Name.EndsWith("Command"))
+                //.DefiningEventsAs(x => x.Name.EndsWith("Event"))s
+                .BinarySerializer()
+                .MsmqSubscriptionStorage()
+                .CreateBus()
+                .Start();
 
             AutomapperConfiguration.Initialize();
+
+            log4net.Config.XmlConfigurator.Configure();
         }
 
         public static IBus Bus { get; set; }

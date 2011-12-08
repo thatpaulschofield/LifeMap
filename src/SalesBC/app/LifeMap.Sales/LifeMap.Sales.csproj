@@ -32,19 +32,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CommonDomain">
-      <HintPath>..\..\packages\CommonDomain.1.4.0\lib\net40\CommonDomain.dll</HintPath>
+      <HintPath>..\..\..\..\packages\CommonDomain.1.4.0\lib\net40\CommonDomain.dll</HintPath>
     </Reference>
     <Reference Include="EventStore">
-      <HintPath>..\..\packages\EventStore.3.0.11326.44\lib\net40\EventStore.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="NServiceBus">
-      <HintPath>..\..\packages\NServiceBus.2.6.0.1505\lib\net40\NServiceBus.dll</HintPath>
-    </Reference>
-    <Reference Include="NServiceBus.Core">
-      <HintPath>..\..\packages\NServiceBus.2.6.0.1505\lib\net40\NServiceBus.Core.dll</HintPath>
+      <HintPath>..\..\..\..\packages\EventStore.3.0.11326.44\lib\net40\EventStore.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -67,6 +58,8 @@
     <Compile Include="Visitors\Visitor.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App_Readme\EventStore - Architectural Overview.docx" />
+    <None Include="App_Readme\EventStore - Transactional Integrity.docx" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -78,6 +71,9 @@
       <Project>{718D0801-EABE-4124-9888-96B4073FC434}</Project>
       <Name>LifeMap.Sales.Events</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Readme\EventStore.license.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -59,6 +59,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\app\LifeMap.Membership.ViewModels.MessageHandlers\LifeMap.Membership.ViewModels.MessageHandlers.csproj">
+      <Project>{9755398C-6F64-4BA5-BD02-AF290FACFC2D}</Project>
+      <Name>LifeMap.Membership.ViewModels.MessageHandlers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\app\LifeMap.Membership.ViewModels\LifeMap.Membership.ViewModels.csproj">
       <Project>{AE552855-D51C-45B3-8606-12C47FF7A470}</Project>
       <Name>LifeMap.Membership.ViewModels</Name>

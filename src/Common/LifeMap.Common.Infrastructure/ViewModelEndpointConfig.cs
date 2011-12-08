@@ -5,14 +5,14 @@ using System.Text;
 using Autofac;
 using NServiceBus;
 using Raven.Client;
-using Raven.Client.Embedded;
+using Raven.Client.Document;
 
 namespace LifeMap.Common.Infrastructure
 {
     public abstract class ViewModelEndpointConfig
     
     {
-        protected string ConnectionStringName { get; set; }
+        protected string RavenUrl { get; set; }
 
         public void Init()
         {
@@ -24,7 +24,8 @@ namespace LifeMap.Common.Infrastructure
             NServiceBus
                 .SetLoggingLibrary.Log4Net(log4net.Config.XmlConfigurator.Configure);
             NServiceBus
-                .Configure.With().Autofac2Builder(container)
+                .Configure.With()
+                .Autofac2Builder((IContainer)container)
                 .MsmqSubscriptionStorage()
                 .XmlSerializer();
         }
@@ -33,12 +34,10 @@ namespace LifeMap.Common.Infrastructure
 
         private IDocumentStore BuildRavenDocumentStore()
         {
-            var raven = new EmbeddableDocumentStore
+            var raven = new DocumentStore
             {
-                ConnectionStringName = this.ConnectionStringName,
-                UseEmbeddedHttpServer = true,
+                Url = RavenUrl
             };
-            raven.Configuration.Port = 8081;
             raven.Initialize();
             return raven;
         }

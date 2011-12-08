@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using CommonDomain.Core;
+using LifeMap.Common.Domain;
 using LifeMap.Sales.Events;
-using NServiceBus;
 
 namespace LifeMap.Sales.CartAggregate
 {

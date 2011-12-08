@@ -43,16 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CreditCardInformationEnteredForRegistration.cs" />
-    <Compile Include="LoginEnteredForRegistration.cs" />
-    <Compile Include="MemberCreatedEvent.cs" />
-    <Compile Include="MemberSubscribedEvent.cs" />
-    <Compile Include="OfferSelectedForRegistration.cs" />
-    <Compile Include="RegistrationCompleteEvent.cs" />
-    <Compile Include="RegistrationReadyForSubmissionEvent.cs" />
-    <Compile Include="RegistrationStartedEvent.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RegistrationSubmittedEvent.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Common\LifeMap.Common.Domain\LifeMap.Common.Domain.csproj">

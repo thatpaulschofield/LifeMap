@@ -36,8 +36,27 @@
     <Reference Include="AsyncCtpLibrary, Version=1.0.4107.18181, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\RavenDB.1.0.531\lib\net40\AsyncCtpLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="Autofac, Version=2.3.2.632, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\Autofac.2.3.2.632\lib\NET40\Autofac.dll</HintPath>
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Autofac.Configuration, Version=2.3.2.632, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\Autofac.2.3.2.632\lib\NET40\Autofac.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Mef, Version=2.3.2.632, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\Autofac.2.3.2.632\lib\NET40\Autofac.Integration.Mef.dll</HintPath>
+    </Reference>
+    <Reference Include="Autofac.Integration.Wcf, Version=2.3.2.632, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\Autofac.2.3.2.632\lib\NET40\Autofac.Integration.Wcf.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper, Version=2.0.0.232, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\AutoMapper.2.0.0\lib\net40-client\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="CommonDomain, Version=1.4.0.0, Culture=neutral, PublicKeyToken=ec37a15dc44010cd, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\CommonDomain.1.4.0\lib\net40\CommonDomain.dll</HintPath>
+    </Reference>
+    <Reference Include="EventStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=7735eb81c0bd9948, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\EventStore.3.0.11326.44\lib\net40\EventStore.dll</HintPath>
     </Reference>
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
@@ -50,10 +69,16 @@
       <HintPath>..\..\..\..\packages\NLog.2.0.0.2000\lib\net40\NLog.dll</HintPath>
     </Reference>
     <Reference Include="NServiceBus, Version=2.6.0.1505, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\NServiceBus.2.6.0.1505\lib\net40\NServiceBus.dll</HintPath>
+      <HintPath>..\..\..\..\packages\nservicebus.2.6.0.1505\lib\net40\NServiceBus.dll</HintPath>
     </Reference>
     <Reference Include="NServiceBus.Core, Version=2.6.0.1505, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\NServiceBus.2.6.0.1505\lib\net40\NServiceBus.Core.dll</HintPath>
+      <HintPath>..\..\..\..\packages\nservicebus.2.6.0.1505\lib\net40\NServiceBus.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NServiceBus.Host">
+      <HintPath>..\..\..\..\packages\NServiceBus.Host.2.6.0.1505\lib\net40\x86\NServiceBus.Host.exe</HintPath>
+    </Reference>
+    <Reference Include="NServiceBus.ObjectBuilder.Autofac2, Version=2.6.0.1505, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\NServiceBus.Autofac2.2.6.0.1505\lib\net40\NServiceBus.ObjectBuilder.Autofac2.dll</HintPath>
     </Reference>
     <Reference Include="OpenRasta">
       <HintPath>..\..\lib\OpenRasta\OpenRasta.dll</HintPath>
@@ -94,6 +119,7 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Readme\EventStore.license.txt" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
@@ -188,9 +214,9 @@
       <Project>{B218231F-15CD-46CB-871A-F1E4C3917DC9}</Project>
       <Name>LifeMap.Common.Infrastructure</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LifeMap.Membership.Commands\LifeMap.Membership.Commands.csproj">
-      <Project>{A6E51269-3931-4619-9587-38F9DA148210}</Project>
-      <Name>LifeMap.Membership.Commands</Name>
+    <ProjectReference Include="..\LifeMap.Membership.Messages\LifeMap.Membership.Messages.csproj">
+      <Project>{8905F058-3D3F-4609-B4E1-789D9BC1B2AD}</Project>
+      <Name>LifeMap.Membership.Messages</Name>
     </ProjectReference>
     <ProjectReference Include="..\LifeMap.Membership.ViewModels\LifeMap.Membership.ViewModels.csproj">
       <Project>{AE552855-D51C-45B3-8606-12C47FF7A470}</Project>
@@ -200,7 +226,10 @@
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="App_Readme\EventStore - Architectural Overview.docx" />
+    <None Include="App_Readme\EventStore - Transactional Integrity.docx" />
+  </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <ProjectExtensions>

@@ -1,6 +1,5 @@
 ﻿using System;
 using LifeMap.Common.Domain;
-using NServiceBus;
 
 namespace LifeMap.Sales.Events
 {

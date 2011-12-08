@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using EventStore;
 using EventStore.Dispatcher;
 using NServiceBus;
@@ -31,6 +32,10 @@ namespace LifeMap.Common.Infrastructure
                     AppendHeaders(busMessage, commit.Headers);
                     AppendHeaders(busMessage, eventMessage.Headers);
                     AppendVersion(commit, i);
+                    while (BusLocator.Bus == null)
+                    {
+                        Thread.Sleep(1000);
+                    }
                     BusLocator.Bus.Publish(busMessage);
                 }
                 catch (Exception)

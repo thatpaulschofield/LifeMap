@@ -37,16 +37,18 @@
     <Reference Include="AsyncCtpLibrary, Version=1.0.4107.18181, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\RavenDB.1.0.531\lib\net40\AsyncCtpLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="Autofac">
+    <Reference Include="Autofac, Version=2.3.2.632, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\packages\Autofac.2.3.2.632\lib\NET40\Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="Autofac.Configuration">
+    <Reference Include="Autofac.Configuration, Version=2.3.2.632, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\packages\Autofac.2.3.2.632\lib\NET40\Autofac.Configuration.dll</HintPath>
     </Reference>
-    <Reference Include="Autofac.Integration.Mef">
+    <Reference Include="Autofac.Integration.Mef, Version=2.3.2.632, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\Autofac.2.3.2.632\lib\NET40\Autofac.Integration.Mef.dll</HintPath>
     </Reference>
-    <Reference Include="Autofac.Integration.Wcf">
+    <Reference Include="Autofac.Integration.Wcf, Version=2.3.2.632, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\Autofac.2.3.2.632\lib\NET40\Autofac.Integration.Wcf.dll</HintPath>
     </Reference>
     <Reference Include="CommonDomain, Version=1.4.0.0, Culture=neutral, PublicKeyToken=ec37a15dc44010cd, processorArchitecture=MSIL">
@@ -58,7 +60,7 @@
     <Reference Include="EventStore.Persistence.RavenPersistence, Version=3.0.0.0, Culture=neutral, PublicKeyToken=7735eb81c0bd9948, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\EventStore.Persistence.RavenPersistence.3.0.11326.44\lib\net40\EventStore.Persistence.RavenPersistence.dll</HintPath>
     </Reference>
-    <Reference Include="log4net">
+    <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
@@ -67,16 +69,19 @@
     <Reference Include="NLog">
       <HintPath>..\..\..\..\packages\NLog.2.0.0.2000\lib\net40\NLog.dll</HintPath>
     </Reference>
-    <Reference Include="NServiceBus">
+    <Reference Include="NServiceBus, Version=2.6.0.1505, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\packages\NServiceBus.2.6.0.1505\lib\net40\NServiceBus.dll</HintPath>
     </Reference>
-    <Reference Include="NServiceBus.Core">
+    <Reference Include="NServiceBus.Core, Version=2.6.0.1505, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\packages\NServiceBus.2.6.0.1505\lib\net40\NServiceBus.Core.dll</HintPath>
     </Reference>
-    <Reference Include="NServiceBus.Host">
+    <Reference Include="NServiceBus.Host, Version=2.6.0.1505, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=x86">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\packages\NServiceBus.Host.2.6.0.1505\lib\net40\x86\NServiceBus.Host.exe</HintPath>
     </Reference>
-    <Reference Include="NServiceBus.ObjectBuilder.Autofac2">
+    <Reference Include="NServiceBus.ObjectBuilder.Autofac2, Version=2.6.0.1505, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\NServiceBus.Autofac2.2.6.0.1505\lib\net40\NServiceBus.ObjectBuilder.Autofac2.dll</HintPath>
     </Reference>
     <Reference Include="Raven.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
@@ -93,9 +98,9 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
@@ -108,6 +113,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="NServiceBus.Host.exe.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -123,21 +132,17 @@
       <Project>{718D0801-EABE-4124-9888-96B4073FC434}</Project>
       <Name>LifeMap.Sales.Events</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LifeMap.Membership.Commands\LifeMap.Membership.Commands.csproj">
-      <Project>{A6E51269-3931-4619-9587-38F9DA148210}</Project>
-      <Name>LifeMap.Membership.Commands</Name>
+    <ProjectReference Include="..\..\..\SecurityBC\app\LifeMap.Security.Events\LifeMap.Security.Events.csproj">
+      <Project>{B2A42680-6275-43B9-8968-11BBA76374EE}</Project>
+      <Name>LifeMap.Security.Events</Name>
     </ProjectReference>
-    <ProjectReference Include="..\LifeMap.Membership.Events\LifeMap.Membership.Events.csproj">
-      <Project>{F44FC289-5CF8-493D-8557-CEDAEA433FCA}</Project>
-      <Name>LifeMap.Membership.Events</Name>
+    <ProjectReference Include="..\LifeMap.Membership.Messages\LifeMap.Membership.Messages.csproj">
+      <Project>{8905F058-3D3F-4609-B4E1-789D9BC1B2AD}</Project>
+      <Name>LifeMap.Membership.Messages</Name>
     </ProjectReference>
     <ProjectReference Include="..\LifeMap.Membership\LifeMap.Membership.csproj">
       <Project>{2CAF8E00-6F4D-48A6-AFE6-6D440FCE20F0}</Project>
       <Name>LifeMap.Membership</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\SecurityBC\app\LifeMap.Security.Events\LifeMap.Security.Events.csproj">
-      <Project>{B2A42680-6275-43B9-8968-11BBA76374EE}</Project>
-      <Name>LifeMap.Security.Events</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
