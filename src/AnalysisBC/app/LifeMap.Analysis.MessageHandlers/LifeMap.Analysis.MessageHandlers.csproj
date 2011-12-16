@@ -34,8 +34,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AsyncCtpLibrary">
-      <HintPath>..\..\..\..\packages\RavenDB.1.0.531\lib\net40\AsyncCtpLibrary.dll</HintPath>
+    <Reference Include="AsyncCtpLibrary, Version=1.0.4107.18181, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\RavenDB.1.0.573\lib\net40\AsyncCtpLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Autofac">
       <HintPath>..\..\..\..\packages\Autofac.2.3.2.632\lib\NET40\Autofac.dll</HintPath>
@@ -55,16 +55,16 @@
     <Reference Include="EventStore">
       <HintPath>..\..\..\..\packages\EventStore.3.0.11326.44\lib\net40\EventStore.dll</HintPath>
     </Reference>
-    <Reference Include="EventStore.Persistence.RavenPersistence">
+    <Reference Include="EventStore.Persistence.RavenPersistence, Version=3.0.0.0, Culture=neutral, PublicKeyToken=7735eb81c0bd9948, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\EventStore.Persistence.RavenPersistence.3.0.11326.44\lib\net40\EventStore.Persistence.RavenPersistence.dll</HintPath>
     </Reference>
     <Reference Include="log4net">
       <HintPath>..\..\..\..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\..\packages\Newtonsoft.Json.4.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.0.5.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="NLog">
+    <Reference Include="NLog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\NLog.2.0.0.2000\lib\net40\NLog.dll</HintPath>
     </Reference>
     <Reference Include="NServiceBus">
@@ -79,17 +79,17 @@
     <Reference Include="NServiceBus.ObjectBuilder.Autofac2">
       <HintPath>..\..\..\..\packages\NServiceBus.Autofac2.2.6.0.1505\lib\net40\NServiceBus.ObjectBuilder.Autofac2.dll</HintPath>
     </Reference>
-    <Reference Include="Raven.Abstractions">
-      <HintPath>..\..\..\..\packages\RavenDB.1.0.531\lib\net40\Raven.Abstractions.dll</HintPath>
+    <Reference Include="Raven.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\RavenDB.1.0.573\lib\net40\Raven.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Raven.Client.Debug">
-      <HintPath>..\..\..\..\packages\RavenDB.1.0.531\lib\net40\Raven.Client.Debug.dll</HintPath>
+    <Reference Include="Raven.Client.Debug, Version=1.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\RavenDB.1.0.573\lib\net40\Raven.Client.Debug.dll</HintPath>
     </Reference>
-    <Reference Include="Raven.Client.Lightweight">
-      <HintPath>..\..\..\..\packages\RavenDB.1.0.531\lib\net40\Raven.Client.Lightweight.dll</HintPath>
+    <Reference Include="Raven.Client.Lightweight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\RavenDB.1.0.573\lib\net40\Raven.Client.Lightweight.dll</HintPath>
     </Reference>
-    <Reference Include="Raven.Client.MvcIntegration">
-      <HintPath>..\..\..\..\packages\RavenDB.1.0.531\lib\net40\Raven.Client.MvcIntegration.dll</HintPath>
+    <Reference Include="Raven.Client.MvcIntegration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\RavenDB.1.0.573\lib\net40\Raven.Client.MvcIntegration.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -111,6 +111,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\..\MembershipBC\app\LifeMap.Membership.Messages\LifeMap.Membership.Messages.csproj">
+      <Project>{8905F058-3D3F-4609-B4E1-789D9BC1B2AD}</Project>
+      <Name>LifeMap.Membership.Messages</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LifeMap.Analysis.Commands\LifeMap.Analysis.Commands.csproj">
       <Project>{170C4CE4-1A4D-4DC5-9C74-48183957700D}</Project>
       <Name>LifeMap.Analysis.Commands</Name>
@@ -130,10 +134,6 @@
     <ProjectReference Include="..\..\..\Common\LifeMap.Common.Infrastructure\LifeMap.Common.Infrastructure.csproj">
       <Project>{B218231F-15CD-46CB-871A-F1E4C3917DC9}</Project>
       <Name>LifeMap.Common.Infrastructure</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\MembershipBC\app\LifeMap.Membership.Events\LifeMap.Membership.Events.csproj">
-      <Project>{F44FC289-5CF8-493D-8557-CEDAEA433FCA}</Project>
-      <Name>LifeMap.Membership.Events</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

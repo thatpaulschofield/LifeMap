@@ -7,7 +7,7 @@ namespace LifeMap.Analysis.ViewModels
     {
         public EndpointConfig()
         {
-            this.ConnectionStringName = "AnalysisViewModels";
+            this.RavenUrl = "http://localhost:8080/databases/AnalysisViewModels";
 
             new AutomapperConfig().Initialize();
         }

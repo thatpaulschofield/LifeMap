@@ -6,6 +6,7 @@ using LifeMap.Common.Infrastructure;
 using NServiceBus;
 using Raven.Client;
 using Raven.Client.Document;
+using Raven.Client.Extensions;
 
 namespace LifeMap.Analysis.MessageHandlers
 {
@@ -53,6 +54,12 @@ namespace LifeMap.Analysis.MessageHandlers
 
         private IDocumentStore BuildRavenDocumentStore()
         {
+            var server = new DocumentStore
+            {
+                Url = "http://localhost:8080/"
+            }.Initialize();
+            server.DatabaseCommands.EnsureDatabaseExists("Analysis");
+
             var raven = new DocumentStore
             {
                 Url = "http://localhost:8080/databases/Analysis",
