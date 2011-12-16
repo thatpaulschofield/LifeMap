@@ -12,3 +12,4 @@ _ReSharper.*/
 #Raven
 /Raven/Tenants
 /Raven/Data
+/packages/*
