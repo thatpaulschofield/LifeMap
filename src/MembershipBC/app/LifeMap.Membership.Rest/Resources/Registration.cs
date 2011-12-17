@@ -46,7 +46,10 @@ namespace LifeMap.Membership.Rest.Resources
                 if (CanAddCreditCardInfo)
                     links.Add(new Link("Add credit card info", new AddCreditCardInfo(Id).CreateUri(), "ccInfo"));
                 if (CanAddLogin)
+                {
                     links.Add(new Link("Add login", new Login(Id).CreateUri(), "loginInfo"));
+                    links.Add(new Link("Log in through Facebook", new Uri("http://localhost:62571/login/" + this.Id + "/?afterLogin=" + new Registration{Id = this.Id}.CreateUri()), "facebookLoginInfo"));
+                }
                 if (CanSubmit)
                     links.Add(new Link("Submit registration", new SubmitRegistration { Id = this.Id }.CreateUri(), "submit"));
                 links.Add(new Link("Registrations", new RegistrationList().CreateUri(), "registrations"));

@@ -13,7 +13,6 @@ namespace LifeMap.Membership.Rest.Resources
         }
 
         public Guid RegistrationId { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
+        public Guid LoginId { get; set; }
     }
 }
