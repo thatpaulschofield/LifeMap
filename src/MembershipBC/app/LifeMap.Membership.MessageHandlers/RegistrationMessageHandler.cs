@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using CommonDomain.Persistence;
 using LifeMap.Membership.Commands;
+using LifeMap.Membership.Messages.Commands;
 using LifeMap.Membership.RegistrationProcess;
 using NServiceBus;
 
 namespace LifeMap.Membership.MessageHandlers
 {
-    public class RegistrationMessageHandler : IHandleMessages<StartRegistrationCommand>, IHandleMessages<EnterLoginForRegistrationCommand>,
+    public class RegistrationMessageHandler : IHandleMessages<StartRegistrationCommand>, IHandleMessages<SelectLoginForRegistrationCommand>,
         IHandleMessages<EnterCreditCardInformationForRegistrationCommand>
     {
         private readonly ISagaRepository _repository;
@@ -35,7 +36,7 @@ namespace LifeMap.Membership.MessageHandlers
             }
         }
 
-        public void Handle(EnterLoginForRegistrationCommand command)
+        public void Handle(SelectLoginForRegistrationCommand command)
         {
             Registration registration = _repository.GetById<Registration>(command.RegistrationId);
             registration.LoginEntered(command);

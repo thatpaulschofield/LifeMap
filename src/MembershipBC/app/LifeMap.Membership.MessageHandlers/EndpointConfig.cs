@@ -43,20 +43,12 @@ namespace LifeMap.Membership.MessageHandlers
 
             SetLoggingLibrary.Log4Net(log4net.Config.XmlConfigurator.Configure);
 
-            Configure.With(
-                    //Assembly.GetExecutingAssembly()
-                    //typeof(NServiceBus.Configure).Assembly,
-                    //typeof(NServiceBus.Config.MessageEndpointMapping).Assembly,
-                    //typeof(NServiceBus.Hosting.GenericHost).Assembly,
-                    //typeof(StartRegistrationCommand).Assembly,
-                    //typeof(Events.MemberCreatedEvent).Assembly
-                )
+            Configure.With()
                 .Autofac2Builder(Container)
                 .MsmqSubscriptionStorage()
                 //.DefiningCommandsAs(x => x.Namespace != null && x.Namespace.EndsWith("Commands") && x.Name.EndsWith("Command"))
                 //.DefiningEventsAs(x => x.Namespace != null && x.Namespace.EndsWith("Events") && x.Name.EndsWith("Event"))
                 .BinarySerializer()
-                //.Initialize()
                 ;
         }
 
@@ -80,6 +72,8 @@ namespace LifeMap.Membership.MessageHandlers
                              {
                                  Url = "http://localhost:8080/"
                              }.Initialize();
+            //MultiTenancyExtensions.EnsureDatabaseExists(server.DatabaseCommands, "Membership");
+
             server.DatabaseCommands.EnsureDatabaseExists("Membership");
 
             var documentStore = new DocumentStore

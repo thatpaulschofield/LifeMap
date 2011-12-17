@@ -35,7 +35,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="AsyncCtpLibrary, Version=1.0.4107.18181, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\RavenDB.1.0.531\lib\net40\AsyncCtpLibrary.dll</HintPath>
+      <HintPath>..\..\..\..\packages\RavenDB.1.0.573\lib\net40\AsyncCtpLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Autofac, Version=2.3.2.632, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -63,38 +63,42 @@
     <Reference Include="log4net, Version=1.2.10.0, Culture=neutral, PublicKeyToken=1b44e1d426115821, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\..\..\packages\Newtonsoft.Json.4.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.0.5.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\Newtonsoft.Json.4.0.5\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="NLog">
+    <Reference Include="NLog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\NLog.2.0.0.2000\lib\net40\NLog.dll</HintPath>
     </Reference>
     <Reference Include="NServiceBus, Version=2.6.0.1505, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\packages\NServiceBus.2.6.0.1505\lib\net40\NServiceBus.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="NServiceBus.Core, Version=2.6.0.1505, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\packages\NServiceBus.2.6.0.1505\lib\net40\NServiceBus.Core.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="NServiceBus.Host, Version=2.6.0.1505, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=x86">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\packages\NServiceBus.Host.2.6.0.1505\lib\net40\x86\NServiceBus.Host.exe</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="NServiceBus.ObjectBuilder.Autofac2, Version=2.6.0.1505, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\NServiceBus.Autofac2.2.6.0.1505\lib\net40\NServiceBus.ObjectBuilder.Autofac2.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Raven.Abstractions, Version=1.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\RavenDB.1.0.531\lib\net40\Raven.Abstractions.dll</HintPath>
+      <HintPath>..\..\..\..\packages\RavenDB.1.0.573\lib\net40\Raven.Abstractions.dll</HintPath>
     </Reference>
-    <Reference Include="Raven.Client.Debug, Version=1.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\RavenDB.1.0.531\lib\net40\Raven.Client.Debug.dll</HintPath>
+    <Reference Include="Raven.Client.Debug">
+      <HintPath>..\..\..\..\packages\RavenDB.1.0.573\lib\net40\Raven.Client.Debug.dll</HintPath>
     </Reference>
     <Reference Include="Raven.Client.Lightweight, Version=1.0.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\RavenDB.1.0.531\lib\net40\Raven.Client.Lightweight.dll</HintPath>
+      <HintPath>..\..\..\..\packages\RavenDB.1.0.573\lib\net40\Raven.Client.Lightweight.dll</HintPath>
     </Reference>
-    <Reference Include="Raven.Client.MvcIntegration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\RavenDB.1.0.531\lib\net40\Raven.Client.MvcIntegration.dll</HintPath>
+    <Reference Include="Raven.Client.MvcIntegration">
+      <HintPath>..\..\..\..\packages\RavenDB.1.0.573\lib\net40\Raven.Client.MvcIntegration.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.Composition" />
@@ -144,6 +148,9 @@
       <Project>{2CAF8E00-6F4D-48A6-AFE6-6D440FCE20F0}</Project>
       <Name>LifeMap.Membership</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
