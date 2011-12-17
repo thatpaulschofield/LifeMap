@@ -13,3 +13,4 @@ _ReSharper.*/
 /Raven/Tenants
 /Raven/Data
 /packages/*
+*.suo
