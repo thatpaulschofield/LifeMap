@@ -10,8 +10,7 @@
     <form id="form1" runat="server">
     <div>
         <input name="RegistrationId" type="hidden" value="<%= Resource.RegistrationId %>" />
-        <br /><input name="UserName" value="<%= Resource.UserName %>" />
-        <br /><input name="Password" type="password" value="<%= Resource.Password %>" />
+        <br /><input name="LoginId" value="<%= Resource.LoginId %>" />
         <br /><input type="submit" />
     </div>
     </form>
