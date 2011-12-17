@@ -49,6 +49,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CartCreatedEvent.cs" />
     <Compile Include="OfferAddedToOrderEvent.cs" />
     <Compile Include="OfferCreatedEvent.cs" />
     <Compile Include="ProductCreatedEvent.cs" />

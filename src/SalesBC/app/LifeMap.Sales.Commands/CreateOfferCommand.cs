@@ -9,8 +9,6 @@ namespace LifeMap.Sales.Commands
     [Serializable]
     public class CreateOfferCommand : MessageBase
     {
-        public Guid Id { get; set; }
-
         public Guid ProductId { get; set; }
 
         public int DurationInDays { get; set; }

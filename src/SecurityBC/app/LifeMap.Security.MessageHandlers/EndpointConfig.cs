@@ -8,6 +8,7 @@ using LifeMap.Common.Infrastructure.EventStore;
 using NServiceBus;
 using Raven.Client;
 using Raven.Client.Document;
+using Raven.Client.Extensions;
 
 namespace LifeMap.Security.MessageHandlers
 {
@@ -36,7 +37,7 @@ namespace LifeMap.Security.MessageHandlers
             NServiceBus
                 .SetLoggingLibrary.Log4Net(log4net.Config.XmlConfigurator.Configure);
             NServiceBus
-                .Configure.With().AutofacBuilder(Container)
+                .Configure.With().Autofac2Builder(Container)
                 .MsmqSubscriptionStorage()
                 .XmlSerializer();
         }

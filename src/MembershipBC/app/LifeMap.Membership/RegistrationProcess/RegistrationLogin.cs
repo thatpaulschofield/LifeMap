@@ -1,14 +1,15 @@
-﻿namespace LifeMap.Membership.RegistrationProcess
+﻿using System;
+
+namespace LifeMap.Membership.RegistrationProcess
 {
     public class RegistrationLogin
     {
-        public RegistrationLogin(string userName, string password)
+
+        public RegistrationLogin(Guid loginId)
         {
-            UserName = userName;
-            Password = password;
+            LoginId = loginId;
         }
 
-        public string UserName { get; private set; }
-        public string Password { get; private set; }
+        public Guid LoginId { get; private set; }
     }
 }

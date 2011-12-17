@@ -3,6 +3,7 @@ using CommonDomain.Core;
 using LifeMap.Common.Domain;
 using LifeMap.Membership.Commands;
 using LifeMap.Membership.Events;
+using LifeMap.Membership.Messages.Commands;
 using NServiceBus;
 using Stateless;
 
@@ -10,7 +11,7 @@ namespace LifeMap.Membership.RegistrationProcess
 {
     public class Registration : SagaBase<IMessage>
     {
-        private Guid _offerId;
+        private Guid? _offerId;
         private RegistrationCreditCard _ccInfo;
         private RegistrationLogin _login;
         private RegistrationUser _user;
@@ -36,6 +37,8 @@ namespace LifeMap.Membership.RegistrationProcess
             _stateMachine.Configure(RegistrationStates.ReadyForSubmission)
                 .PermitIf(RegistrationTriggers.SubmissionRequested, RegistrationStates.Submitted, () => CanSubmit);
 
+            _stateMachine.Configure(RegistrationStates.Submitted)
+                .OnEntry(this.OnSubmitted);
             _state = RegistrationStates.New;
         }
 
@@ -44,24 +47,40 @@ namespace LifeMap.Membership.RegistrationProcess
             base.Transition(new RegistrationStartedEvent(command.RegistrationId, command.FirstName, command.LastName, command.EmailAddress));
         }
 
-        public void LoginEntered(EnterLoginForRegistrationCommand command)
+        public void LoginEntered(SelectLoginForRegistrationCommand command)
         {
-            base.Transition(new LoginEnteredForRegistrationEvent(command.RegistrationId, command.UserName, command.Password));
+            base.Transition(new LoginEnteredForRegistrationEvent(command.RegistrationId, command.LoginId, CanSubmit));
         }
 
         public void EnterCreditCardInformation(EnterCreditCardInformationForRegistrationCommand command)
         {
-            base.Transition(new CreditCardInformationEnteredForRegistrationEvent{ Id =command.RegistrationId, RegistrationId = command.RegistrationId, CardNumber = command.CardNumber, CvvNumber = command.CvvNumber, ExpirationDate = command.ExpirationDate, NameOnCard = command.NameOnCard});
+            base.Transition(new CreditCardInformationEnteredForRegistrationEvent{ Id =command.RegistrationId, RegistrationId = command.RegistrationId, CardNumber = command.CardNumber, CvvNumber = command.CvvNumber, ExpirationDate = command.ExpirationDate, NameOnCard = command.NameOnCard, CanSubmitRegistration = CanSubmit});
         }
 
         public void SelectOffer(SelectOfferCommand command)
         {
-            base.Transition(new OfferSelectedForRegistrationEvent(command.RegistrationId, command.OfferId));
+            base.Transition(new OfferSelectedForRegistrationEvent(command.RegistrationId, command.OfferId, CanSubmit));
         }
 
         public void Submit(SubmitRegistrationCommand command)
         {
-            _stateMachine.Fire(RegistrationTriggers.SubmissionRequested);
+            base.Transition(new RegistrationSubmittedEvent
+                                {
+                                    LoginId = _login.LoginId,
+
+                                    CardNumber = _ccInfo.CardNumber,
+                                    CvvNumber = _ccInfo.CvvNumber,
+                                    ExpirationDate = _ccInfo.ExpirationDate,
+                                    NameOnCard = _ccInfo.NameOnCard,
+
+                                    FirstName = _user.FirstName,
+                                    LastName = _user.LastName,
+                                    EmailAddress = _user.EmailAddress
+                                });
+        }
+
+        private void OnSubmitted()
+        {
         }
 
         private void Apply(CreditCardInformationEnteredForRegistrationEvent @event)
@@ -82,7 +101,7 @@ namespace LifeMap.Membership.RegistrationProcess
 
         private void Apply(LoginEnteredForRegistrationEvent @event)
         {
-            _login = new RegistrationLogin(@event.UserName, @event.Password);
+            _login = new RegistrationLogin(@event.LoginId);
             //_stateMachine.Fire(RegistrationTriggers.LoginInfoEntered);
             //Dispatch(@event);
         }
@@ -102,7 +121,7 @@ namespace LifeMap.Membership.RegistrationProcess
         }
         private bool CanSubmit
         {
-            get { return _ccInfo != null && _login != null && _user != null && _offerId != null; }
+            get { return _offerId != null; }
         }
 
         public enum RegistrationStates

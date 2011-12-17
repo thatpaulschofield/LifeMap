@@ -13,7 +13,8 @@ namespace LifeMap.Membership.ViewModels
     public class RegistrationMessageHandler : IDenormalize<RegistrationViewModel>, 
         IHandleMessages<RegistrationStartedEvent>, 
         IHandleMessages<LoginEnteredForRegistrationEvent>,
-        IHandleMessages<CreditCardInformationEnteredForRegistrationEvent>
+        IHandleMessages<CreditCardInformationEnteredForRegistrationEvent>,
+        IHandleMessages<ISpecifyCanSubmitRegistration>
     {
         private readonly IDocumentSession _session;
 
@@ -41,7 +42,7 @@ namespace LifeMap.Membership.ViewModels
 
         public void Handle(LoginEnteredForRegistrationEvent message)
         {
-            var vm = _session.Load<RegistrationViewModel>("registrationviewmodels/" + message.RegistrationId);
+            var vm = FetchRegistration(message.RegistrationId);
             if (vm == null)
                 throw new ArgumentException("RegistrationViewModel with id " + message.RegistrationId + " not found.");
             Mapper.Map(message, vm);
@@ -50,11 +51,22 @@ namespace LifeMap.Membership.ViewModels
 
         public void Handle(CreditCardInformationEnteredForRegistrationEvent message)
         {
-            var vm = _session.Load<RegistrationViewModel>("registrationviewmodels/" + message.RegistrationId);
+            var vm = FetchRegistration(message.RegistrationId);
             if (vm == null)
                 throw new ArgumentException("RegistrationViewModel with id " + message.RegistrationId + " not found.");
             Mapper.Map(message, vm);
             _session.SaveChanges();
+        }
+
+        private RegistrationViewModel FetchRegistration(Guid registrationId)
+        {
+            return _session.Load<RegistrationViewModel>("registrationviewmodels/" + registrationId);
+        }
+
+        public void Handle(ISpecifyCanSubmitRegistration message)
+        {
+            var vm = FetchRegistration(message.RegistrationId);
+            vm.CanSubmit = message.CanSubmitRegistration;
         }
     }
 }

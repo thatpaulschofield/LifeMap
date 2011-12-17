@@ -9,6 +9,7 @@ using LifeMap.Common.Infrastructure.EventStore;
 using NServiceBus;
 using Raven.Client;
 using Raven.Client.Document;
+using Raven.Client.Extensions;
 
 namespace LifeMap.Sales.MessageHandlers
 {
@@ -37,17 +38,24 @@ namespace LifeMap.Sales.MessageHandlers
             NServiceBus
                 .SetLoggingLibrary.Log4Net(log4net.Config.XmlConfigurator.Configure);
             NServiceBus
-                .Configure.With().AutofacBuilder(Container)
+                .Configure.With()
+                .Autofac2Builder(Container)
                 .MsmqSubscriptionStorage()
                 .XmlSerializer();
         }
 
         private IStoreEvents InitializeEventSourcing()
         {
+            var server = new DocumentStore
+            {
+                Url = "http://localhost:8080/"
+            }.Initialize();
+            server.DatabaseCommands.EnsureDatabaseExists("Sales");
+            
             var dispatcher = new NServiceBusCommitDispatcher();
             var eventStore = new PersistenceWireup(
                 Wireup.Init()
-                    .UsingRavenPersistence("SalesEventStore")
+                    .UsingRavenPersistence("Sales")
                     .UsingAsynchronousDispatchScheduler(dispatcher)
                     )
                 .InitializeStorageEngine()
