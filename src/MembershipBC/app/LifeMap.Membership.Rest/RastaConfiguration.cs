@@ -43,6 +43,11 @@ namespace LifeMap.Membership.Rest
                     .HandledBy<AddCreditCardInfoHandler>()
                     .RenderedByAspx("~/Views/AddCreditCardInfoView.aspx");
 
+                ResourceSpace.Has.ResourcesOfType<Login>()
+                    .AtUri("/registrations/{registrationId}/createLogin")
+                    .HandledBy<LoginHandler>()
+                    .RenderedByAspx("~/Views/LoginView.aspx");
+
                 ResourceSpace.Has.ResourcesOfType<SubmitRegistration>()
                     .AtUri("/registrations/{id}/submit")
                     .HandledBy<SubmitRegistrationHandler>()
@@ -53,10 +58,6 @@ namespace LifeMap.Membership.Rest
                     .HandledBy<OffersHandler>()
                     .RenderedByAspx("~/Views/OffersView.aspx");
 
-                ResourceSpace.Has.ResourcesOfType<Login>()
-                    .AtUri("/registrations/{registrationId}/createLogin")
-                    .HandledBy<LoginHandler>()
-                    .RenderedByAspx("~/Views/LoginView.aspx");
 
                 //ConfigureFor<OpenRasta.Diagnostics.ILogger>
             }
