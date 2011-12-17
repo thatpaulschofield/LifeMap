@@ -7,21 +7,22 @@ using LifeMap.Common.Domain;
 namespace LifeMap.Membership.Events
 {
     [Serializable]
-    public class LoginEnteredForRegistrationEvent : MessageBase
+    public class LoginEnteredForRegistrationEvent : MessageBase, ISpecifyCanSubmitRegistration
     {
         public LoginEnteredForRegistrationEvent()
         {
         }
 
-        public LoginEnteredForRegistrationEvent(Guid registrationId, string userName, string password)
+        public LoginEnteredForRegistrationEvent(Guid registrationId, Guid loginId, bool canSubmit)
         {
+            Id = registrationId;
             RegistrationId = registrationId;
-            UserName = userName;
-            Password = password;
+            LoginId = loginId;
+            CanSubmitRegistration = canSubmit;
         }
 
         public Guid RegistrationId { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
+        public Guid LoginId { get; set; }
+        public bool CanSubmitRegistration { get; set; }
     }
 }

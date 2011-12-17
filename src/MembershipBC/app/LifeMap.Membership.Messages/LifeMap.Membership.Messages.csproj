@@ -44,11 +44,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Commands\EnterCreditCardInformationForRegistrationCommand.cs" />
-    <Compile Include="Commands\EnterLoginForRegistrationCommand.cs" />
+    <Compile Include="Commands\SelectLoginForRegistrationCommand.cs" />
     <Compile Include="Commands\SelectOfferCommand.cs" />
     <Compile Include="Commands\StartRegistrationCommand.cs" />
     <Compile Include="Commands\SubmitRegistrationCommand.cs" />
     <Compile Include="Events\CreditCardInformationEnteredForRegistrationEvent.cs" />
+    <Compile Include="Events\ISpecifyCanSubmitRegistration.cs" />
     <Compile Include="Events\LoginEnteredForRegistrationEvent.cs" />
     <Compile Include="Events\MemberCreatedEvent.cs" />
     <Compile Include="Events\MemberSubscribedEvent.cs" />
