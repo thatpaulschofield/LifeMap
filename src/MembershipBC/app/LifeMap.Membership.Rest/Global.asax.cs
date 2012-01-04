@@ -1,58 +1,53 @@
 ﻿using System;
+using LifeMap.Common.Infrastructure.Configuration;
 using NServiceBus;
 
 namespace LifeMap.Membership.Rest
 {
     public class Global : System.Web.HttpApplication
     {
+        private static Configure _configure;
 
         void Application_Start(object sender, EventArgs e)
         {
-            Bus = NServiceBus.Configure.WithWeb()
+            NServiceBus.SetLoggingLibrary.Log4Net(log4net.Config.XmlConfigurator.Configure);
+            log4net.LogManager.GetLogger(this.GetType()).Info("Starting Application_Start");
+
+            try
+            {
+                _configure = ConfigureBus();
+                InitializeBus();
+            }
+            catch (Exception ex)
+            {
+                log4net.LogManager.GetLogger(this.GetType()).FatalFormat("Exception during NServiceBus startup: {0}", ex.Message);
+                throw;
+            }
+            AutomapperConfiguration.Initialize();
+
+        }
+
+        private Configure ConfigureBus()
+        {
+            return NServiceBus.Configure.WithWeb()
+                .WithDefaultMessageSpecifications()
                 .Log4Net()
                 .DefaultBuilder()
                 .MsmqTransport()
                 .UnicastBus()
-                //.DefiningCommandsAs(x => x.Name.EndsWith("Command"))
-                //.DefiningEventsAs(x => x.Name.EndsWith("Event"))s
-                .BinarySerializer()
-                .MsmqSubscriptionStorage()
-                .CreateBus()
-                .Start();
-
-            AutomapperConfiguration.Initialize();
-
-            log4net.Config.XmlConfigurator.Configure();
+                .IsTransactional(false)
+                .PurgeOnStartup(false)
+                .XmlSerializer()
+                .MsmqSubscriptionStorage();
         }
 
         public static IBus Bus { get; set; }
 
-        void Application_End(object sender, EventArgs e)
+        public static void InitializeBus()
         {
-            //  Code that runs on application shutdown
-
+            Bus = _configure
+                            .CreateBus()
+                            .Start(() => Configure.Instance.ForInstallationOn<NServiceBus.Installation.Environments.Windows>().Install());
         }
-
-        void Application_Error(object sender, EventArgs e)
-        {
-            // Code that runs when an unhandled error occurs
-
-        }
-
-        void Session_Start(object sender, EventArgs e)
-        {
-            // Code that runs when a new session is started
-
-        }
-
-        void Session_End(object sender, EventArgs e)
-        {
-            // Code that runs when a session ends. 
-            // Note: The Session_End event is raised only when the sessionstate mode
-            // is set to InProc in the Web.config file. If session mode is set to StateServer 
-            // or SQLServer, the event is not raised.
-
-        }
-
     }
 }

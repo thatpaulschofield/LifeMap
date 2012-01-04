@@ -5,8 +5,8 @@ using System.Text;
 
 namespace LifeMap.Common.Domain
 {
-    //public interface IMessage
-    //{
-    //    Guid Id { get; }
-    //}
+    public interface IMessage
+    {
+        Guid Id { get; }
+    }
 }

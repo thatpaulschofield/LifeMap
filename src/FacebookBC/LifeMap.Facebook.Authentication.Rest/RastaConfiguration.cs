@@ -18,13 +18,16 @@ namespace LifeMap.Facebook.Authentication.Rest
                 ResourceSpace.Uses.Resolver.AddDependencyInstance<ILog>(LogManager.GetLogger("LifeMap"));
                 ;
 
+                ResourceSpace.Has.ResourcesOfType<FacebookAuthenticationHeader>()
+                    .AtUri("/FacebookAuthenticationHeader/")
+                    .HandledBy<FacebookAuthenticationHeaderHandler>()
+                    .AsJsonDataContract();
+
                 ResourceSpace.Has.ResourcesOfType<Login>()
-                    .AtUri("/login/")
-                    .And.AtUri("/login/{registrationId}?afterLogin={afterLogin}")
-                    .And.AtUri("/login?code={code}")
-                    .And.AtUri("/login?afterLogin={afterLogin}")
+                    .AtUri("/Login/")
                     .HandledBy<LoginHandler>()
-                    ;
+                    .AsJsonDataContract();
+
                 //ResourceSpace.Has.ResourcesOfType<Offers>()
                 //    .AtUri("/registrations/offers/{registrationId}")
                 //    .HandledBy<OffersHandler>()

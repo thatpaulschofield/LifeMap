@@ -16,10 +16,10 @@ namespace LifeMap.Membership.ViewModels.MessageHandlers
                 ;
             NServiceBus
                 .Configure.With()
-                .Autofac2Builder(container)
+                .AutofacBuilder(container)
                 .MsmqSubscriptionStorage()
                 .MsmqTransport().IsTransactional(false).PurgeOnStartup(true)
-                .BinarySerializer();
+                .XmlSerializer();
         }
 
 

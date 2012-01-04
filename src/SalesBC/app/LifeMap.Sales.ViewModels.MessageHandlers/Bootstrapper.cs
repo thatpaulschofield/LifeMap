@@ -1,6 +1,5 @@
 using Autofac;
 using LifeMap.Common.Infrastructure;
-using LifeMap.Membership.ViewModels;
 using Raven.Client;
 using Raven.Client.Document;
 using Raven.Client.Extensions;

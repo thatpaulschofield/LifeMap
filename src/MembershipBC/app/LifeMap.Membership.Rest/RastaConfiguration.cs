@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Text;
 using LifeMap.Common.Infrastructure.OpenRasta;
+using LifeMap.Facebook.Authentication;
 using LifeMap.Membership.Commands;
 using LifeMap.Membership.Rest.Handlers;
 using LifeMap.Membership.Rest.Resources;
@@ -20,11 +21,18 @@ namespace LifeMap.Membership.Rest
             {
                 ResourceSpace.Uses.CustomDependency<ILogger,Log4NetLogger>(DependencyLifetime.Singleton);
                 ResourceSpace.Uses.Resolver.AddDependencyInstance<ILog>(LogManager.GetLogger("LifeMap"));
+
+                ResourceSpace.Has.ResourcesOfType<Home>()
+                    .AtUri("/registrations/home")
+                    .HandledBy<HomeHandler>()
+                    .AsJsonDataContract();
+                
                 ResourceSpace.Has.ResourcesOfType<StartRegistration>()
                     .AtUri("/registrations/start")
                     .HandledBy<StartRegistrationHandler>()
-                    .RenderedByAspx("~/Views/StartRegistrationView.aspx")
-                    .And.AsJsonDataContract()
+                    //.RenderedByAspx("~/Views/StartRegistrationView.aspx")
+                    //.And
+                    .AsJsonDataContract()
                     //.And.AsXmlDataContract()
                     ;
 

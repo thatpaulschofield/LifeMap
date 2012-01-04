@@ -5,8 +5,8 @@ using System.Text;
 using CommonDomain.Core;
 using LifeMap.Analysis.Commands;
 using LifeMap.Analysis.Events;
+using LifeMap.Common.Domain;
 using LifeMap.Membership.Events;
-using NServiceBus;
 using Stateless;
 
 namespace LifeMap.Analysis

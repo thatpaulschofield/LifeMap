@@ -15,10 +15,10 @@ namespace LifeMap.Facebook.Authentication.Rest
                 .UnicastBus()
                 //.DefiningCommandsAs(x => x.Name.EndsWith("Command"))
                 //.DefiningEventsAs(x => x.Name.EndsWith("Event"))s
-                .BinarySerializer()
+                .XmlSerializer()
                 .MsmqSubscriptionStorage()
                 .CreateBus()
-                .Start();
+                .Start(() => Configure.Instance.ForInstallationOn<NServiceBus.Installation.Environments.Windows>().Install());
 
 
             log4net.Config.XmlConfigurator.Configure();

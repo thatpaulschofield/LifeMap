@@ -1,9 +1,6 @@
-﻿using System.Reflection;
-using Autofac;
-using LifeMap.Sales.ViewModels.MessageHandlers;
-using NServiceBus;
+﻿using NServiceBus;
 
-namespace LifeMap.Membership.ViewModels.MessageHandlers
+namespace LifeMap.Sales.ViewModels.MessageHandlers
 {
     public class EndpointConfig : IConfigureThisEndpoint, AsA_Client, IWantCustomInitialization
     {
@@ -17,7 +14,7 @@ namespace LifeMap.Membership.ViewModels.MessageHandlers
                 ;
             NServiceBus
                 .Configure.With()
-                .Autofac2Builder(container)
+                .AutofacBuilder(container)
                 .MsmqSubscriptionStorage()
                 .MsmqTransport().IsTransactional(false).PurgeOnStartup(true)
                 .BinarySerializer();

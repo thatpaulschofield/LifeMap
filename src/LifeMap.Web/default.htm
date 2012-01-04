@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="http://connect.facebook.net/en_US/all.js"></script>
+    <script language="javascript" src="Scripts/lib/jquery-1.6.4.min.js"></script>
+    <script language="javascript" src="Scripts/lib/jquery-tmpl.js"></script>
+    <script language="javascript" src="Scripts/lib/underscore.min.js"></script>
+    <script language="javascript" src="Scripts/lib/backbone.js"></script>
+    <script language="javascript" src="Scripts/lib/backbone.modelbinding.js"></script>
+    <script language="javascript" src="Scripts/lib/backbone.marionette.js"></script>
+    <script language="javascript" src="Scripts/LifeMapApp.js"></script>
+    <script language="javascript" src="Scripts/Membership/MembershipApp.js"></script>
+    <script language="javascript" src="Scripts/LifeMapApp.Router.js"></script>
+
+</head>
+<body>
+<form>
+<div id="fb-root"></div>
+<script>
+    $(function () {
+        LifeMapApp.start();
+    });
+</script> 
+
+<script id="membership-header-view-template" type="text/x-jquery-tmpl">
+    <a href="${Url}">${Description}</a >
+</script>
+
+<script id="membership-start-registration" type="text/x-jquery-tmpl">
+    <input name="FirstName" id="FirstName" />
+    <input name="LastName" id="LastName" />
+    <input name="EmailAddress" id="EmailAddress" />
+    <input type="button" id="membership-start-registration-submit" />
+</script>
+
+<div id="membershipHeaderRegion">Membership header</div>
+<div id="mainRegion">This is the main region.</div>
+</form>
+</body>
+</html> 

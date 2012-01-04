@@ -3,6 +3,7 @@ using Autofac;
 using CommonDomain.Persistence.EventStore;
 using EventStore;
 using LifeMap.Common.Infrastructure;
+using LifeMap.Common.Infrastructure.Configuration;
 using NServiceBus;
 using Raven.Client;
 using Raven.Client.Document;
@@ -33,7 +34,8 @@ namespace LifeMap.Analysis.MessageHandlers
             NServiceBus
                 .SetLoggingLibrary.Log4Net(log4net.Config.XmlConfigurator.Configure);
             NServiceBus
-                .Configure.With().Autofac2Builder(Container)
+                .Configure.With().AutofacBuilder(Container)
+                .WithDefaultMessageSpecifications()
                 .MsmqSubscriptionStorage()
                 .XmlSerializer();
         }
@@ -51,40 +53,14 @@ namespace LifeMap.Analysis.MessageHandlers
             return eventStore;
         }
 
-
         private IDocumentStore BuildRavenDocumentStore()
         {
-            var server = new DocumentStore
-            {
-                Url = "http://localhost:8080/"
-            }.Initialize();
-            server.DatabaseCommands.EnsureDatabaseExists("Analysis");
-
             var raven = new DocumentStore
             {
-                Url = "http://localhost:8080/databases/Analysis",
+                Url = "http://localhost:8080/",
+                DefaultDatabase = "Analysis"
             }.Initialize();
             return raven;
-        }
-    }
-
-
-    public class FinishInitialization : IWantToRunAtStartup
-    {
-        public void Run()
-        {
-            var container = EndpointConfig.Container;
-
-        }
-
-        public IBus Bus
-        {
-            set { BusLocator.Bus = value; }
-        }
-
-        public void Stop()
-        {
-            throw new NotImplementedException();
         }
     }
 }

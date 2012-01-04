@@ -39,7 +39,7 @@ namespace LifeMap.Sales.MessageHandlers
                 .SetLoggingLibrary.Log4Net(log4net.Config.XmlConfigurator.Configure);
             NServiceBus
                 .Configure.With()
-                .Autofac2Builder(Container)
+                .AutofacBuilder(Container)
                 .MsmqSubscriptionStorage()
                 .XmlSerializer();
         }

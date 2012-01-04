@@ -10,16 +10,14 @@ using NServiceBus;
 
 namespace LifeMap.Membership.MessageHandlers
 {
-    public class RegistrationMessageHandler : IHandleMessages<StartRegistrationCommand>, IHandleMessages<SelectLoginForRegistrationCommand>,
-        IHandleMessages<EnterCreditCardInformationForRegistrationCommand>
+    public class RegistrationMessageHandler : IMessageHandler<StartRegistrationCommand>, IMessageHandler<SelectLoginForRegistrationCommand>,
+        IMessageHandler<EnterCreditCardInformationForRegistrationCommand>
     {
         private readonly ISagaRepository _repository;
-        private readonly IBus _bus;
 
-        public RegistrationMessageHandler(ISagaRepository repository, IBus bus)
+        public RegistrationMessageHandler(ISagaRepository repository)
         {
             _repository = repository;
-            _bus = bus;
         }
 
         public void Handle(StartRegistrationCommand command)

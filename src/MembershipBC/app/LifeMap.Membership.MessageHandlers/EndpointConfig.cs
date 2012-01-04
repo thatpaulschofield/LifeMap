@@ -1,19 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading;
 using Autofac;
 using CommonDomain.Persistence.EventStore;
 using EventStore;
-using EventStore.Dispatcher;
-using EventStore.Persistence.RavenPersistence;
-using EventStore.Serialization;
 using LifeMap.Common.Infrastructure;
-using LifeMap.Membership.Commands;
+using LifeMap.Common.Infrastructure.Configuration;
 using NServiceBus;
-using NServiceBus.Unicast;
 using Raven.Client;
 using Raven.Client.Document;
 using Raven.Client.Extensions;
@@ -34,7 +25,6 @@ namespace LifeMap.Membership.MessageHandlers
                 .SingleInstance();
             builder.RegisterType<SagaEventStoreRepository>().AsImplementedInterfaces();
             builder.RegisterType<RegistrationMessageHandler>().As<RegistrationMessageHandler>().AsImplementedInterfaces();
-            //builder.RegisterType<UnicastBus>().AsImplementedInterfaces();
             var documentStore = BuildRavenDocumentStore();
             var eventStore = InitializeEventSourcing();
             builder.RegisterInstance(documentStore);
@@ -44,12 +34,10 @@ namespace LifeMap.Membership.MessageHandlers
             SetLoggingLibrary.Log4Net(log4net.Config.XmlConfigurator.Configure);
 
             Configure.With()
-                .Autofac2Builder(Container)
+                .AutofacBuilder(Container)
                 .MsmqSubscriptionStorage()
-                //.DefiningCommandsAs(x => x.Namespace != null && x.Namespace.EndsWith("Commands") && x.Name.EndsWith("Command"))
-                //.DefiningEventsAs(x => x.Namespace != null && x.Namespace.EndsWith("Events") && x.Name.EndsWith("Event"))
-                .BinarySerializer()
-                ;
+                .WithDefaultMessageSpecifications()
+                .XmlSerializer();
         }
 
         private IStoreEvents InitializeEventSourcing()

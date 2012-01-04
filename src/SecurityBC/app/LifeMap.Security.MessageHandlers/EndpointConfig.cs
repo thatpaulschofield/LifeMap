@@ -37,7 +37,7 @@ namespace LifeMap.Security.MessageHandlers
             NServiceBus
                 .SetLoggingLibrary.Log4Net(log4net.Config.XmlConfigurator.Configure);
             NServiceBus
-                .Configure.With().Autofac2Builder(Container)
+                .Configure.With().AutofacBuilder(Container)
                 .MsmqSubscriptionStorage()
                 .XmlSerializer();
         }

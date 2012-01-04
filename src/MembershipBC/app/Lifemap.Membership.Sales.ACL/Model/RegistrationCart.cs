@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CommonDomain.Core;
+using LifeMap.Common.Domain;
 using LifeMap.Membership.Events;
 using LifeMap.Sales.Commands;
-using NServiceBus;
 
 namespace Lifemap.Membership.Sales.ACL.Model
 {

@@ -18,7 +18,8 @@ namespace LifeMap.Membership.Rest
 
             Mapper.CreateMap<SubmitRegistration, SubmitRegistrationCommand>();
 
-            Mapper.CreateMap<StartRegistration, StartRegistrationCommand>();
+            Mapper.CreateMap<StartRegistration, StartRegistrationCommand>()
+                .ForMember(x => x.RegistrationId, opts => opts.Ignore());
 
             Mapper.CreateMap<RegistrationViewModel, AddCreditCardInfo>();
         }

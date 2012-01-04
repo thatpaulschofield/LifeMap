@@ -1,11 +1,13 @@
 ﻿using System;
 using LifeMap.Common.Domain;
 
-namespace LifeMap.Membership.Events
+namespace LifeMap.Membership.Messages.Events
 {
     [Serializable]
     public class RegistrationSubmittedEvent : MessageBase
     {
+        public Guid RegistrationId { get; set; }
+
         public string UserName { get; set; }
         public string Password { get; set; }
 
@@ -17,7 +19,5 @@ namespace LifeMap.Membership.Events
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string EmailAddress { get; set; }
-
-        public Guid LoginId { get; set; }
     }
 }

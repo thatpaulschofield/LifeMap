@@ -28,9 +28,9 @@ namespace LifeMap.Common.Infrastructure
                 try
                 {
                     var eventMessage = commit.Events[i];
-                    var busMessage = eventMessage.Body as IMessage;
-                    AppendHeaders(busMessage, commit.Headers);
-                    AppendHeaders(busMessage, eventMessage.Headers);
+                    var busMessage = eventMessage.Body;
+                    //AppendHeaders(busMessage, commit.Headers);
+                    //AppendHeaders(busMessage, eventMessage.Headers);
                     AppendVersion(commit, i);
                     while (BusLocator.Bus == null)
                     {

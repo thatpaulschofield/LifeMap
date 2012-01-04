@@ -40,14 +40,9 @@
     <Reference Include="Facebook, Version=5.3.2.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\Facebook.5.3.2.0\lib\net40-client\Facebook.dll</HintPath>
     </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\..\..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="NServiceBus">
-      <HintPath>..\..\..\packages\NServiceBus.2.6.0.1505\lib\net40\NServiceBus.dll</HintPath>
-    </Reference>
-    <Reference Include="NServiceBus.Core">
-      <HintPath>..\..\..\packages\NServiceBus.2.6.0.1505\lib\net40\NServiceBus.Core.dll</HintPath>
+    <Reference Include="NServiceBus, Version=3.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\lib\NServiceBus\NServiceBus.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -58,29 +53,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
-    <Compile Include="Events\FacebookRegistrationBegunEvent.cs" />
-    <Compile Include="Events\FacebookUserAuthenticatedForRegistrationEvent.cs" />
-    <Compile Include="FacebookRegistrationSaga.cs" />
-    <Compile Include="MessageHandlers\FacebookRegistrationMessageHandler.cs" />
+    <Compile Include="FacebookLogin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Commands\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\..\Common\LifeMap.Common.Domain\LifeMap.Common.Domain.csproj">
       <Project>{DB9CB82F-4480-48AF-A65C-C550C3F4C75C}</Project>
       <Name>LifeMap.Common.Domain</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LifeMap.Facebook.Authentication.Events\LifeMap.Facebook.Authentication.Events.csproj">
+      <Project>{21A42F87-0685-4B73-8D79-B0370B266F83}</Project>
+      <Name>LifeMap.Facebook.Authentication.Events</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App_Readme\EventStore - Architectural Overview.docx" />
-    <None Include="App_Readme\EventStore - Transactional Integrity.docx" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_Readme\EventStore.license.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

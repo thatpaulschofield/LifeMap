@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using LifeMap.Analysis.Commands;
 using LifeMap.Membership.Events;
+using LifeMap.Membership.Messages.Events;
 using NServiceBus;
 
 namespace LifeMap.Membership.Analysis.ACL.MessageHandlers

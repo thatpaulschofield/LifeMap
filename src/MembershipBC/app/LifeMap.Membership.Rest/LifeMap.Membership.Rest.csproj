@@ -13,7 +13,7 @@
     <RootNamespace>LifeMap.Membership.Rest</RootNamespace>
     <AssemblyName>LifeMap.Membership.Rest</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -36,18 +36,11 @@
     <Reference Include="AsyncCtpLibrary, Version=1.0.4107.18181, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\RavenDB.1.0.574-Unstable\lib\net40\AsyncCtpLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="Autofac, Version=2.3.2.632, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\Autofac.2.3.2.632\lib\NET40\Autofac.dll</HintPath>
-      <SpecificVersion>False</SpecificVersion>
+    <Reference Include="Autofac">
+      <HintPath>..\..\..\..\packages\Autofac.2.5.2.830\lib\NET40\Autofac.dll</HintPath>
     </Reference>
-    <Reference Include="Autofac.Configuration, Version=2.3.2.632, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\Autofac.2.3.2.632\lib\NET40\Autofac.Configuration.dll</HintPath>
-    </Reference>
-    <Reference Include="Autofac.Integration.Mef, Version=2.3.2.632, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\Autofac.2.3.2.632\lib\NET40\Autofac.Integration.Mef.dll</HintPath>
-    </Reference>
-    <Reference Include="Autofac.Integration.Wcf, Version=2.3.2.632, Culture=neutral, PublicKeyToken=17863af14b0044da, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\Autofac.2.3.2.632\lib\NET40\Autofac.Integration.Wcf.dll</HintPath>
+    <Reference Include="Autofac.Configuration">
+      <HintPath>..\..\..\..\packages\Autofac.2.5.2.830\lib\NET40\Autofac.Configuration.dll</HintPath>
     </Reference>
     <Reference Include="AutoMapper, Version=2.0.0.232, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\AutoMapper.2.0.0\lib\net40-client\AutoMapper.dll</HintPath>
@@ -68,17 +61,11 @@
     <Reference Include="NLog, Version=2.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\..\..\..\packages\NLog.2.0.0.2000\lib\net40\NLog.dll</HintPath>
     </Reference>
-    <Reference Include="NServiceBus, Version=2.6.0.1505, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\nservicebus.2.6.0.1505\lib\net40\NServiceBus.dll</HintPath>
+    <Reference Include="NServiceBus, Version=3.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\NServiceBus.3.0.0-beta3\lib\net40\NServiceBus.dll</HintPath>
     </Reference>
-    <Reference Include="NServiceBus.Core, Version=2.6.0.1505, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\nservicebus.2.6.0.1505\lib\net40\NServiceBus.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="NServiceBus.Host">
-      <HintPath>..\..\..\..\packages\NServiceBus.Host.2.6.0.1505\lib\net40\x86\NServiceBus.Host.exe</HintPath>
-    </Reference>
-    <Reference Include="NServiceBus.ObjectBuilder.Autofac2, Version=2.6.0.1505, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
-      <HintPath>..\..\..\..\packages\NServiceBus.Autofac2.2.6.0.1505\lib\net40\NServiceBus.ObjectBuilder.Autofac2.dll</HintPath>
+    <Reference Include="NServiceBus.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+      <HintPath>..\..\..\..\packages\NServiceBus.3.0.0-beta3\lib\net40\NServiceBus.Core.dll</HintPath>
     </Reference>
     <Reference Include="OpenRasta">
       <HintPath>..\..\lib\OpenRasta\OpenRasta.dll</HintPath>
@@ -122,6 +109,7 @@
     <Content Include="App_Readme\EventStore.license.txt" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="InitializeBus.aspx" />
     <Content Include="Scripts\jquery-1.4.1-vsdoc.js" />
     <Content Include="Scripts\jquery-1.4.1.js" />
     <Content Include="Scripts\jquery-1.4.1.min.js" />
@@ -151,9 +139,17 @@
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Handlers\AddCreditCardInfoHandler.cs" />
+    <Compile Include="Handlers\HomeHandler.cs" />
     <Compile Include="Handlers\LoginHandler.cs" />
     <Compile Include="Handlers\OffersHandler.cs" />
     <Compile Include="Handlers\RegistrationsHandler.cs" />
+    <Compile Include="InitializeBus.aspx.cs">
+      <DependentUpon>InitializeBus.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="InitializeBus.aspx.designer.cs">
+      <DependentUpon>InitializeBus.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Repository.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -161,6 +157,7 @@
     <Compile Include="Handlers\RegistrationHandler.cs" />
     <Compile Include="Handlers\StartRegistrationHandler.cs" />
     <Compile Include="Resources\AddCreditCardInfo.cs" />
+    <Compile Include="Resources\Home.cs" />
     <Compile Include="Resources\Login.cs" />
     <Compile Include="Resources\Offers.cs" />
     <Compile Include="Resources\Registration.cs" />
@@ -216,6 +213,10 @@
       <Project>{B218231F-15CD-46CB-871A-F1E4C3917DC9}</Project>
       <Name>LifeMap.Common.Infrastructure</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\..\FacebookBC\LifeMap.Facebook.Authentication\LifeMap.Facebook.Authentication.csproj">
+      <Project>{1E66C7A9-6BB6-48AC-823F-D30E9B1A6E81}</Project>
+      <Name>LifeMap.Facebook.Authentication</Name>
+    </ProjectReference>
     <ProjectReference Include="..\LifeMap.Membership.Messages\LifeMap.Membership.Messages.csproj">
       <Project>{8905F058-3D3F-4609-B4E1-789D9BC1B2AD}</Project>
       <Name>LifeMap.Membership.Messages</Name>
@@ -238,11 +239,11 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>False</UseIIS>
+          <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>53363</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:1838/</IISUrl>
+          <IISUrl>http://localhost/Membership</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

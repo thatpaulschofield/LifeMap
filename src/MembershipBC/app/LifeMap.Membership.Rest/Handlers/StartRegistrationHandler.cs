@@ -12,17 +12,24 @@ namespace LifeMap.Membership.Rest.Handlers
     {
         public object Get()
         {
-            return new StartRegistration();
+            return new StartRegistration
+                       {
+                           Id = Guid.NewGuid().ToString()
+                       };
         }
 
-        public object Post(string firstName, string lastName, string emailAddress)
+        public object Post(StartRegistration post)
         {
-            Guid id = Guid.NewGuid();
+            if (String.IsNullOrEmpty(post.Id))
+                post.Id = Guid.NewGuid().ToString();
             try
             {
-                var resource = new StartRegistrationCommand(id, firstName, lastName, emailAddress);
+                var resource = new StartRegistrationCommand(Guid.Parse(post.Id), post.FirstName, post.LastName, post.EmailAddress);
                 Global.Bus.Send(resource);
-                return new OperationResult.SeeOther{ RedirectLocation = Registration.Create(id).CreateUri() };
+                return new OperationResult.Created
+                {
+                    ResponseResource = post
+                }; 
             }
             catch (Exception)
             {

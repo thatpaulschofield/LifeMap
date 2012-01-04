@@ -5,7 +5,7 @@ using System.Text;
 using CommonDomain.Core;
 using Facebook;
 using LifeMap.Analysis.Commands;
-using NServiceBus;
+using LifeMap.Common.Domain;
 
 namespace LifeMap.Facebook
 {

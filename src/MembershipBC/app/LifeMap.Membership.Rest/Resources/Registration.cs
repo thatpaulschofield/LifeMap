@@ -48,7 +48,7 @@ namespace LifeMap.Membership.Rest.Resources
                 if (CanAddLogin)
                 {
                     links.Add(new Link("Add login", new Login(Id).CreateUri(), "loginInfo"));
-                    links.Add(new Link("Log in through Facebook", new Uri("http://localhost:62571/login/" + this.Id + "/?afterLogin=" + new Registration{Id = this.Id}.CreateUri()), "facebookLoginInfo"));
+                    links.Add(new Link("Log in through Facebook", new Uri("/Membership/login/" + this.Id + "/?afterLogin=" + new Registration { Id = this.Id }.CreateUri(), UriKind.Relative), "facebookLoginInfo"));
                 }
                 if (CanSubmit)
                     links.Add(new Link("Submit registration", new SubmitRegistration { Id = this.Id }.CreateUri(), "submit"));

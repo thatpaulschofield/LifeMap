@@ -4,7 +4,7 @@ using LifeMap.Common.Domain;
 using LifeMap.Membership.Commands;
 using LifeMap.Membership.Events;
 using LifeMap.Membership.Messages.Commands;
-using NServiceBus;
+using LifeMap.Membership.Messages.Events;
 using Stateless;
 
 namespace LifeMap.Membership.RegistrationProcess
@@ -45,6 +45,12 @@ namespace LifeMap.Membership.RegistrationProcess
         public void StartRegistration(StartRegistrationCommand command) 
         {
             base.Transition(new RegistrationStartedEvent(command.RegistrationId, command.FirstName, command.LastName, command.EmailAddress));
+            this.BeginEmailConfirmationProcess(command.EmailAddress);
+        }
+
+        private void BeginEmailConfirmationProcess(string emailAddress)
+        {
+            base.Dispatch(StartEmailConfirmationProcessCommand.Create(emailAddress));
         }
 
         public void LoginEntered(SelectLoginForRegistrationCommand command)
@@ -66,8 +72,8 @@ namespace LifeMap.Membership.RegistrationProcess
         {
             base.Transition(new RegistrationSubmittedEvent
                                 {
-                                    LoginId = _login.LoginId,
-
+                                    Id = command.Id,
+                                    RegistrationId = this.Id,
                                     CardNumber = _ccInfo.CardNumber,
                                     CvvNumber = _ccInfo.CvvNumber,
                                     ExpirationDate = _ccInfo.ExpirationDate,
@@ -95,8 +101,8 @@ namespace LifeMap.Membership.RegistrationProcess
         {
             base.Id = @event.RegistrationId;
             _user = new RegistrationUser(@event.FirstName, @event.LastName, @event.EmailAddress);
-            //_stateMachine.Fire(RegistrationTriggers.RegistrationStarted);
-            //Dispatch(@event);
+            _stateMachine.Fire(RegistrationTriggers.RegistrationStarted);
+            Dispatch(@event);
         }
 
         private void Apply(LoginEnteredForRegistrationEvent @event)

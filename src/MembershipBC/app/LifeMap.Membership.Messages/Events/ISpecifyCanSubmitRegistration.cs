@@ -1,5 +1,5 @@
 using System;
-using NServiceBus;
+using LifeMap.Common.Domain;
 
 namespace LifeMap.Membership.Events
 {

@@ -25,7 +25,7 @@ namespace LifeMap.Common.Infrastructure
                 .SetLoggingLibrary.Log4Net(log4net.Config.XmlConfigurator.Configure);
             NServiceBus
                 .Configure.With()
-                .Autofac2Builder((IContainer)container)
+                .AutofacBuilder((IContainer)container)
                 .MsmqSubscriptionStorage()
                 .XmlSerializer();
         }
