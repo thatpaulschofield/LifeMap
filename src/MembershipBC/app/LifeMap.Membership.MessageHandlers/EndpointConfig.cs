@@ -33,9 +33,9 @@ namespace LifeMap.Membership.MessageHandlers
 
             SetLoggingLibrary.Log4Net(log4net.Config.XmlConfigurator.Configure);
 
-            Configure.With()
+            Configure.With(AllAssemblies.Except("Newtonsoft.Json"))
                 .AutofacBuilder(Container)
-                .MsmqSubscriptionStorage()
+                .RavenSubscriptionStorage()
                 .WithDefaultMessageSpecifications()
                 .XmlSerializer();
         }
@@ -56,17 +56,10 @@ namespace LifeMap.Membership.MessageHandlers
 
         private IDocumentStore BuildRavenDocumentStore()
         {
-            var server = new DocumentStore
-                             {
-                                 Url = "http://localhost:8080/"
-                             }.Initialize();
-            //MultiTenancyExtensions.EnsureDatabaseExists(server.DatabaseCommands, "Membership");
-
-            server.DatabaseCommands.EnsureDatabaseExists("Membership");
-
             var documentStore = new DocumentStore
             {
-                Url = "http://localhost:8080/databases/Membership",
+                Url = "http://localhost:8080/",
+                DefaultDatabase = "Membership"
             }.Initialize();
             return documentStore;
         }

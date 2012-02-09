@@ -66,7 +66,10 @@ namespace LifeMap.Membership.Rest
                     .HandledBy<OffersHandler>()
                     .RenderedByAspx("~/Views/OffersView.aspx");
 
-
+                ResourceSpace.Has.ResourcesOfType<ConfirmEmailResource>()
+                    .AtUri("/registration/confirmEmail")
+                    .HandledBy<ConfirmEmailHandler>()
+                    .AsJsonDataContract();
                 //ConfigureFor<OpenRasta.Diagnostics.ILogger>
             }
         }

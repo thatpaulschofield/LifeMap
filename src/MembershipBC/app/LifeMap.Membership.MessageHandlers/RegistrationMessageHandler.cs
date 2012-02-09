@@ -5,13 +5,14 @@ using System.Text;
 using CommonDomain.Persistence;
 using LifeMap.Membership.Commands;
 using LifeMap.Membership.Messages.Commands;
+using LifeMap.Membership.Messages.Events;
 using LifeMap.Membership.RegistrationProcess;
 using NServiceBus;
 
 namespace LifeMap.Membership.MessageHandlers
 {
     public class RegistrationMessageHandler : IMessageHandler<StartRegistrationCommand>, IMessageHandler<SelectLoginForRegistrationCommand>,
-        IMessageHandler<EnterCreditCardInformationForRegistrationCommand>
+        IMessageHandler<EnterCreditCardInformationForRegistrationCommand>, IMessageHandler<ConfirmRegisteredEmailAddressCommand>
     {
         private readonly ISagaRepository _repository;
 
@@ -52,6 +53,20 @@ namespace LifeMap.Membership.MessageHandlers
         {
             Registration registration = _repository.GetById<Registration>(command.RegistrationId);
             registration.EnterCreditCardInformation(command);
+            try
+            {
+                _repository.Save(registration, Guid.NewGuid(), h => { });
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public void Handle(ConfirmRegisteredEmailAddressCommand command)
+        {
+            Registration registration = _repository.GetById<Registration>(command.RegistrationId);
+            registration.ConfirmEmailAddress(command);
             try
             {
                 _repository.Save(registration, Guid.NewGuid(), h => { });

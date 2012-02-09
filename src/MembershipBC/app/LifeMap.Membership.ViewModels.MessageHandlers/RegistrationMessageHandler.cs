@@ -1,20 +1,19 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using AutoMapper;
 using LifeMap.Common.Infrastructure.Denormalizers;
 using LifeMap.Membership.Events;
+using LifeMap.Membership.Messages.Events;
 using NServiceBus;
 using Raven.Client;
 
-namespace LifeMap.Membership.ViewModels
+namespace LifeMap.Membership.ViewModels.MessageHandlers
 {
     public class RegistrationMessageHandler : IDenormalize<RegistrationViewModel>, 
         IHandleMessages<RegistrationStartedEvent>, 
         IHandleMessages<LoginEnteredForRegistrationEvent>,
         IHandleMessages<CreditCardInformationEnteredForRegistrationEvent>,
-        IHandleMessages<ISpecifyCanSubmitRegistration>
+        IHandleMessages<ISpecifyCanSubmitRegistration>,
+        IHandleMessages<RegisteredEmailAddressConfirmed>
     {
         private readonly IDocumentSession _session;
 
@@ -67,6 +66,12 @@ namespace LifeMap.Membership.ViewModels
         {
             var vm = FetchRegistration(message.RegistrationId);
             vm.CanSubmit = message.CanSubmitRegistration;
+        }
+
+        public void Handle(RegisteredEmailAddressConfirmed message)
+        {
+            var vm = FetchRegistration(message.RegistrationId);
+            vm.EmailAddressConfirmed = true;
         }
     }
 }

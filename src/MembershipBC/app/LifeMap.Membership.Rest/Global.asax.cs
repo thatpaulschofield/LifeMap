@@ -38,7 +38,7 @@ namespace LifeMap.Membership.Rest
                 .IsTransactional(false)
                 .PurgeOnStartup(false)
                 .XmlSerializer()
-                .MsmqSubscriptionStorage();
+                .RavenSubscriptionStorage();
         }
 
         public static IBus Bus { get; set; }

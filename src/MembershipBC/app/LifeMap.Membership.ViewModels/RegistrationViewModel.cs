@@ -25,6 +25,6 @@ namespace LifeMap.Membership.ViewModels
         public bool CanAddLogin { get; set; }
         public bool CanSubmit { get; set; }
 
-
+        public bool EmailAddressConfirmed { get; set; }
     }
 }

@@ -17,12 +17,14 @@ namespace LifeMap.Membership.RegistrationProcess
         private RegistrationUser _user;
         private readonly StateMachine<RegistrationStates, RegistrationTriggers> _stateMachine;
         private RegistrationStates _state = RegistrationStates.New;
+        private string _emailAddress;
 
         public Registration()
         {
             base.Register<RegistrationStartedEvent>(Apply);
             base.Register<LoginEnteredForRegistrationEvent>(Apply);
             base.Register<CreditCardInformationEnteredForRegistrationEvent>(Apply);
+            base.Register<RegisteredEmailAddressConfirmed>(Apply);
 
             _stateMachine = new StateMachine<RegistrationStates, RegistrationTriggers>(() => _state, state => _state = state);
             
@@ -30,11 +32,13 @@ namespace LifeMap.Membership.RegistrationProcess
                                                                    RegistrationStates.GatheringInfo);
 
             _stateMachine.Configure(RegistrationStates.GatheringInfo)
+                .PermitDynamic(RegistrationTriggers.EmailAddressConfirmed, CalculateStateAfterInfoGathered)
                 .PermitDynamic(RegistrationTriggers.CreditCardInfoEntered, CalculateStateAfterInfoGathered)
                 .PermitDynamic(RegistrationTriggers.LoginInfoEntered, CalculateStateAfterInfoGathered)
                 .PermitDynamic(RegistrationTriggers.OfferSelected, CalculateStateAfterInfoGathered);
 
             _stateMachine.Configure(RegistrationStates.ReadyForSubmission)
+                .PermitDynamic(RegistrationTriggers.EmailAddressConfirmed, CalculateStateAfterInfoGathered)
                 .PermitIf(RegistrationTriggers.SubmissionRequested, RegistrationStates.Submitted, () => CanSubmit);
 
             _stateMachine.Configure(RegistrationStates.Submitted)
@@ -50,7 +54,7 @@ namespace LifeMap.Membership.RegistrationProcess
 
         private void BeginEmailConfirmationProcess(string emailAddress)
         {
-            base.Dispatch(StartEmailConfirmationProcessCommand.Create(emailAddress));
+            base.Dispatch(StartEmailConfirmationProcessCommand.Create(emailAddress, Id));
         }
 
         public void LoginEntered(SelectLoginForRegistrationCommand command)
@@ -85,8 +89,17 @@ namespace LifeMap.Membership.RegistrationProcess
                                 });
         }
 
-        private void OnSubmitted()
+        public void ConfirmEmailAddress(ConfirmRegisteredEmailAddressCommand command)
         {
+            base.Transition(RegisteredEmailAddressConfirmed.Create(command.Id, this.Id, command.EmailAddress));
+        }
+
+        #region Apply Methods
+
+        private void Apply(RegisteredEmailAddressConfirmed @event)
+        {
+            _emailAddress = @event.EmailAddress;
+            _stateMachine.Fire(RegistrationTriggers.EmailAddressConfirmed);
         }
 
         private void Apply(CreditCardInformationEnteredForRegistrationEvent @event)
@@ -94,7 +107,6 @@ namespace LifeMap.Membership.RegistrationProcess
             _ccInfo = new RegistrationCreditCard(@event.NameOnCard, @event.CardNumber, @event.CvvNumber,
                                                  @event.ExpirationDate);
             //_stateMachine.Fire(RegistrationTriggers.CreditCardInfoEntered);
-            //Dispatch(@event);
         }
 
         private void Apply(RegistrationStartedEvent @event)
@@ -102,32 +114,34 @@ namespace LifeMap.Membership.RegistrationProcess
             base.Id = @event.RegistrationId;
             _user = new RegistrationUser(@event.FirstName, @event.LastName, @event.EmailAddress);
             _stateMachine.Fire(RegistrationTriggers.RegistrationStarted);
-            Dispatch(@event);
         }
 
         private void Apply(LoginEnteredForRegistrationEvent @event)
         {
             _login = new RegistrationLogin(@event.LoginId);
             //_stateMachine.Fire(RegistrationTriggers.LoginInfoEntered);
-            //Dispatch(@event);
         }
 
         private void Apply(OfferSelectedForRegistrationEvent @event)
         {
             _offerId = @event.OfferId;
             //_stateMachine.Fire(RegistrationTriggers.OfferSelected);
-            //Dispatch(@event);
         }
-
+        #endregion
 
         private RegistrationStates CalculateStateAfterInfoGathered()
         {
-            return _stateMachine.State;
-            //CanSubmit ? RegistrationStates.ReadyForSubmission : _stateMachine.State;
+            return //_stateMachine.State;
+            CanSubmit ? RegistrationStates.ReadyForSubmission : _stateMachine.State;
         }
+
         private bool CanSubmit
         {
-            get { return _offerId != null; }
+            get { return !String.IsNullOrEmpty(_emailAddress); }
+        }
+
+        private void OnSubmitted()
+        {
         }
 
         public enum RegistrationStates
@@ -144,6 +158,7 @@ namespace LifeMap.Membership.RegistrationProcess
             RegistrationStarted,
             OfferSelected,
             LoginInfoEntered,
+            EmailAddressConfirmed,
             CreditCardInfoEntered,
             LoginCreated,
             CreditCardCharged,

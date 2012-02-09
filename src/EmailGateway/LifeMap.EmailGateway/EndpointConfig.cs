@@ -20,7 +20,7 @@ namespace LifeMap.EmailGateway
 
             Configure.With()
                 .DefaultBuilder()
-                .MsmqSubscriptionStorage()
+                .RavenSubscriptionStorage()
                 .WithDefaultMessageSpecifications()
                 //.DefiningCommandsAs(x => x.Namespace != null && x.Namespace.StartsWith("LifeMap") && (x.Namespace.EndsWith("Commands") || x.Name.EndsWith("Command")))
                 //.DefiningEventsAs(x => x.Namespace != null && x.Namespace.StartsWith("LifeMap") && (x.Namespace.EndsWith("Events") || x.Name.EndsWith("Event")))

@@ -37,8 +37,9 @@
     <Reference Include="EventStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=7735eb81c0bd9948, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\EventStore.3.0.11326.44\lib\net40\EventStore.dll</HintPath>
     </Reference>
-    <Reference Include="log4net">
-      <HintPath>..\..\..\packages\log4net.1.2.10\lib\2.0\log4net.dll</HintPath>
+    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\log4net.1.2.11\lib\net40-full\log4net.dll</HintPath>
     </Reference>
     <Reference Include="NServiceBus">
       <HintPath>..\..\..\lib\NServiceBus\NServiceBus.dll</HintPath>

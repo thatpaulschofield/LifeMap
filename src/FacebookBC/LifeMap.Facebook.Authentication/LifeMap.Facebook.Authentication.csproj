@@ -37,8 +37,9 @@
     <Reference Include="EventStore, Version=3.0.0.0, Culture=neutral, PublicKeyToken=7735eb81c0bd9948, processorArchitecture=MSIL">
       <HintPath>..\..\..\packages\EventStore.3.0.11326.44\lib\net40\EventStore.dll</HintPath>
     </Reference>
-    <Reference Include="Facebook, Version=5.3.2.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\Facebook.5.3.2.0\lib\net40-client\Facebook.dll</HintPath>
+    <Reference Include="Facebook, Version=5.4.1.0, Culture=neutral, PublicKeyToken=58cb4f2111d1e6de, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\packages\Facebook.5.4.1.0\lib\net40-client\Facebook.dll</HintPath>
     </Reference>
     <Reference Include="NServiceBus, Version=3.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

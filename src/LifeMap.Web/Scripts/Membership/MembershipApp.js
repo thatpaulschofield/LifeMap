@@ -21,7 +21,7 @@ LifeMapApp.MembershipApp = (function (LifeMapApp, Backbone) {
 
         onSubmit: function () {
             this.model.save();
-//            LifeMapApp.navigate("");
+            //            LifeMapApp.navigate("");
         }
     });
 
@@ -30,6 +30,26 @@ LifeMapApp.MembershipApp = (function (LifeMapApp, Backbone) {
         LastName: "",
         Id: "",
         url: "/Membership/registrations/start"
+    });
+
+    Membership.ConfirmEmailView = Backbone.View.extend({
+        initialize: function () {
+            this.model.save();
+        },
+
+        render: function () {
+            var template = $("#membership-confirm-email");
+            var html = template.tmpl();
+            $(this.el).html(html);
+            Backbone.ModelBinding.bind(this);
+        }
+    });
+
+    Membership.ConfirmEmailModel = Backbone.Model.extend({
+        Id: "",
+        registrationId: "",
+        confirmationId: "",
+        url: "/Membership/registration/confirmEmail"
     });
 
     Membership.HeaderLink = Backbone.Model.extend({
@@ -61,63 +81,11 @@ LifeMapApp.MembershipApp = (function (LifeMapApp, Backbone) {
         LifeMapApp.mainRegion.show(registrationView);
     };
 
+    Membership.confirmEmail = function (registrationId, confirmationId) {
+        var confirmEmailView = new Membership.ConfirmEmailView({ model: new LifeMapApp.MembershipApp.ConfirmEmailModel({ registrationId: registrationId, confirmationId: confirmationId} ) });
+        LifeMapApp.mainRegion.show(confirmEmailView);
+    };
 
     return Membership;
 }
 )(LifeMapApp, Backbone);
-
-
-
-//// define some functionality for the app
-//(function (MembershipApp, Backbone) {
-
-
-//    
-//    
-//    
-//    // a view to render into the region
-//    var LoginView = Backbone.View.extend({
-//        render: function () {
-//        },
-
-//        logIn: function () {
-//            if (getParameterByName('code')) {
-//                $.ajax({
-//                        url: 'http://localhost/FacebookAuthentication/registrations/' + getParameterByName('registrationId')
-
-//                    }
-//                    );
-//            }
-//            else {
-//                window.location = "https://www.facebook.com/dialog/oauth?client_id=149734561800297&redirect_uri=http://localhost/LifeMap.Web/&scope=read_stream,user_interests,user_education_history,user_birthday,user_about_me,user_activities,offline_access";
-//            }
-//        }
-//    });
-
-//    // an initializer to run this functional area 
-//    // when the app starts up
-//    MembershipApp.addInitializer(function () {
-////        var loginView = new LoginView();
-////        MembershipApp.mainRegion.show(loginView);
-////        loginView.logIn();
-
-////        var headerLinks = new HeaderLinks();
-////        var headersView = new HeadersView({
-////                model: headerLinks
-////            });
-////        MembershipApp.headerRegion.show(headersView);
-////        headerLinks.fetch();
-//    });
-
-
-
-//})(MembershipApp, Backbone);
-
-//function getParameterByName(name) {
-
-//    var match = RegExp('[?&]' + name + '=([^&]*)')
-//                    .exec(window.location.search);
-
-//    return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
-
-//}

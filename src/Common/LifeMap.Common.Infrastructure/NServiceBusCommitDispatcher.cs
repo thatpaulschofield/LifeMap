@@ -36,12 +36,20 @@ namespace LifeMap.Common.Infrastructure
                     {
                         Thread.Sleep(1000);
                     }
-                    BusLocator.Bus.Publish(busMessage);
+
+                    if (busMessage.IsEvent())
+                        BusLocator.Bus.Publish(busMessage);
+                    
                 }
                 catch (Exception)
                 {
                     throw;
                 }
+            }
+            foreach (var header in commit.Headers.Select(header => header.Value))
+            {
+                if (header.IsCommand())
+                    BusLocator.Bus.Send(header);
             }
         }
 

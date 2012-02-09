@@ -3,6 +3,7 @@ using Autofac.Core;
 using LifeMap.Common.Infrastructure;
 //using LifeMap.Common.Infrastructure.Persistence;
 //using NServiceBus.UnitOfWork;
+using LifeMap.Membership.ViewModels.MessageHandlers;
 using Raven.Client;
 using Raven.Client.Document;
 using Raven.Client.Extensions;
@@ -35,15 +36,10 @@ namespace LifeMap.Membership.ViewModels
 
         private IDocumentStore BuildDocumentStore(string databaseName)
         {
-            var server = new DocumentStore
-                             {
-                                 Url = "http://localhost:8080/"
-                             }.Initialize();
-            server.DatabaseCommands.EnsureDatabaseExists(databaseName);
-
             var raven = new DocumentStore
                             {
-                                Url = "http://localhost:8080/databases/" + databaseName
+                                Url = "http://localhost:8080/",
+                                DefaultDatabase = databaseName
                             }
                 .Initialize();
             return raven;

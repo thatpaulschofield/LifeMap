@@ -10,14 +10,13 @@ namespace LifeMap.Membership.ViewModels.MessageHandlers
         {
             var container = new Bootstrapper().BootstrapContainer();
 
-
             NServiceBus
                 .SetLoggingLibrary.Log4Net(log4net.Config.XmlConfigurator.Configure)
                 ;
             NServiceBus
                 .Configure.With()
                 .AutofacBuilder(container)
-                .MsmqSubscriptionStorage()
+                .RavenSubscriptionStorage()
                 .MsmqTransport().IsTransactional(false).PurgeOnStartup(true)
                 .XmlSerializer();
         }
