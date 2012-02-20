@@ -53,20 +53,20 @@
       <HintPath>..\..\..\packages\NHibernate.3.2.0.4000\lib\Net35\NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="NServiceBus, Version=3.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\NServiceBus.3.0.0-rc3\lib\net40\NServiceBus.dll</HintPath>
+      <HintPath>..\..\..\packages\NServiceBus-CI.3.0.2029\lib\net40\NServiceBus.dll</HintPath>
     </Reference>
-    <Reference Include="NServiceBus.Azure">
-      <HintPath>..\..\..\packages\NServiceBus.Azure-CI.3.0.1960\lib\net40\NServiceBus.Azure.dll</HintPath>
+    <Reference Include="NServiceBus.Azure, Version=3.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NServiceBus.Azure-CI.3.0.2029\lib\net40\NServiceBus.Azure.dll</HintPath>
     </Reference>
     <Reference Include="NServiceBus.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
-      <HintPath>..\..\..\packages\NServiceBus.3.0.0-rc3\lib\net40\NServiceBus.Core.dll</HintPath>
+      <HintPath>..\..\..\packages\NServiceBus-CI.3.0.2029\lib\net40\NServiceBus.Core.dll</HintPath>
     </Reference>
     <Reference Include="NServiceBus.Host, Version=3.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
       <ExecutableExtension>.exe</ExecutableExtension>
       <HintPath>..\..\..\packages\NServiceBus.Host.3.0.0-beta6\lib\net40\NServiceBus.Host.exe</HintPath>
     </Reference>
-    <Reference Include="NServiceBus.NHibernate">
-      <HintPath>..\..\..\packages\NServiceBus.NHibernate-CI.3.0.1960\lib\net40\NServiceBus.NHibernate.dll</HintPath>
+    <Reference Include="NServiceBus.NHibernate, Version=3.0.0.0, Culture=neutral, PublicKeyToken=9fc386479f8a226c, processorArchitecture=MSIL">
+      <HintPath>..\..\..\packages\NServiceBus.NHibernate-CI.3.0.2029\lib\net40\NServiceBus.NHibernate.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />

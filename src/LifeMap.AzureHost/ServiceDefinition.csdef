@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceDefinition name="AzureHost" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
+  <WebRole name="LifeMap.Raven.Host" vmsize="Small">
+    <Sites>
+      <Site name="Web">
+        <Bindings>
+          <Binding name="Endpoint1" endpointName="Raven" />
+        </Bindings>
+      </Site>
+    </Sites>
+    <Endpoints>
+      <InputEndpoint name="Raven" protocol="http" port="8080" />
+    </Endpoints>
+    <Imports>
+      <Import moduleName="Diagnostics" />
+      <Import moduleName="RemoteAccess" />
+      <Import moduleName="RemoteForwarder" />
+    </Imports>
+    <ConfigurationSettings>
+      <Setting name="StorageConnectionString" />
+      <Setting name="Raven.Data.CloudContainerName" />
+      <Setting name="Raven.Data.CloudDriveName" />
+      <Setting name="Raven.Data.CloudDriveSize" />
+      <Setting name="Raven.Data.CloudDriveReadCacheSize" />
+    </ConfigurationSettings>
+    <LocalResources>
+      <LocalStorage name="CloudDriveLocalReadCache" cleanOnRoleRecycle="false" sizeInMB="200" />
+    </LocalResources>
+  </WebRole>
+  <WorkerRole name="LifeMap.NServiceBus.Host" vmsize="Small">
+    <ConfigurationSettings>
+      <Setting name="DynamicHostControllerConfig.RecycleRoleOnError" />
+      <Setting name="DynamicHostControllerConfig.UpdateInterval" />
+    </ConfigurationSettings>
+    <Imports>
+      <Import moduleName="Diagnostics" />
+      <Import moduleName="RemoteAccess" />
+    </Imports>
+    <LocalResources>
+      <LocalStorage name="endpoints" cleanOnRoleRecycle="false" sizeInMB="250" />
+    </LocalResources>
+  </WorkerRole>
+  <WebRole name="LifeMap.Web" vmsize="Small">
+    <Sites>
+      <Site name="Web">
+        <VirtualApplication name="Membership" physicalDirectory="C:\projects\LifeMap\src\MembershipBC\app\LifeMap.Membership.Rest\" >
+        </VirtualApplication>
+        <Bindings>
+          <Binding name="Endpoint1" endpointName="Endpoint1" />
+        </Bindings>
+      </Site>
+    </Sites>
+    <Endpoints>
+      <InputEndpoint name="Endpoint1" protocol="http" port="80" />
+    </Endpoints>
+    <Imports>
+      <Import moduleName="Diagnostics" />
+      <Import moduleName="RemoteAccess" />
+    </Imports>
+  </WebRole>
+</ServiceDefinition>

@@ -1,2 +1,0 @@
-start "Facebook Host Service" "src\FacebookBC\bin\FacebookIntegrationHostService\NServiceBus.Host.exe"  NServiceBus.Integration
-start "Facebook Rest Service" "tools\IisExpress\iisexpress.exe" /path:C:\projects\LifeMap\src\FacebookBC\LifeMap.Facebook.Authentication.Rest /port:53368

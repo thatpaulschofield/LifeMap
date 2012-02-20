@@ -1,22 +1,30 @@
 ﻿using System;
+using System.Threading;
 using Autofac;
 using CommonDomain.Persistence.EventStore;
 using EventStore;
 using LifeMap.Common.Infrastructure;
 using LifeMap.Common.Infrastructure.Configuration;
 using NServiceBus;
+using NServiceBus.Config;
+using NServiceBus.Hosting.Azure;
+using NServiceBus.Integration.Azure;
 using Raven.Client;
 using Raven.Client.Document;
 using Raven.Client.Extensions;
 
 namespace LifeMap.Membership.MessageHandlers
 {
-    public class EndpointConfig : IConfigureThisEndpoint, AsA_Server, IWantCustomInitialization
+    public class Host : RoleEntryPoint { }
+
+    public class EndpointConfig : IConfigureThisEndpoint, AsA_Worker, IWantCustomInitialization
     {
         public static IContainer Container;
 
         public void Init()
         {
+            Thread.Sleep(10);
+
             var builder = new ContainerBuilder();
 
             builder.RegisterType<NServiceBusCommitDispatcher>()
@@ -33,11 +41,28 @@ namespace LifeMap.Membership.MessageHandlers
 
             SetLoggingLibrary.Log4Net(log4net.Config.XmlConfigurator.Configure);
 
-            Configure.With(AllAssemblies.Except("Newtonsoft.Json"))
-                .AutofacBuilder(Container)
-                .RavenSubscriptionStorage()
-                .WithDefaultMessageSpecifications()
-                .XmlSerializer();
+            bool initializedBus = false;
+            do
+            {
+                try
+                {
+                    Configure.With(AllAssemblies.Except("Newtonsoft.Json").And("NServiceBus.Hosting.Azure.HostProcess"))
+                        .AutofacBuilder(Container)
+                        .Log4Net(new AzureAppender())
+                        .AzureMessageQueue()
+                        .JsonSerializer()
+                        .RavenPersistence()
+                        .RavenSagaPersister()
+                        .RavenSubscriptionStorage()
+                        .WithDefaultMessageSpecifications();
+
+                    initializedBus = true;
+                }
+                catch (Exception)
+                {
+                    Thread.Sleep(2000);
+                }
+            } while (!initializedBus);
         }
 
         private IStoreEvents InitializeEventSourcing()

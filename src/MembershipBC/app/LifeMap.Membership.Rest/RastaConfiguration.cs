@@ -23,12 +23,12 @@ namespace LifeMap.Membership.Rest
                 ResourceSpace.Uses.Resolver.AddDependencyInstance<ILog>(LogManager.GetLogger("LifeMap"));
 
                 ResourceSpace.Has.ResourcesOfType<Home>()
-                    .AtUri("/registrations/home")
+                    .AtUri("/membership/registrations/home")
                     .HandledBy<HomeHandler>()
                     .AsJsonDataContract();
                 
                 ResourceSpace.Has.ResourcesOfType<StartRegistration>()
-                    .AtUri("/registrations/start")
+                    .AtUri("/membership/registrations/start")
                     .HandledBy<StartRegistrationHandler>()
                     //.RenderedByAspx("~/Views/StartRegistrationView.aspx")
                     //.And
@@ -37,37 +37,37 @@ namespace LifeMap.Membership.Rest
                     ;
 
                 ResourceSpace.Has.ResourcesOfType<Registration>()
-                    .AtUri("/registrations/{id}")
+                    .AtUri("/membership/registrations/{id}")
                     .HandledBy<RegistrationHandler>()
                     .RenderedByAspx("~/Views/RegistrationView.aspx");
 
                 ResourceSpace.Has.ResourcesOfType<RegistrationList>()
-                    .AtUri("/registrations")
+                    .AtUri("/membership/registrations")
                     .HandledBy<RegistrationsHandler>()
                     .RenderedByAspx("~/Views/RegistrationsView.aspx");
 
                 ResourceSpace.Has.ResourcesOfType<AddCreditCardInfo>()
-                    .AtUri("/registrations/{id}/addCreditCardInfo")
+                    .AtUri("/membership/registrations/{id}/addCreditCardInfo")
                     .HandledBy<AddCreditCardInfoHandler>()
                     .RenderedByAspx("~/Views/AddCreditCardInfoView.aspx");
 
                 ResourceSpace.Has.ResourcesOfType<Login>()
-                    .AtUri("/registrations/{registrationId}/createLogin")
+                    .AtUri("/membership/registrations/{registrationId}/createLogin")
                     .HandledBy<LoginHandler>()
                     .RenderedByAspx("~/Views/LoginView.aspx");
 
                 ResourceSpace.Has.ResourcesOfType<SubmitRegistration>()
-                    .AtUri("/registrations/{id}/submit")
+                    .AtUri("/membership/registrations/{id}/submit")
                     .HandledBy<SubmitRegistrationHandler>()
                     .RenderedByAspx("~/Views/SubmitRegistrationView");
 
                 ResourceSpace.Has.ResourcesOfType<Offers>()
-                    .AtUri("/registrations/offers/{registrationId}")
+                    .AtUri("/membership/registrations/offers/{registrationId}")
                     .HandledBy<OffersHandler>()
                     .RenderedByAspx("~/Views/OffersView.aspx");
 
                 ResourceSpace.Has.ResourcesOfType<ConfirmEmailResource>()
-                    .AtUri("/registration/confirmEmail")
+                    .AtUri("/membership/registration/confirmEmail")
                     .HandledBy<ConfirmEmailHandler>()
                     .AsJsonDataContract();
                 //ConfigureFor<OpenRasta.Diagnostics.ILogger>

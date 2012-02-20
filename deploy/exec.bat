@@ -1,0 +1,5 @@
+SET AZURE_CONNECTION_STRING=UseDevelopmentStorage=true
+SET DefaultEndpointsProtocol=http
+SET AccountName=YOURACCOUNTNAME
+SET AccountKey=YOURACCOUNTKEY
+..\tools\AzureCommandLineTools\%1

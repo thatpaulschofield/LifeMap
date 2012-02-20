@@ -1,0 +1,18 @@
+{
+  "Name": "Raven/DocumentsByExpirationDate",
+  "Map": "\r\n\tfrom doc in docs\r\n\tlet expiry = doc[\"@metadata\"][\"Raven-Expiration-Date\"]\r\n\twhere expiry != null\r\n\tselect new { Expiry = expiry }\r\n",
+  "Maps": [
+    "\r\n\tfrom doc in docs\r\n\tlet expiry = doc[\"@metadata\"][\"Raven-Expiration-Date\"]\r\n\twhere expiry != null\r\n\tselect new { Expiry = expiry }\r\n"
+  ],
+  "Reduce": null,
+  "TransformResults": null,
+  "IsMapReduce": false,
+  "IsCompiled": false,
+  "IsTemp": false,
+  "Stores": {},
+  "Indexes": {},
+  "SortOptions": {},
+  "Analyzers": {},
+  "Fields": [],
+  "Type": "Map"
+}

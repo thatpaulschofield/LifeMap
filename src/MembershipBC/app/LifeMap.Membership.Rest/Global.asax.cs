@@ -1,53 +1,42 @@
 ﻿using System;
 using LifeMap.Common.Infrastructure.Configuration;
 using NServiceBus;
+using NServiceBus.Config;
+using NServiceBus.Integration.Azure;
 
 namespace LifeMap.Membership.Rest
 {
     public class Global : System.Web.HttpApplication
     {
-        private static Configure _configure;
-
         void Application_Start(object sender, EventArgs e)
         {
-            NServiceBus.SetLoggingLibrary.Log4Net(log4net.Config.XmlConfigurator.Configure);
-            log4net.LogManager.GetLogger(this.GetType()).Info("Starting Application_Start");
-
-            try
-            {
-                _configure = ConfigureBus();
-                InitializeBus();
-            }
-            catch (Exception ex)
-            {
-                log4net.LogManager.GetLogger(this.GetType()).FatalFormat("Exception during NServiceBus startup: {0}", ex.Message);
-                throw;
-            }
             AutomapperConfiguration.Initialize();
-
         }
 
-        private Configure ConfigureBus()
+        private static Configure ConfigureBus()
         {
             return NServiceBus.Configure.WithWeb()
-                .WithDefaultMessageSpecifications()
-                .Log4Net()
                 .DefaultBuilder()
-                .MsmqTransport()
+                .WithDefaultMessageSpecifications()
+                .Log4Net(new AzureAppender())
                 .UnicastBus()
-                .IsTransactional(false)
-                .PurgeOnStartup(false)
-                .XmlSerializer()
+                .AzureMessageQueue()
+                    .JsonSerializer()
+                .RavenPersistence()
+                .RavenSagaPersister()
                 .RavenSubscriptionStorage();
         }
 
-        public static IBus Bus { get; set; }
-
-        public static void InitializeBus()
+        public static readonly Lazy<IBus> StartBus = new Lazy<IBus>(InitializeBus);
+        public static IBus Bus { get; private set; }
+        public static IBus InitializeBus()
         {
-            Bus = _configure
-                            .CreateBus()
-                            .Start(() => Configure.Instance.ForInstallationOn<NServiceBus.Installation.Environments.Windows>().Install());
+            return ConfigureBus().CreateBus().Start();
+        }
+
+        protected void Application_BeginRequest()
+        {
+            Bus = StartBus.Value;
         }
     }
 }

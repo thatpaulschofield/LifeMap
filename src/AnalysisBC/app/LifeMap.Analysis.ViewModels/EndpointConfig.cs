@@ -1,9 +1,12 @@
 ﻿using LifeMap.Common.Infrastructure;
 using NServiceBus;
+using NServiceBus.Hosting.Azure;
 
 namespace LifeMap.Analysis.ViewModels
 {
-    public class EndpointConfig : ViewModelEndpointConfig, IConfigureThisEndpoint, AsA_Server, IWantCustomInitialization
+    public class Host : RoleEntryPoint { }
+
+    public class EndpointConfig : ViewModelEndpointConfig, IConfigureThisEndpoint, AsA_Worker, IWantCustomInitialization
     {
         public EndpointConfig()
         {

@@ -5,13 +5,16 @@ using EventStore;
 using LifeMap.Common.Infrastructure;
 using LifeMap.Common.Infrastructure.Configuration;
 using NServiceBus;
+using NServiceBus.Hosting.Azure;
 using Raven.Client;
 using Raven.Client.Document;
 using Raven.Client.Extensions;
 
 namespace LifeMap.Analysis.MessageHandlers
 {
-    public class EndpointConfig : IConfigureThisEndpoint, AsA_Server, IWantCustomInitialization
+    public class Host : RoleEntryPoint { }
+
+    public class EndpointConfig : IConfigureThisEndpoint, AsA_Worker, IWantCustomInitialization
     {
         public static IContainer Container;
 

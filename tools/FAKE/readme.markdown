@@ -1,5 +1,9 @@
 # What is "FAKE - F# Make"?
 
+## Mailing list
+
+The "FAKE - F# Make" mailing list can be found at [http://groups.google.com/group/fsharpMake](http://groups.google.com/group/fsharpMake).
+
 ## Introduction
 
 Modern build automation systems are not limited to simply recompile programs if source code has changed. 
@@ -27,19 +31,8 @@ For instance custom build tasks can be added simply by referencing .NET assembli
 
 You can download the latest builds from http://teamcity.codebetter.com. You don't need to register, a guest login is ok.
 
-* [Latest stable build](http://teamcity.codebetter.com/viewLog.html?buildId=lastSuccessful&buildTypeId=bt114&tab=artifacts)
-* [Latest development build](http://teamcity.codebetter.com/viewLog.html?buildId=lastSuccessful&buildTypeId=bt166&tab=artifacts)
-
-## How to contribute code
-
-* Login in github (you need an account)
-* Fork the main repository from [Github](https://github.com/forki/FAKE)
-* Push your changes to your fork
-* Send me a pull request
-
-## Mailing list
-
-The "FAKE - F# Make" mailing list can be found at [http://groups.google.com/group/fsharpMake](http://groups.google.com/group/fsharpMake).
+* [Latest stable build](http://teamcity.codebetter.com/viewLog.html?buildId=18154&buildTypeId=bt114&tab=artifacts)
+* [Latest development build](http://teamcity.codebetter.com/viewLog.html?buildId=18219&buildTypeId=bt166&tab=artifacts) 
 
 ## Articles
 
@@ -69,7 +62,6 @@ The "FAKE - F# Make" mailing list can be found at [http://groups.google.com/grou
 * Clean task
 * [NUnit](http://www.nunit.org) support
 * [xUnit.net](http://www.codeplex.com/xunit) support
-* [MSpec](https://github.com/machine/machine.specifications) support
 * NCover support
 * FxCop support
 * ExecProcess task (To run tools via the command line)
@@ -102,11 +94,6 @@ You can define prerequisites for tasks:
 	// Target Default is dependent from target Clean and BuildApp
 	// "FAKE - F# Make" will run these targets before Default
 	"Default"  <== ["Clean"; "BuildApp"]
-	
-It is also possible to define the dependencies as a build order:
-	
-	// "FAKE - F# Make" will run these targets in the order Clean, BuildApp, Default
-	"Clean" ==> "BuildApp" ==> "Default"
 
 ### Running targets
 
@@ -184,19 +171,7 @@ and memoizes it.
 						  {p with 
 							 ToolPath = nunitPath; 
 							 DisableShadowCopy = true; 
-							 OutputFile = testDir + "TestResults.xml"}))
-							 
-### MSpec
-	// define test dlls
-	let testDlls = !+ (testDir + @"/Test.*.dll") |> Scan
-	 
-	Target "MSpecTest" (fun _ ->
-			testDlls
-			  |> MSpec (fun p -> 
-						  {p with 
-							 ExcludeTags = ["LongRunning"]
-							 HtmlOutputDir = testOutputDir						  
-							 ToolPath = ".\toools\MSpec\mspec.exe"}))
+							 OutputFile = testDir + "TestResults.xml"}))   
 
 ### xUnit.net
 
@@ -326,13 +301,15 @@ You can read [Getting started with FAKE](http://www.navision-blog.de/2009/04/01/
             |> Zip buildDir (deployDir + "Calculator." + version + ".zip")
     )
     
-    // Build order
-	"Clean"
-      ==> "BuildApp" <=> "BuildTest"
-      ==> "FxCop"
-      ==> "NUnitTest"
-      ==> "xUnitTest"
-      ==> "Deploy"
+    Target "Test" DoNothing
+    
+    // Dependencies
+    "BuildApp" <== ["Clean"]
+    "BuildTest" <== ["Clean"]
+    "NUnitTest" <== ["BuildApp"; "BuildTest"; "FxCop"]
+    "xUnitTest" <== ["BuildApp"; "BuildTest"; "FxCop"]
+    "Test" <== ["xUnitTest"; "NUnitTest"]
+    "Deploy" <== ["Test"]
      
     // start build
-    Run "Deploy"
+    Run "Deploy
