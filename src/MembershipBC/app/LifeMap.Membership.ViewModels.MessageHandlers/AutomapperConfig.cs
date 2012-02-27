@@ -14,7 +14,6 @@ namespace LifeMap.Membership.ViewModels
             Mapper.CreateMap<RegistrationStartedEvent, RegistrationViewModel>()
                 .ForMember(x => x.OfferId, opts => opts.Ignore())
                 .ForMember(x => x.UserName, opts => opts.Ignore())
-                .ForMember(x => x.Password, opts => opts.Ignore())
                 .ForMember(x => x.CanAddCreditCardInfo, opts => opts.Ignore())
                 .ForMember(x => x.CanAddLogin, opts => opts.Ignore())
                 .ForMember(x => x.CanSubmit, opts => opts.Ignore())

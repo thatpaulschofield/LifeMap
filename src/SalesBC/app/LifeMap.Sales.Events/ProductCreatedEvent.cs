@@ -6,7 +6,7 @@ using LifeMap.Common.Domain;
 
 namespace LifeMap.Sales.Events
 {
-    public class ProductCreatedEvent : MessageBase
+    public class ProductCreatedEvent //: MessageBase
     {
         public Guid ProductId { get; set; }
         public string Name { get; set; }

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ServiceConfiguration serviceName="AzureHost" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="1" osVersion="*">
+  <Role name="LifeMap.Web">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+    </ConfigurationSettings>
+  </Role>
+  <Role name="LifeMap.NServiceBus.Host">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="DynamicHostControllerConfig.RecycleRoleOnError" value="true" />
+      <Setting name="DynamicHostControllerConfig.AutoUpdate" value="true" />
+      <Setting name="DynamicHostControllerConfig.UpdateInterval" value="1000" />
+      <Setting name="NServiceBus.Profile" value="NServiceBus.Production" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+    </ConfigurationSettings>
+  </Role>
+</ServiceConfiguration>

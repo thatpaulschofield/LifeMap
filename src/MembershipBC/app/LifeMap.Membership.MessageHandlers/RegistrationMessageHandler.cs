@@ -11,8 +11,10 @@ using NServiceBus;
 
 namespace LifeMap.Membership.MessageHandlers
 {
-    public class RegistrationMessageHandler : IMessageHandler<StartRegistrationCommand>, IMessageHandler<SelectLoginForRegistrationCommand>,
-        IMessageHandler<EnterCreditCardInformationForRegistrationCommand>, IMessageHandler<ConfirmRegisteredEmailAddressCommand>
+    public class RegistrationMessageHandler : IMessageHandler<StartRegistrationCommand>,
+                                              IMessageHandler<SelectLoginForRegistrationCommand>,
+                                              IMessageHandler<EnterCreditCardInformationForRegistrationCommand>,
+                                              IMessageHandler<ConfirmRegisteredEmailAddressCommand>
     {
         private readonly ISagaRepository _repository;
 
@@ -25,56 +27,28 @@ namespace LifeMap.Membership.MessageHandlers
         {
             Registration registration = _repository.GetById<Registration>(command.RegistrationId);
             registration.StartRegistration(command);
-            try
-            {
-                _repository.Save(registration, Guid.NewGuid(), h => { });
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            _repository.Save(registration, Guid.NewGuid(), h => { });
         }
 
         public void Handle(SelectLoginForRegistrationCommand command)
         {
             Registration registration = _repository.GetById<Registration>(command.RegistrationId);
             registration.LoginEntered(command);
-            try
-            {
-                _repository.Save(registration, Guid.NewGuid(), h => { });
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            _repository.Save(registration, Guid.NewGuid(), h => { });
         }
 
         public void Handle(EnterCreditCardInformationForRegistrationCommand command)
         {
             Registration registration = _repository.GetById<Registration>(command.RegistrationId);
             registration.EnterCreditCardInformation(command);
-            try
-            {
-                _repository.Save(registration, Guid.NewGuid(), h => { });
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            _repository.Save(registration, Guid.NewGuid(), h => { });
         }
 
         public void Handle(ConfirmRegisteredEmailAddressCommand command)
         {
             Registration registration = _repository.GetById<Registration>(command.RegistrationId);
             registration.ConfirmEmailAddress(command);
-            try
-            {
-                _repository.Save(registration, Guid.NewGuid(), h => { });
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+            _repository.Save(registration, Guid.NewGuid(), h => { });
         }
     }
 }

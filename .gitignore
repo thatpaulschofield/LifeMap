@@ -14,3 +14,8 @@ _ReSharper.*/
 /Raven/Data
 /packages/*
 *.suo
+/LifeMap.Raven.Host/Data
+/LifeMap.Raven.Host/Tenants
+/LifeMap.Raven.Host/Data
+build/
+deploy/

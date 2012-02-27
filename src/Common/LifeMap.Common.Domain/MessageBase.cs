@@ -1,15 +1,17 @@
 ﻿using System;
+using System.Runtime.Serialization;
 
 namespace LifeMap.Common.Domain
 {
-    [Serializable]
-    public abstract class MessageBase : IMessage
-    {
-        protected MessageBase()
-        {
-            Id = Guid.NewGuid();
-        }
+    //[DataContract, Serializable]
+    //public abstract class MessageBase : IMessage
+    //{
+    //    protected MessageBase()
+    //    {
+    //        Id = Guid.NewGuid();
+    //    }
 
-        public Guid Id { get; set; }
-    }
+    //    [DataMember]
+    //    public Guid Id { get; set; }
+    //}
 }

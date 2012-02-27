@@ -1,50 +1,57 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ServiceConfiguration serviceName="AzureHost" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration" osFamily="1" osVersion="*">
-  <Role name="LifeMap.Raven.Host">
-    <Instances count="1" />
-    <ConfigurationSettings>
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="true" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="thatpaulschofield" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="MIIBnQYJKoZIhvcNAQcDoIIBjjCCAYoCAQAxggFOMIIBSgIBADAyMB4xHDAaBgNVBAMME1dpbmRvd3MgQXp1cmUgVG9vbHMCEAdwcDywm3OTQ2oDmE+yqtcwDQYJKoZIhvcNAQEBBQAEggEANtLGJ3zM9YJe84bfQ0bi8bdbb1QCCkXnNJGGb8CQq8HjjygZRmXyPbZTkpStljrr6KYNOheamXCx2tCIzClm1eN/LSZlEDoXFiNAosQMwjQGgBRytIwuzJ+BJ8/rC7jA7CqxN76oJaDvAlfnNHgboWOmB2SGcGT14tREAxuyY4Rgo+doCAD6fbQuEIcqX3BrXBj0Wy+nYg6JGpd/5bR3XLoaZY6o5om/E7EDKKQs4OlL3/ALUSiJN4UvJOvanYhTw3EmY5rqjS39vSy7s4+CiPZEYsKYwMo4TBxrPEILGALDJNSgMW16LBOl7z1nHcsqrwXSDVJbG5NGsY5swq3F/DAzBgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECFVYF0k5RYxHgBAqaK5BaFOqHxUn6JYbJTVH" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2014-02-12T23:59:59.0000000-06:00" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteForwarder.Enabled" value="true" />
-      <Setting name="StorageConnectionString" value="UseDevelopmentStorage=true" />
-      <Setting name="Raven.Data.CloudContainerName" value="raven" />
-      <Setting name="Raven.Data.CloudDriveName" value="DatabaseDrive.vhd" />
-      <Setting name="Raven.Data.CloudDriveSize" value="200" />
-      <Setting name="Raven.Data.CloudDriveReadCacheSize" value="200" />
-    </ConfigurationSettings>
-    <Certificates>
-      <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" thumbprint="1EAE4DD180EC31D69E1E119D94048032091C4021" thumbprintAlgorithm="sha1" />
-    </Certificates>
-  </Role>
-  <Role name="LifeMap.NServiceBus.Host">
-    <Instances count="1" />
-    <ConfigurationSettings>
-      <Setting name="DynamicHostControllerConfig.UpdateInterval" value="1000" />
-      <Setting name="DynamicHostControllerConfig.RecycleRoleOnError" value="true" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="true" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="thatpaulschofield" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="MIIBnQYJKoZIhvcNAQcDoIIBjjCCAYoCAQAxggFOMIIBSgIBADAyMB4xHDAaBgNVBAMME1dpbmRvd3MgQXp1cmUgVG9vbHMCEAdwcDywm3OTQ2oDmE+yqtcwDQYJKoZIhvcNAQEBBQAEggEANtLGJ3zM9YJe84bfQ0bi8bdbb1QCCkXnNJGGb8CQq8HjjygZRmXyPbZTkpStljrr6KYNOheamXCx2tCIzClm1eN/LSZlEDoXFiNAosQMwjQGgBRytIwuzJ+BJ8/rC7jA7CqxN76oJaDvAlfnNHgboWOmB2SGcGT14tREAxuyY4Rgo+doCAD6fbQuEIcqX3BrXBj0Wy+nYg6JGpd/5bR3XLoaZY6o5om/E7EDKKQs4OlL3/ALUSiJN4UvJOvanYhTw3EmY5rqjS39vSy7s4+CiPZEYsKYwMo4TBxrPEILGALDJNSgMW16LBOl7z1nHcsqrwXSDVJbG5NGsY5swq3F/DAzBgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECFVYF0k5RYxHgBAqaK5BaFOqHxUn6JYbJTVH" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2014-02-12T23:59:59.0000000-06:00" />
-    </ConfigurationSettings>
-    <Certificates>
-      <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" thumbprint="1EAE4DD180EC31D69E1E119D94048032091C4021" thumbprintAlgorithm="sha1" />
-    </Certificates>
-  </Role>
   <Role name="LifeMap.Web">
     <Instances count="1" />
     <ConfigurationSettings>
       <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.Enabled" value="true" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountUsername" value="thatpaulschofield" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountEncryptedPassword" value="MIIBnQYJKoZIhvcNAQcDoIIBjjCCAYoCAQAxggFOMIIBSgIBADAyMB4xHDAaBgNVBAMME1dpbmRvd3MgQXp1cmUgVG9vbHMCEAdwcDywm3OTQ2oDmE+yqtcwDQYJKoZIhvcNAQEBBQAEggEANtLGJ3zM9YJe84bfQ0bi8bdbb1QCCkXnNJGGb8CQq8HjjygZRmXyPbZTkpStljrr6KYNOheamXCx2tCIzClm1eN/LSZlEDoXFiNAosQMwjQGgBRytIwuzJ+BJ8/rC7jA7CqxN76oJaDvAlfnNHgboWOmB2SGcGT14tREAxuyY4Rgo+doCAD6fbQuEIcqX3BrXBj0Wy+nYg6JGpd/5bR3XLoaZY6o5om/E7EDKKQs4OlL3/ALUSiJN4UvJOvanYhTw3EmY5rqjS39vSy7s4+CiPZEYsKYwMo4TBxrPEILGALDJNSgMW16LBOl7z1nHcsqrwXSDVJbG5NGsY5swq3F/DAzBgkqhkiG9w0BBwEwFAYIKoZIhvcNAwcECFVYF0k5RYxHgBAqaK5BaFOqHxUn6JYbJTVH" />
-      <Setting name="Microsoft.WindowsAzure.Plugins.RemoteAccess.AccountExpiration" value="2014-02-12T23:59:59.0000000-06:00" />
     </ConfigurationSettings>
-    <Certificates>
-      <Certificate name="Microsoft.WindowsAzure.Plugins.RemoteAccess.PasswordEncryption" thumbprint="1EAE4DD180EC31D69E1E119D94048032091C4021" thumbprintAlgorithm="sha1" />
-    </Certificates>
+  </Role>
+  <Role name="LifeMap.Membership.MessageHandlers">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="AzureQueueConfig.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="AzureQueueConfig.QueueName" value="lifemap-membership-messagehandlers" />
+      <Setting name="AzureProfileConfig.Profiles" value="NServiceBus.Production NServiceBus.OnAzureTableStorage NServiceBus.WithAzureStorageQueues" />
+      <Setting name="AzureSubscriptionStorageConfig.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="Diagnostics.Level" value="Verbose" />
+      <Setting name="Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="UnicastBusConfig.LocalAddress" value="lifemap-membership-messagehandlers" />
+      <Setting name="MessageForwardingInCaseOfFaultConfig.ErrorQueue" value="errorqueue" />
+      <Setting name="MsmqTransportConfig.NumberOfWorkerThreads" value="1" />
+      <Setting name="MsmqTransportConfig.MaxRetries" value="5" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+    </ConfigurationSettings>
+  </Role>
+  <Role name="LifeMap.EmailGateway">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="AzureQueueConfig.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="AzureQueueConfig.QueueName" value="lifemap-emailgateway" />
+      <Setting name="AzureProfileConfig.Profiles" value="NServiceBus.Production NServiceBus.OnAzureTableStorage NServiceBus.WithAzureStorageQueues" />
+      <Setting name="AzureSubscriptionStorageConfig.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="Diagnostics.Level" value="Verbose" />
+      <Setting name="Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="UnicastBusConfig.LocalAddress" value="lifemap-emailgateway" />
+      <Setting name="MessageForwardingInCaseOfFaultConfig.ErrorQueue" value="errorqueue" />
+      <Setting name="MsmqTransportConfig.NumberOfWorkerThreads" value="1" />
+      <Setting name="MsmqTransportConfig.MaxRetries" value="5" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+    </ConfigurationSettings>
+  </Role>
+  <Role name="LifeMap.Membership.ViewModels.MessageHandlers">
+    <Instances count="1" />
+    <ConfigurationSettings>
+      <Setting name="AzureQueueConfig.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="AzureQueueConfig.QueueName" value="lifemap-membership-viewmodels-messagehandlers" />
+      <Setting name="AzureProfileConfig.Profiles" value="NServiceBus.Production NServiceBus.OnAzureTableStorage NServiceBus.WithAzureStorageQueues" />
+      <Setting name="AzureSubscriptionStorageConfig.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="Diagnostics.Level" value="Verbose" />
+      <Setting name="Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+      <Setting name="UnicastBusConfig.LocalAddress" value="lifemap-membership-viewmodels-messagehandlers" />
+      <Setting name="MessageForwardingInCaseOfFaultConfig.ErrorQueue" value="errorqueue" />
+      <Setting name="MsmqTransportConfig.NumberOfWorkerThreads" value="1" />
+      <Setting name="MsmqTransportConfig.MaxRetries" value="5" />
+      <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" value="UseDevelopmentStorage=true" />
+    </ConfigurationSettings>
   </Role>
 </ServiceConfiguration>

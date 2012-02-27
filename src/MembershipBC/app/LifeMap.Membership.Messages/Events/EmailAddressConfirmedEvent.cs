@@ -1,11 +1,11 @@
 using System;
 using System.Runtime.Serialization;
-using LifeMap.Common.Domain;
+using NServiceBus;
 
 namespace LifeMap.Membership.RegistrationProcess
 {
-    [Serializable]
-    public class EmailAddressConfirmedEvent : MessageBase
+    [DataContract, Serializable]
+    public class EmailAddressConfirmedEvent : IEvent //: MessageBase
     {
         public static EmailAddressConfirmedEvent Create(Guid id, Guid registrationId, string emailAddress)
         {
@@ -16,7 +16,10 @@ namespace LifeMap.Membership.RegistrationProcess
                            EmailAddress = emailAddress
                        };
         }
-        
+
+        [DataMember]
+        public Guid Id { get; set; }
+
         [DataMember]
         public string EmailAddress { get; set; }
 

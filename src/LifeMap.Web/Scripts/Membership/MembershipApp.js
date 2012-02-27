@@ -28,6 +28,7 @@ LifeMapApp.MembershipApp = (function (LifeMapApp, Backbone) {
     Membership.StartRegistrationModel = Backbone.Model.extend({
         FirstName: "",
         LastName: "",
+        Passowrd: "",
         Id: "",
         url: "/Membership/registrations/start"
     });

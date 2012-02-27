@@ -122,6 +122,7 @@
     <Content Include="Scripts\LifeMapApp.js" />
     <Content Include="Scripts\LifeMapApp.Router.js" />
     <Content Include="Scripts\Membership\MembershipApp.js" />
+    <Content Include="Scripts\lib\modernizr-2.0.6-development-only.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

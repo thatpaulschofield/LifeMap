@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Runtime.Serialization;
 using LifeMap.Common.Domain;
 
 namespace LifeMap.Sales.Events
 {
-    [Serializable]
-    public class SubscriptionPurchasedEvent : MessageBase
+    [DataContract, Serializable]
+    public class SubscriptionPurchasedEvent //: MessageBase
     {
         public Guid LoginId { get; set; }
         public Guid ProductId { get; set; }

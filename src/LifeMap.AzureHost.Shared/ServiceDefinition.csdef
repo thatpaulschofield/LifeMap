@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ServiceDefinition name="AzureHost" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition">
+  <WebRole name="LifeMap.Web" vmsize="Small">
+    <Sites>
+      <Site name="Web">
+        <VirtualApplication name="Membership" physicalDirectory="C:\projects\LifeMap\src\MembershipBC\app\LifeMap.Membership.Rest\" />
+        <Bindings>
+          <Binding name="Endpoint1" endpointName="Endpoint1" />
+        </Bindings>
+      </Site>
+    </Sites>
+    <Endpoints>
+      <InputEndpoint name="Endpoint1" protocol="http" port="80" />
+    </Endpoints>
+    <Imports>
+      <Import moduleName="Diagnostics" />
+    </Imports>
+  </WebRole>
+  <WorkerRole name="LifeMap.NServiceBus.Host" vmsize="Small">
+    <ConfigurationSettings>
+      <Setting name="DynamicHostControllerConfig.RecycleRoleOnError" />
+      <Setting name="DynamicHostControllerConfig.AutoUpdate" />
+      <Setting name="DynamicHostControllerConfig.UpdateInterval" />
+      <Setting name="NServiceBus.Profile" />
+    </ConfigurationSettings>
+    <Imports>
+      <Import moduleName="Diagnostics" />
+    </Imports>
+    <LocalResources>
+      <LocalStorage name="endpoints" sizeInMB="250" cleanOnRoleRecycle="true" />
+    </LocalResources>
+  </WorkerRole>
+</ServiceDefinition>

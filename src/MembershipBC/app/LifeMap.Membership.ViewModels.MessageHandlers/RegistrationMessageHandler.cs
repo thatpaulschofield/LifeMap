@@ -8,8 +8,9 @@ using Raven.Client;
 
 namespace LifeMap.Membership.ViewModels.MessageHandlers
 {
-    public class RegistrationMessageHandler : IDenormalize<RegistrationViewModel>, 
-        IHandleMessages<RegistrationStartedEvent>, 
+    public class RegistrationMessageHandler : 
+        //IDenormalize<RegistrationViewModel>, 
+        IHandleMessages<RegistrationStartedEvent>,
         IHandleMessages<LoginEnteredForRegistrationEvent>,
         IHandleMessages<CreditCardInformationEnteredForRegistrationEvent>,
         IHandleMessages<ISpecifyCanSubmitRegistration>,
@@ -66,12 +67,14 @@ namespace LifeMap.Membership.ViewModels.MessageHandlers
         {
             var vm = FetchRegistration(message.RegistrationId);
             vm.CanSubmit = message.CanSubmitRegistration;
+            _session.SaveChanges();
         }
 
         public void Handle(RegisteredEmailAddressConfirmed message)
         {
             var vm = FetchRegistration(message.RegistrationId);
             vm.EmailAddressConfirmed = true;
+            _session.SaveChanges();
         }
     }
 }

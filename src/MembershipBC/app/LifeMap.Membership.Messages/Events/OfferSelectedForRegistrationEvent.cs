@@ -1,10 +1,11 @@
 ﻿using System;
-using LifeMap.Common.Domain;
+using System.Runtime.Serialization;
+
 
 namespace LifeMap.Membership.Events
 {
-    [Serializable]
-    public class OfferSelectedForRegistrationEvent : MessageBase, ISpecifyCanSubmitRegistration
+    [DataContract, Serializable]
+    public class OfferSelectedForRegistrationEvent //: MessageBase, ISpecifyCanSubmitRegistration
     {
         public OfferSelectedForRegistrationEvent()
         {
@@ -18,8 +19,17 @@ namespace LifeMap.Membership.Events
             CanSubmitRegistration = canSubmit;
         }
 
+        [DataMember]
+        public Guid Id { get; set; }
+
+
+        [DataMember]
         public Guid RegistrationId { get; set; }
+
+        [DataMember]
         public Guid OfferId { get; set; }
+
+        [DataMember]
         public bool CanSubmitRegistration { get; set; }
     }
 }

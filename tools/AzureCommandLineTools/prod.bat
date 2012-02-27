@@ -1,0 +1,6 @@
+@ECHO OFF
+SET AZURE_CONNECTION_STRING=DefaultEndpointsProtocol=http;AccountName=lifemapstorage;AccountKey=uEaXxB402FfmanGSDl7Q4UYNV61vd34QENjWsd1mVGh0Q//D50epq9l18GPo2YQC8H+L3x74O6dXQBAyiHUlCQ==
+SET DefaultEndpointsProtocol=http
+SET AccountName=lifemapstorage
+SET AccountKey=uEaXxB402FfmanGSDl7Q4UYNV61vd34QENjWsd1mVGh0Q//D50epq9l18GPo2YQC8H+L3x74O6dXQBAyiHUlCQ==
+echo Environment set to Production.

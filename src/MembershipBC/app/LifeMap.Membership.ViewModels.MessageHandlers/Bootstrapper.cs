@@ -22,13 +22,12 @@ namespace LifeMap.Membership.ViewModels
             new AutomapperConfig().Initialize();
 
             var builder = new ContainerBuilder();
-            builder.RegisterType<RegistrationMessageHandler>()
-                .As<RegistrationMessageHandler>()
-                .AsImplementedInterfaces();
+            
             var documentStore = BuildDocumentStore(DatabaseNames.MembershipViewModels);
             builder.RegisterInstance(documentStore);
             builder.Register<IDocumentSession>(c =>c.Resolve<IDocumentStore>().OpenSession());
             builder.RegisterType<RegistrationMessageHandler>().As<RegistrationMessageHandler>().AsImplementedInterfaces();
+            builder.RegisterType<ConfigOverride>().AsImplementedInterfaces();
             //builder.RegisterType<RavenUnitOfWork>().As<IManageUnitsOfWork>();
             builder.Update(container);
             return container;

@@ -29,13 +29,13 @@ namespace RavenDbRole.WebRole
                 {
                     // Allocate total read cache for all Azure drives to be mounted as part of this role (maximum cache size)
                     // Provided value is the name of Local Storage from Azure's Role configuration
-                    AzureCloudDrive.PrepareLocalReadCache("CloudDriveLocalReadCache");
+                    //AzureCloudDrive.PrepareLocalReadCache("CloudDriveLocalReadCache");
 
                     // Mount drive that will be stored in Container with certain blob Name, given drive size (in MB) and read cache size (subset of maximum cache size allocated above)
-                    driveRoot = AzureCloudDrive.MountDrive(driveConfiguration.CloudContainerName,
-                                                               driveConfiguration.CloudDriveName,
-                                                               driveConfiguration.CloudDriveSize,
-                                                               driveConfiguration.CloudDriveReadCacheSize);
+                    driveRoot = @"D:\"; //AzureCloudDrive.MountDrive(driveConfiguration.CloudContainerName,
+                                                               //driveConfiguration.CloudDriveName,
+                                                               //driveConfiguration.CloudDriveSize,
+                                                               //driveConfiguration.CloudDriveReadCacheSize);
                 }
                 else
                 {

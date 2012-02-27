@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
-using LifeMap.Common.Domain;
+
 
 namespace LifeMap.Membership.Events
 {
-    [Serializable]
-    public class LoginEnteredForRegistrationEvent : MessageBase, ISpecifyCanSubmitRegistration
+    [DataContract, Serializable]
+    public class LoginEnteredForRegistrationEvent //: MessageBase, ISpecifyCanSubmitRegistration
     {
         public LoginEnteredForRegistrationEvent()
         {
@@ -21,8 +22,16 @@ namespace LifeMap.Membership.Events
             CanSubmitRegistration = canSubmit;
         }
 
+        [DataMember]
+        public Guid Id { get; set; }
+
+        [DataMember]
         public Guid RegistrationId { get; set; }
+
+        [DataMember]
         public Guid LoginId { get; set; }
+
+        [DataMember]
         public bool CanSubmitRegistration { get; set; }
     }
 }

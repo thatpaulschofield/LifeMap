@@ -1,11 +1,13 @@
 ﻿using System;
-using LifeMap.Common.Domain;
+using System.Runtime.Serialization;
+
 
 namespace LifeMap.Membership.Events
 {
-    [Serializable]
-    public class MemberCreatedEvent : MessageBase
+    [DataContract, Serializable]
+    public class MemberCreatedEvent //: MessageBase
     {
+        [DataMember]
         public Guid MemberId { get; set; }
     }
 }

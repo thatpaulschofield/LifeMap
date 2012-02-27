@@ -1,9 +1,8 @@
 using System;
-using LifeMap.Common.Domain;
 
 namespace LifeMap.Membership.Events
 {
-    public interface ISpecifyCanSubmitRegistration : IMessage
+    public interface ISpecifyCanSubmitRegistration
     {
         Guid RegistrationId { get; }
         bool CanSubmitRegistration { get; }

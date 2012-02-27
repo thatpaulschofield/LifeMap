@@ -57,11 +57,16 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.Web.Administration, Version=7.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\..\Windows\System32\inetsrv\Microsoft.Web.Administration.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.WindowsAzure.CloudDrive, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.WindowsAzure.Diagnostics, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="Microsoft.WindowsAzure.ServiceRuntime, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.WindowsAzure.ServiceRuntime, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.WindowsAzure.StorageClient, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="Newtonsoft.Json, Version=4.0.5.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -112,6 +117,8 @@
     <Reference Include="System.Web.ApplicationServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\IndexDefinitions\TemporaryIndexDefinitionsAsSource\dbfej2o3.dll" />
+    <Content Include="Data\raven-data.ico" />
     <Content Include="Debug.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
@@ -130,6 +137,7 @@
   <ItemGroup>
     <Compile Include="Azure\AzureCloudDrive.cs" />
     <Compile Include="Azure\CloudIISConfiguration.cs" />
+    <Compile Include="Data\IndexDefinitions\TemporaryIndexDefinitionsAsSource\dbfej2o3.0.cs" />
     <Compile Include="Debug.aspx.cs">
       <DependentUpon>Debug.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -154,12 +162,32 @@
     <Compile Include="WebRole\RavenDbRole.cs" />
     <Compile Include="WebRole\RavenDriveConfiguration.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Data\Data" />
+    <None Include="Data\IndexDefinitions\Raven%252fDocumentsByEntityName.index" />
+    <None Include="Data\IndexDefinitions\Raven%252fDocumentsByExpirationDate.index" />
+    <None Include="Data\IndexDefinitions\TemporaryIndexDefinitionsAsSource\dbfej2o3.cmdline" />
+    <None Include="Data\IndexDefinitions\TemporaryIndexDefinitionsAsSource\dbfej2o3.err" />
+    <None Include="Data\IndexDefinitions\TemporaryIndexDefinitionsAsSource\dbfej2o3.out" />
+    <None Include="Data\IndexDefinitions\TemporaryIndexDefinitionsAsSource\dbfej2o3.tmp" />
+    <None Include="Data\Indexes\Raven%252fDocumentsByEntityName\segments.gen" />
+    <None Include="Data\Indexes\Raven%252fDocumentsByEntityName\segments_1" />
+    <None Include="Data\Indexes\Raven%252fDocumentsByExpirationDate\segments.gen" />
+    <None Include="Data\Indexes\Raven%252fDocumentsByExpirationDate\segments_1" />
+    <None Include="Data\logs\RVN.log" />
+    <None Include="Data\logs\RVNres00001.jrs" />
+    <None Include="Data\logs\RVNres00002.jrs" />
+    <None Include="Data\system\RVN.chk" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="Site.Master" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Data\temp\" />
+    <Folder Include="Tenants\" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -168,8 +196,8 @@
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
-          <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>49269</DevelopmentServerPort>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>8080</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

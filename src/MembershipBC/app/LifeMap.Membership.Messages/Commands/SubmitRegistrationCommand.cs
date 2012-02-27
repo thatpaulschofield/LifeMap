@@ -1,11 +1,14 @@
 ﻿using System;
-using LifeMap.Common.Domain;
+using System.Runtime.Serialization;
+using NServiceBus;
+
 
 namespace LifeMap.Membership.Commands
 {
-    [Serializable]
-    public class SubmitRegistrationCommand : MessageBase
+    [DataContract, Serializable]
+    public class SubmitRegistrationCommand : ICommand //: MessageBase
     {
-        
+        [DataMember]
+        public Guid Id { get; set; }
     }
 }

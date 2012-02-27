@@ -9,7 +9,7 @@ using LifeMap.Sales.Commands;
 
 namespace Lifemap.Membership.Sales.ACL.Model
 {
-    public class RegistrationCart : SagaBase<IMessage>
+    public class RegistrationCart : SagaBase<object>
     {
         public RegistrationCart()
         {

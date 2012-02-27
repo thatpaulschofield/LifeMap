@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
-using LifeMap.Common.Domain;
+using NServiceBus;
+
 
 namespace LifeMap.Membership.Commands
 {
-    [Serializable]
-    public class SelectOfferCommand : MessageBase
+    [DataContract, Serializable]
+    public class SelectOfferCommand : ICommand //: MessageBase
     {
         public SelectOfferCommand()
         {
@@ -19,8 +21,11 @@ namespace LifeMap.Membership.Commands
             OfferId = offerId;
         }
 
+
+        [DataMember]
         public Guid RegistrationId { get; set; }
 
+        [DataMember]
         public Guid OfferId { get; set; }
     }
 }

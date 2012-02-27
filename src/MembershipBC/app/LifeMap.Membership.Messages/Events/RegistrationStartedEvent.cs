@@ -1,31 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
-using LifeMap.Common.Domain;
+using NServiceBus;
+
 
 namespace LifeMap.Membership.Events
 {
-    [Serializable]
-    public class RegistrationStartedEvent : MessageBase
+    [DataContract, Serializable]
+    public class RegistrationStartedEvent : IEvent //: IMessage
     {
         public RegistrationStartedEvent()
         {
         }
 
-        public RegistrationStartedEvent(Guid registrationId, string firstName, string lastName, string emailAddress)
+        public RegistrationStartedEvent(Guid registrationId, string firstName, string lastName, string emailAddress, string password)
         {
             Id = registrationId;
             RegistrationId = registrationId;
             FirstName = firstName;
             LastName = lastName;
             EmailAddress = emailAddress;
+            Password = password;
         }
 
+        [DataMember]
+        public Guid Id { get; set; }
+
+        [DataMember]
         public Guid RegistrationId { get; set; }
+
+        [DataMember]
         public string FirstName { get; set; }
+
+        [DataMember]
         public string LastName { get; set; }
+
+        [DataMember]
         public string EmailAddress { get; set; }
+
+        [DataMember]
+        public string Password { get; set; }
 
         public override string ToString()
         {

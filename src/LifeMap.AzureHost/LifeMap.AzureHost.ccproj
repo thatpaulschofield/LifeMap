@@ -37,20 +37,12 @@
     <ServiceConfiguration Include="ServiceConfiguration.Cloud.cscfg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\LifeMap.Raven.Host\LifeMap.Raven.Host.csproj">
-      <Name>LifeMap.Raven.Host</Name>
-      <Project>{cabe5996-cd2b-423d-ae47-c0e8300a8488}</Project>
-      <Private>True</Private>
-      <RoleType>Web</RoleType>
-      <RoleName>LifeMap.Raven.Host</RoleName>
-      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
-    </ProjectReference>
-    <ProjectReference Include="..\LifeMap.NServiceBus.Host\LifeMap.NServiceBus.Host.csproj">
-      <Name>LifeMap.NServiceBus.Host</Name>
-      <Project>{b3d3be7a-3a99-46b5-8643-35b29931fa72}</Project>
+    <ProjectReference Include="..\EmailGateway\LifeMap.EmailGateway\LifeMap.EmailGateway.csproj">
+      <Name>LifeMap.EmailGateway</Name>
+      <Project>{b66bce8e-81b7-4bb4-a32e-3d0898c80750}</Project>
       <Private>True</Private>
       <RoleType>Worker</RoleType>
-      <RoleName>LifeMap.NServiceBus.Host</RoleName>
+      <RoleName>LifeMap.EmailGateway</RoleName>
       <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
     <ProjectReference Include="..\LifeMap.Web\LifeMap.Web.csproj">
@@ -59,6 +51,22 @@
       <Private>True</Private>
       <RoleType>Web</RoleType>
       <RoleName>LifeMap.Web</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
+    <ProjectReference Include="..\MembershipBC\app\LifeMap.Membership.MessageHandlers\LifeMap.Membership.MessageHandlers.csproj">
+      <Name>LifeMap.Membership.MessageHandlers</Name>
+      <Project>{40ced43a-98ff-42ef-9536-6c353f747692}</Project>
+      <Private>True</Private>
+      <RoleType>Worker</RoleType>
+      <RoleName>LifeMap.Membership.MessageHandlers</RoleName>
+      <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
+    </ProjectReference>
+    <ProjectReference Include="..\MembershipBC\app\LifeMap.Membership.ViewModels.MessageHandlers\LifeMap.Membership.ViewModels.MessageHandlers.csproj">
+      <Name>LifeMap.Membership.ViewModels.MessageHandlers</Name>
+      <Project>{9755398c-6f64-4ba5-bd02-af290facfc2d}</Project>
+      <Private>True</Private>
+      <RoleType>Worker</RoleType>
+      <RoleName>LifeMap.Membership.ViewModels.MessageHandlers</RoleName>
       <UpdateDiagnosticsConnectionStringOnPublish>True</UpdateDiagnosticsConnectionStringOnPublish>
     </ProjectReference>
   </ItemGroup>
@@ -74,4 +82,12 @@
     <CloudExtensionsDir Condition=" '$(CloudExtensionsDir)' == '' ">$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Windows Azure Tools\1.6\</CloudExtensionsDir>
   </PropertyGroup>
   <Import Project="$(CloudExtensionsDir)Microsoft.WindowsAzure.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>REM "$(ProjectDir)..\MembershipBC\deploy.bat"
+REM "$(ProjectDir)..\EmailGateway\deploy.bat"</PostBuildEvent>
+  </PropertyGroup>
 </Project>

@@ -17,21 +17,26 @@ namespace LifeMap.Membership.Rest
         {
             return NServiceBus.Configure.WithWeb()
                 .DefaultBuilder()
-                .WithDefaultMessageSpecifications()
+                //.WithDefaultMessageSpecifications()
                 .Log4Net(new AzureAppender())
-                .UnicastBus()
                 .AzureMessageQueue()
+                .AzureSubcriptionStorage()
+                .UnicastBus()
+                    .ImpersonateSender(false)//.AzureConfigurationSource()
                     .JsonSerializer()
-                .RavenPersistence()
-                .RavenSagaPersister()
-                .RavenSubscriptionStorage();
+                //.RavenPersistence()
+                //.RavenSubscriptionStorage()
+                ;
         }
 
         public static readonly Lazy<IBus> StartBus = new Lazy<IBus>(InitializeBus);
         public static IBus Bus { get; private set; }
+        
         public static IBus InitializeBus()
         {
-            return ConfigureBus().CreateBus().Start();
+            var startableBus = ConfigureBus().CreateBus();
+            var bus = startableBus.Start();
+            return bus;
         }
 
         protected void Application_BeginRequest()

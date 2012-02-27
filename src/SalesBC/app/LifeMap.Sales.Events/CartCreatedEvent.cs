@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using LifeMap.Common.Domain;
 
 namespace LifeMap.Sales.Events
 {
-    [Serializable]
-    public class CartCreatedEvent : MessageBase
+    [DataContract, Serializable]
+    public class CartCreatedEvent //: MessageBase
     {
         public CartCreatedEvent()
         {
@@ -19,6 +20,8 @@ namespace LifeMap.Sales.Events
             Id = cartId;
             CartId = cartId;
         }
+
+        public Guid Id { get; set; }
 
         public Guid CartId { get; set; }
     }

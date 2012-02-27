@@ -1,1 +1,0 @@
-LifeMap.NServiceBus.Host.dll

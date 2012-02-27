@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
+using System.Runtime.Serialization;
 using System.Text;
-using LifeMap.Common.Domain;
+using NServiceBus;
+
 
 namespace LifeMap.Membership.Commands
 {
-    [Serializable]
-    public class StartRegistrationCommand : MessageBase
+    [DataContract, Serializable]
+    public class StartRegistrationCommand : ICommand
     {
         public StartRegistrationCommand()
         {
@@ -16,17 +18,29 @@ namespace LifeMap.Membership.Commands
 
         public StartRegistrationCommand(Guid id, string firstName, string lastName, string emailAddress)
         {
-            base.Id = id;
+            Id = id;
             RegistrationId = id;
             FirstName = firstName;
             LastName = lastName;
             EmailAddress = emailAddress;
         }
 
+        [DataMember]
+        public Guid Id { get; set; }
+
+        [DataMember]
         public Guid RegistrationId { get; set; }
+        
+        [DataMember]
         public string FirstName { get; set; }
+        
+        [DataMember]
         public string LastName { get; set; }
+        
+        [DataMember]
         public string EmailAddress { get; set; }
 
+        [DataMember]
+        public string Password { get; set; }
     }
 }

@@ -27,7 +27,7 @@ namespace LifeMap.Common.Infrastructure
                 .Configure.With()
                 .AutofacBuilder((IContainer)container)
                 .MsmqSubscriptionStorage()
-                .XmlSerializer();
+                .JsonSerializer();
         }
 
 

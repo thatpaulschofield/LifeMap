@@ -9,6 +9,7 @@
     <script language="javascript" src="Scripts/lib/backbone.js"></script>
     <script language="javascript" src="Scripts/lib/backbone.modelbinding.js"></script>
     <script language="javascript" src="Scripts/lib/backbone.marionette.js"></script>
+    <script language="javascript" src="Scripts/lib/modernizr-2.0.6-development-only.js"></script>
     <script language="javascript" src="Scripts/LifeMapApp.js"></script>
     <script language="javascript" src="Scripts/Membership/MembershipApp.js"></script>
     <script language="javascript" src="Scripts/LifeMapApp.Router.js"></script>
@@ -27,12 +28,13 @@
     <a href="${Url}">${Description}</a >
 </script>
 
-<script id="membership-start-registration" type="text/x-jquery-tmpl">
-    <input name="FirstName" id="FirstName" />
-    <input name="LastName" id="LastName" />
-    <input name="EmailAddress" id="EmailAddress" />
-    <input type="button" id="membership-start-registration-submit" />
-</script>
+    <script id="membership-start-registration" type="text/x-jquery-tmpl">
+        <input name="FirstName" id="FirstName" placeholder="first name" />
+        <br/><input name="LastName" id="LastName" placeholder="last name" />
+        <br/><input name="EmailAddress" id="EmailAddress" placeholder="email" />
+        <br/><input name="Password" id="Password" placeholder="password"/>
+        <br/><input type="button" id="membership-start-registration-submit" value="Create LifeMap Account" ></input>
+    </script>
 
     <script id="membership-confirm-email" type="text/x-jquery-tmpl">
         Confirmation information goes here

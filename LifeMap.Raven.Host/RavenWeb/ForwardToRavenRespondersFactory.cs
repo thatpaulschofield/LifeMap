@@ -60,19 +60,20 @@ namespace Raven.Web
                     var ravenConfiguration = new RavenConfiguration();
                     if (RoleEnvironment.IsAvailable)
                     {
+                        ravenConfiguration.RunInMemory = true;
                         // Mount Cloud drive and set it as Data Directory
-                        var currentConfiguredRavenDataDir = ConfigurationManager.AppSettings["Raven/DataDir"] ?? string.Empty;
-                        string azureDrive = Environment.GetEnvironmentVariable(RavenDriveConfiguration.AzureDriveEnvironmentVariableName, EnvironmentVariableTarget.Machine);
-                        if (string.IsNullOrWhiteSpace(azureDrive))
-                        {
-                            throw new ArgumentException("RavenDb drive environment variable is not yet set by worker role. Please, retry in a couple of seconds");
-                        }
+                        //var currentConfiguredRavenDataDir = ConfigurationManager.AppSettings["Raven/DataDir"] ?? string.Empty;
+                        //string azureDrive = @"D:\"; // Environment.GetEnvironmentVariable(RavenDriveConfiguration.AzureDriveEnvironmentVariableName, EnvironmentVariableTarget.Machine);
+                        //if (string.IsNullOrWhiteSpace(azureDrive))
+                        //{
+                        //    throw new ArgumentException("RavenDb drive environment variable is not yet set by worker role. Please, retry in a couple of seconds");
+                        //}
 
-                        string azurePath = Path.Combine(azureDrive, 
-                            currentConfiguredRavenDataDir.StartsWith(@"~\")
-                                ? currentConfiguredRavenDataDir.Substring(2)
-                                : "Data");
-                        ravenConfiguration.DataDirectory = azurePath;
+                        //string azurePath = Path.Combine(azureDrive, 
+                        //    currentConfiguredRavenDataDir.StartsWith(@"~\")
+                        //        ? currentConfiguredRavenDataDir.Substring(2)
+                        //        : "Data");
+                        //ravenConfiguration.DataDirectory = azurePath;
 
                         // Read port number specified for this Raven instance and set it in configuration
                         var endpoint = RoleEnvironment.CurrentRoleInstance.InstanceEndpoints["Raven"];

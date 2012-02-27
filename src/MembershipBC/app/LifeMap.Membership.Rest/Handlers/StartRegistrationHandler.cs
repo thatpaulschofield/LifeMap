@@ -14,7 +14,10 @@ namespace LifeMap.Membership.Rest.Handlers
         {
             return new StartRegistration
                        {
-                           Id = Guid.NewGuid().ToString()
+                           Id = Guid.NewGuid().ToString(),
+                           FirstName = "Paul",
+                           LastName = "Schofield",
+                           EmailAddress = "thatpaulschofield@gmail.com"
                        };
         }
 

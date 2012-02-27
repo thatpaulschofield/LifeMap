@@ -9,7 +9,7 @@ using Stateless;
 
 namespace LifeMap.Membership.RegistrationProcess
 {
-    public class Registration : SagaBase<IMessage>
+    public class Registration : SagaBase<object>
     {
         private Guid? _offerId;
         private RegistrationCreditCard _ccInfo;
@@ -21,13 +21,8 @@ namespace LifeMap.Membership.RegistrationProcess
 
         public Registration()
         {
-            base.Register<RegistrationStartedEvent>(Apply);
-            base.Register<LoginEnteredForRegistrationEvent>(Apply);
-            base.Register<CreditCardInformationEnteredForRegistrationEvent>(Apply);
-            base.Register<RegisteredEmailAddressConfirmed>(Apply);
-
             _stateMachine = new StateMachine<RegistrationStates, RegistrationTriggers>(() => _state, state => _state = state);
-            
+
             _stateMachine.Configure(RegistrationStates.New).Permit(RegistrationTriggers.RegistrationStarted,
                                                                    RegistrationStates.GatheringInfo);
 
@@ -44,11 +39,16 @@ namespace LifeMap.Membership.RegistrationProcess
             _stateMachine.Configure(RegistrationStates.Submitted)
                 .OnEntry(this.OnSubmitted);
             _state = RegistrationStates.New;
+
+            base.Register<RegistrationStartedEvent>(Apply);
+            base.Register<LoginEnteredForRegistrationEvent>(Apply);
+            base.Register<CreditCardInformationEnteredForRegistrationEvent>(Apply);
+            base.Register<RegisteredEmailAddressConfirmed>(Apply);
         }
 
         public void StartRegistration(StartRegistrationCommand command) 
         {
-            base.Transition(new RegistrationStartedEvent(command.RegistrationId, command.FirstName, command.LastName, command.EmailAddress));
+            base.Transition(new RegistrationStartedEvent(command.RegistrationId, command.FirstName, command.LastName, command.EmailAddress, command.Password));
             this.BeginEmailConfirmationProcess(command.EmailAddress);
         }
 
@@ -91,7 +91,9 @@ namespace LifeMap.Membership.RegistrationProcess
 
         public void ConfirmEmailAddress(ConfirmRegisteredEmailAddressCommand command)
         {
-            base.Transition(RegisteredEmailAddressConfirmed.Create(command.Id, this.Id, command.EmailAddress));
+            var @event = RegisteredEmailAddressConfirmed.Create(command.Id, this.Id, command.EmailAddress);
+            base.Transition(@event);
+            base.Dispatch(@event);
         }
 
         #region Apply Methods
@@ -106,7 +108,7 @@ namespace LifeMap.Membership.RegistrationProcess
         {
             _ccInfo = new RegistrationCreditCard(@event.NameOnCard, @event.CardNumber, @event.CvvNumber,
                                                  @event.ExpirationDate);
-            //_stateMachine.Fire(RegistrationTriggers.CreditCardInfoEntered);
+            _stateMachine.Fire(RegistrationTriggers.CreditCardInfoEntered);
         }
 
         private void Apply(RegistrationStartedEvent @event)
@@ -119,13 +121,13 @@ namespace LifeMap.Membership.RegistrationProcess
         private void Apply(LoginEnteredForRegistrationEvent @event)
         {
             _login = new RegistrationLogin(@event.LoginId);
-            //_stateMachine.Fire(RegistrationTriggers.LoginInfoEntered);
+            _stateMachine.Fire(RegistrationTriggers.LoginInfoEntered);
         }
 
         private void Apply(OfferSelectedForRegistrationEvent @event)
         {
             _offerId = @event.OfferId;
-            //_stateMachine.Fire(RegistrationTriggers.OfferSelected);
+            _stateMachine.Fire(RegistrationTriggers.OfferSelected);
         }
         #endregion
 

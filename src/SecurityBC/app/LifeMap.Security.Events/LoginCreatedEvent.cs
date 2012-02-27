@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using LifeMap.Common.Domain;
 
 
 namespace LifeMap.Security.Events
 {
-    [Serializable]
-    public class LoginCreatedEvent : MessageBase
+    [DataContract, Serializable]
+    public class LoginCreatedEvent //: MessageBase
     {
         public LoginCreatedEvent()
         {

@@ -1,20 +1,26 @@
 using System;
 using System.Runtime.Serialization;
-using LifeMap.Common.Domain;
+using NServiceBus;
+
 
 namespace LifeMap.Membership.Commands
 {
-    [Serializable]
-    public class ConfirmEmailAddressCommand : MessageBase
+    [DataContract, Serializable]
+    public class ConfirmEmailAddressCommand : ICommand //: MessageBase
     {
         public static ConfirmEmailAddressCommand Create(Guid registrationId, Guid confirmationId)
         {
             return new ConfirmEmailAddressCommand
                        {
+                           Id = Guid.NewGuid(),
                            RegistrationId = registrationId,
                            ConfirmationId = confirmationId
                        };
         }
+
+
+        [DataMember]
+        public Guid Id { get; set; }
 
         [DataMember]
         public Guid RegistrationId { get; set; }

@@ -1,10 +1,12 @@
 ﻿using System;
-using LifeMap.Common.Domain;
+using System.Runtime.Serialization;
+using NServiceBus;
+
 
 namespace LifeMap.Membership.Messages.Commands
 {
-    [Serializable]
-    public class SelectLoginForRegistrationCommand : MessageBase
+    [DataContract, Serializable]
+    public class SelectLoginForRegistrationCommand : ICommand //: MessageBase
     {
         public SelectLoginForRegistrationCommand()
         {
@@ -17,7 +19,13 @@ namespace LifeMap.Membership.Messages.Commands
             LoginId = loginId;
         }
 
+        [DataMember]
+        public Guid Id { get; set; }
+
+        [DataMember]
         public Guid RegistrationId { get; set; }
+
+        [DataMember]
         public Guid LoginId { get; set; }
     }
 }

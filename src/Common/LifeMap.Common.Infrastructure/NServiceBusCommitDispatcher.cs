@@ -11,10 +11,16 @@ namespace LifeMap.Common.Infrastructure
 {
     public sealed class NServiceBusCommitDispatcher : IDispatchCommits
     {
+        private readonly Lazy<IBus> _busResolver;
         private const string AggregateIdKey = "AggregateId";
         private const string CommitVersionKey = "CommitVersion";
         private const string EventVersionKey = "EventVersion";
         private const string BusPrefixKey = "Bus.";
+
+        public NServiceBusCommitDispatcher(Lazy<IBus> busResolver)
+        {
+            _busResolver = busResolver;
+        }
 
         public void Dispose()
         {
@@ -32,13 +38,9 @@ namespace LifeMap.Common.Infrastructure
                     //AppendHeaders(busMessage, commit.Headers);
                     //AppendHeaders(busMessage, eventMessage.Headers);
                     AppendVersion(commit, i);
-                    while (BusLocator.Bus == null)
-                    {
-                        Thread.Sleep(1000);
-                    }
 
-                    if (busMessage.IsEvent())
-                        BusLocator.Bus.Publish(busMessage);
+                    //if (busMessage.IsEvent())
+                        _busResolver.Value.Publish(new[] {busMessage});
                     
                 }
                 catch (Exception)
@@ -49,7 +51,7 @@ namespace LifeMap.Common.Infrastructure
             foreach (var header in commit.Headers.Select(header => header.Value))
             {
                 if (header.IsCommand())
-                    BusLocator.Bus.Send(header);
+                    _busResolver.Value.Send(header);
             }
         }
 
